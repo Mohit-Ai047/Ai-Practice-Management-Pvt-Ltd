@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.png";
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -56,22 +57,12 @@ export const Header = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <a href="#home" className="flex items-center gap-3">
-              <div className="flex items-center gap-2">
-                <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center">
-                  <span className="text-2xl font-serif font-bold text-primary-foreground">
-                    Ai
-                  </span>
-                </div>
-                <div className="hidden sm:block">
-                  <h1 className="font-serif font-bold text-lg leading-tight text-foreground">
-                    AI Practice Management
-                  </h1>
-                  <p className="text-xs text-muted-foreground uppercase tracking-wide">
-                    LLC
-                  </p>
-                </div>
-              </div>
+            <a href="#home" className="flex items-center">
+              <img 
+                src={logo} 
+                alt="AI Practice Management LLC" 
+                className="h-14 sm:h-16 w-auto"
+              />
             </a>
 
             {/* Desktop Navigation */}
