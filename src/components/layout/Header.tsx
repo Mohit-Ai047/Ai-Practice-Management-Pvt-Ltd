@@ -78,7 +78,7 @@ export const Header = () => {
                 >
                   <a
                     href={item.href}
-                    className="px-4 py-2 text-sm font-medium text-foreground hover:text-primary transition-colors flex items-center gap-1"
+                    className="px-4 py-2 text-sm font-medium text-foreground hover:text-primary hover:bg-primary/10 rounded-md transition-colors flex items-center gap-1"
                   >
                     {item.label}
                     {item.submenu && <ChevronDown className="w-3.5 h-3.5" />}
@@ -98,7 +98,7 @@ export const Header = () => {
                           <a
                             key={subItem.label}
                             href={subItem.href}
-                            className="block px-4 py-3 text-sm text-foreground hover:bg-accent hover:text-primary transition-colors"
+                            className="block px-4 py-3 text-sm text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
                           >
                             {subItem.label}
                           </a>
@@ -145,7 +145,7 @@ export const Header = () => {
                     key={item.label}
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className="block px-4 py-3 text-foreground hover:bg-accent rounded-lg transition-colors"
+                    className="block px-4 py-3 text-foreground hover:bg-primary/10 hover:text-primary rounded-lg transition-colors"
                   >
                     {item.label}
                   </a>
