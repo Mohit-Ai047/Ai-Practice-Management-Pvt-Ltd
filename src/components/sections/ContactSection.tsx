@@ -56,7 +56,7 @@ export const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-muted/50" ref={ref}>
+    <section className="py-20 bg-black text-white" ref={ref}>
       <div className="container mx-auto px-4">
         {/* Header */}
         <motion.div
@@ -65,14 +65,14 @@ export const ContactSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-2xl mx-auto mb-16"
         >
-          <span className="text-sm font-medium text-primary uppercase tracking-wider">
+          <span className="text-sm font-medium text-secondary uppercase tracking-wider">
             Get In Touch
           </span>
           <div className="section-divider mx-auto mt-4 mb-6" />
-          <h2 className="font-serif text-3xl lg:text-4xl font-bold text-foreground mb-4">
+          <h2 className="font-serif text-3xl lg:text-4xl font-bold mb-4">
             Ready to Optimize Your Revenue?
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-white/70 text-lg">
             Contact us today for a free consultation and discover how we can help
             your practice thrive.
           </p>
@@ -86,29 +86,29 @@ export const ContactSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:col-span-2 space-y-6"
           >
-            <div className="bg-primary rounded-2xl p-8 text-primary-foreground">
-              <h3 className="font-serif text-2xl font-semibold mb-6">
+            <div className="bg-zinc-900 rounded-2xl p-8 border border-white/10">
+              <h3 className="font-serif text-2xl font-semibold mb-6 text-white">
                 Contact Information
               </h3>
               <div className="space-y-6">
                 {contactInfo.map((item) => (
                   <div key={item.title} className="flex items-start gap-4">
-                    <div className="p-3 rounded-lg bg-primary-foreground/10">
+                    <div className="p-3 rounded-lg bg-white/5 text-secondary">
                       <item.icon className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="text-sm text-primary-foreground/70 mb-1">
+                      <p className="text-sm text-white/50 mb-1">
                         {item.title}
                       </p>
                       {item.href ? (
                         <a
                           href={item.href}
-                          className="font-medium hover:text-secondary transition-colors"
+                          className="font-medium text-white hover:text-secondary transition-colors"
                         >
                           {item.value}
                         </a>
                       ) : (
-                        <p className="font-medium">{item.value}</p>
+                        <p className="font-medium text-white">{item.value}</p>
                       )}
                     </div>
                   </div>
@@ -116,8 +116,8 @@ export const ContactSection = () => {
               </div>
 
               {/* Social Links */}
-              <div className="mt-8 pt-6 border-t border-primary-foreground/20">
-                <p className="text-sm text-primary-foreground/70 mb-4">
+              <div className="mt-8 pt-6 border-t border-white/10">
+                <p className="text-sm text-white/50 mb-4">
                   Stay Connected
                 </p>
                 <div className="flex gap-3">
@@ -125,7 +125,7 @@ export const ContactSection = () => {
                     <a
                       key={social}
                       href="#"
-                      className="px-4 py-2 bg-primary-foreground/10 rounded-lg text-sm hover:bg-primary-foreground/20 transition-colors"
+                      className="px-4 py-2 bg-white/5 rounded-lg text-sm text-white hover:bg-white/10 transition-colors"
                     >
                       {social}
                     </a>
@@ -142,20 +142,20 @@ export const ContactSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="lg:col-span-3"
           >
-            <div className="bg-card rounded-2xl p-8 shadow-lg border border-border">
+            <div className="bg-zinc-900 rounded-2xl p-8 shadow-xl border border-white/10">
               {isSubmitted ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   className="text-center py-12"
                 >
-                  <div className="inline-flex p-4 rounded-full bg-primary/10 text-primary mb-4">
+                  <div className="inline-flex p-4 rounded-full bg-secondary/10 text-secondary mb-4">
                     <CheckCircle className="w-12 h-12" />
                   </div>
-                  <h3 className="font-serif text-2xl font-semibold text-foreground mb-2">
+                  <h3 className="font-serif text-2xl font-semibold text-white mb-2">
                     Thank You!
                   </h3>
-                  <p className="text-muted-foreground">
+                  <p className="text-white/70">
                     We'll get back to you within 24 hours.
                   </p>
                 </motion.div>
@@ -163,7 +163,7 @@ export const ContactSection = () => {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
+                      <label className="block text-sm font-medium text-white/70 mb-2">
                         Full Name *
                       </label>
                       <Input
@@ -172,11 +172,11 @@ export const ContactSection = () => {
                         onChange={handleChange}
                         placeholder="Dr. John Smith"
                         required
-                        className="bg-background"
+                        className="bg-black/50 border-white/10 text-white placeholder:text-white/30 focus-visible:ring-secondary"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
+                      <label className="block text-sm font-medium text-white/70 mb-2">
                         Email Address *
                       </label>
                       <Input
@@ -186,14 +186,14 @@ export const ContactSection = () => {
                         onChange={handleChange}
                         placeholder="john@practice.com"
                         required
-                        className="bg-background"
+                        className="bg-black/50 border-white/10 text-white placeholder:text-white/30 focus-visible:ring-secondary"
                       />
                     </div>
                   </div>
 
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
+                      <label className="block text-sm font-medium text-white/70 mb-2">
                         Phone Number
                       </label>
                       <Input
@@ -202,11 +202,11 @@ export const ContactSection = () => {
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="(555) 123-4567"
-                        className="bg-background"
+                        className="bg-black/50 border-white/10 text-white placeholder:text-white/30 focus-visible:ring-secondary"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
+                      <label className="block text-sm font-medium text-white/70 mb-2">
                         Medical Specialty
                       </label>
                       <Input
@@ -214,13 +214,13 @@ export const ContactSection = () => {
                         value={formData.specialty}
                         onChange={handleChange}
                         placeholder="e.g., Cardiology"
-                        className="bg-background"
+                        className="bg-black/50 border-white/10 text-white placeholder:text-white/30 focus-visible:ring-secondary"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
+                    <label className="block text-sm font-medium text-white/70 mb-2">
                       How Can We Help? *
                     </label>
                     <Textarea
@@ -230,7 +230,7 @@ export const ContactSection = () => {
                       placeholder="Tell us about your practice and billing challenges..."
                       rows={4}
                       required
-                      className="bg-background resize-none"
+                      className="bg-black/50 border-white/10 text-white placeholder:text-white/30 resize-none focus-visible:ring-secondary"
                     />
                   </div>
 
@@ -243,7 +243,7 @@ export const ContactSection = () => {
                     Request Free Consultation
                   </Button>
 
-                  <p className="text-xs text-muted-foreground text-center">
+                  <p className="text-xs text-white/40 text-center">
                     By submitting this form, you agree to our privacy policy.
                     We'll never share your information.
                   </p>

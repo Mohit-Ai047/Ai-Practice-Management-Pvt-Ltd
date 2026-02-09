@@ -113,12 +113,18 @@
     font-family: 'Inter', system-ui, sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: 'Playfair Display', Georgia, serif;
   }
 }
 
 @layer components {
+
   /* Hero Section Styles */
   .hero-gradient {
     background: var(--hero-gradient);
@@ -149,8 +155,15 @@
 
   /* Floating animation */
   @keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-10px) rotate(1deg); }
+
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+      transform: translateY(-10px) rotate(1deg);
+    }
   }
 
   .animate-float {
@@ -191,8 +204,15 @@
 
   /* Stats counter animation */
   @keyframes countUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .stat-number {
@@ -202,12 +222,76 @@
 
   /* Pulse animation for CTAs */
   @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
-    50% { box-shadow: 0 0 20px 10px rgba(212, 175, 55, 0); }
+
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+    }
+
+    50% {
+      box-shadow: 0 0 20px 10px rgba(212, 175, 55, 0);
+    }
   }
 
   .pulse-glow {
     animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes fillText {
+    0% {
+      background-position: 100% 0;
+    }
+
+    100% {
+      background-position: 0% 0;
+    }
+  }
+
+  /* "Black with White Border" -> "White Fill" Effect */
+  .craft-text {
+    /* Background: White (fill) -> Transparent (unfilled) */
+    background: linear-gradient(to right, #ffffff 50%, rgba(255, 255, 255, 0) 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    /* Start completely unfilled */
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+    /* Make text transparent so background shows */
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+    /* The "White Border" */
+
+    animation: fillText 6s linear infinite;
+    /* Slow fill */
+    display: inline-block;
+    padding-right: 5px;
+    /* Prevent stroke clipping */
+  }
+
+  /* Word-by-word wave effect */
+  @keyframes craftWordAnim {
+
+    0%,
+    100% {
+      color: rgba(255, 255, 255, 0.3);
+      text-shadow: none;
+    }
+
+    15% {
+      color: #ffffff;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    }
+
+    30% {
+      color: rgba(255, 255, 255, 0.3);
+      text-shadow: none;
+    }
+  }
+
+  .animate-word-flow {
+    animation: craftWordAnim 4s ease-in-out infinite;
   }
 }
 

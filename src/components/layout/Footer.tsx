@@ -1,150 +1,214 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import logo from "../../assets/final-logo.png";
 import { Phone, Mail, MapPin } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const footerLinks = {
   services: [
-    { label: "Revenue Cycle Management", href: "#services" },
-    { label: "Medical Billing", href: "#services" },
-    { label: "Claims Processing", href: "#services" },
-    { label: "Credentialing", href: "#services" },
+    { label: "Revenue Cycle Management", href: "/rcm" },
+    { label: "Medical Billing", href: "/medical-billing" },
+    { label: "Denial Management", href: "/denial-management" },
+    { label: "AR Claim Services", href: "/ar-claim-services" },
+    { label: "Quality Assurance & Audit", href: "/quality-assurance" },
   ],
   specialties: [
-    { label: "Cardiology", href: "#specialties" },
-    { label: "Orthopedics", href: "#specialties" },
-    { label: "Internal Medicine", href: "#specialties" },
-    { label: "View All", href: "#specialties" },
+    { label: "Pain Medicine", href: "/specialties/pain-medicine-specialist" },
+    { label: "Gastroenterology", href: "/specialties/gastroenterologists" },
+    { label: "Spine Surgery", href: "/specialties/spine-surgeon" },
+    { label: "Orthopedics", href: "/specialties/doctor-of-orthopedics" },
+    { label: "Neurosurgery", href: "/specialties/neurosurgeons" },
+    { label: "View All Specialties", href: "/specialties" },
   ],
   company: [
-    { label: "About Us", href: "#about" },
-    { label: "Benefits", href: "#benefits" },
-    { label: "Contact", href: "#contact" },
+    { label: "Home", href: "/" },
+    { label: "Benefits", href: "/benefits" },
+    { label: "Specialties", href: "/specialties" },
+    { label: "Contact", href: "/contact" },
   ],
 };
 
+const LinkItem = ({
+  label,
+  href,
+  isActive,
+  onHover
+}: {
+  label: string;
+  href: string;
+  isActive: boolean;
+  onHover: (label: string | null) => void;
+}) => (
+  <li
+    className="relative group flex items-center w-fit"
+    onMouseEnter={() => onHover(label)}
+    onMouseLeave={() => onHover(null)}
+  >
+    <Link
+      to={href}
+      className="text-[#FEFAE0] hover:text-red-500 transition-colors duration-300 ease-out text-base flex items-center w-fit relative z-20"
+    >
+      <span className="w-1.5 h-1.5 rounded-full bg-[#FEFAE0] group-hover:bg-[#FEFAE0] mr-0 group-hover:mr-2 transition-all opacity-0 group-hover:opacity-100"></span>
+      <span className="relative z-10">{label}</span>
+    </Link>
+
+    <AnimatePresence>
+      {isActive && (
+        <motion.div
+          layoutId="footer-hover-card"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.9 }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          className="absolute top-1/2 -translate-y-1/2 left-full ml-2 origin-left w-auto min-w-[12rem] bg-[#FF3831] rounded-xl py-8 px-6 z-50 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col items-center justify-center text-center hidden md:flex pointer-events-none"
+        >
+
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.1 }}
+            className="text-xl font-bold font-serif text-white leading-tight whitespace-nowrap w-full"
+          >
+            {label}
+          </motion.span>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  </li>
+);
+
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
 
   return (
-    <footer className="bg-foreground text-background">
+    <footer className="bg-black text-[#FEFAE0] overflow-hidden">
       <div className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-0">
           {/* Brand */}
-          <div className="lg:col-span-2">
+          <div className="lg:w-[40%] pr-8">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-2xl font-serif font-bold text-primary-foreground">
-                  Ai
-                </span>
+              <div className="w-12 h-12 bg-black border border-[#FEFAE0]/30 rounded-lg flex items-center justify-center overflow-hidden">
+                <img src={logo} alt="AI Practice Management" className="w-full h-full object-contain p-2 invert" />
               </div>
-              <div>
-                <h3 className="font-serif font-bold text-lg leading-tight">
-                  AI Practice Management
-                </h3>
-                <p className="text-xs text-background/60 uppercase tracking-wide">
-                  LLC
-                </p>
-              </div>
+              <h3 className="font-serif font-bold text-xl leading-tight whitespace-nowrap">
+                AI Practice Management LLC
+              </h3>
             </div>
-            <p className="text-background/70 mb-6 max-w-sm">
+            <p className="text-[#FEFAE0] mb-6 max-w-sm leading-relaxed text-lg">
               Exceeding expectations with quality RCM services. Your trusted
-              partner in healthcare revenue optimization.
+              partner in healthcare revenue optimization and administrative excellence.
             </p>
 
             {/* Contact Info */}
-            <div className="space-y-3">
+            <div className="space-y-4">
               <a
                 href="tel:(302)741-4001"
-                className="flex items-center gap-2 text-background/70 hover:text-secondary transition-colors"
+                className="flex items-center gap-3 text-[#FEFAE0] hover:text-white transition-colors group"
               >
-                <Phone className="w-4 h-4" />
-                (302) 741-4001
+                <div className="w-8 h-8 rounded-full bg-[#FEFAE0]/10 flex items-center justify-center group-hover:bg-[#FEFAE0]/20 transition-colors">
+                  <Phone className="w-4 h-4" />
+                </div>
+                <span className="text-base">(302) 741-4001</span>
               </a>
               <a
                 href="mailto:info@aipracticemanagement.us"
-                className="flex items-center gap-2 text-background/70 hover:text-secondary transition-colors"
+                className="flex items-center gap-3 text-[#FEFAE0] hover:text-white transition-colors group"
               >
-                <Mail className="w-4 h-4" />
-                info@aipracticemanagement.us
+                <div className="w-8 h-8 rounded-full bg-[#FEFAE0]/10 flex items-center justify-center group-hover:bg-[#FEFAE0]/20 transition-colors">
+                  <Mail className="w-4 h-4" />
+                </div>
+                <span className="text-base">info@aipracticemanagement.us</span>
               </a>
-              <div className="flex items-center gap-2 text-background/70">
-                <MapPin className="w-4 h-4" />
-                Serving Nationwide
+              <div className="flex items-center gap-3 text-[#FEFAE0]">
+                <div className="w-8 h-8 rounded-full bg-[#FEFAE0]/10 flex items-center justify-center">
+                  <MapPin className="w-4 h-4" />
+                </div>
+                <span className="text-base">Serving Healthcare Providers Nationwide</span>
               </div>
             </div>
           </div>
 
-          {/* Services Links */}
-          <div>
-            <h4 className="font-semibold mb-4 text-secondary">Services</h4>
-            <ul className="space-y-3">
-              {footerLinks.services.map((link) => (
-                <li key={link.label}>
-                  <a
+          {/* Links Section */}
+          <div className="lg:w-[60%] grid grid-cols-1 md:grid-cols-3 gap-8 lg:pr-32">
+            {/* Services Links */}
+            <div>
+              <div className="h-12 flex items-center mb-6">
+                <h4 className="font-bold text-[#FEFAE0] uppercase text-sm tracking-widest">Services</h4>
+              </div>
+              <ul className="space-y-4">
+                {footerLinks.services.map((link) => (
+                  <LinkItem
+                    key={link.label}
+                    label={link.label}
                     href={link.href}
-                    className="text-background/70 hover:text-background transition-colors text-sm"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+                    isActive={hoveredLink === link.label}
+                    onHover={setHoveredLink}
+                  />
+                ))}
+              </ul>
+            </div>
 
-          {/* Specialties Links */}
-          <div>
-            <h4 className="font-semibold mb-4 text-secondary">Specialties</h4>
-            <ul className="space-y-3">
-              {footerLinks.specialties.map((link) => (
-                <li key={link.label}>
-                  <a
+            {/* Specialties Links */}
+            <div>
+              <div className="h-12 flex items-center mb-6">
+                <h4 className="font-bold text-[#FEFAE0] uppercase text-sm tracking-widest">Specialties</h4>
+              </div>
+              <ul className="space-y-4">
+                {footerLinks.specialties.map((link) => (
+                  <LinkItem
+                    key={link.label}
+                    label={link.label}
                     href={link.href}
-                    className="text-background/70 hover:text-background transition-colors text-sm"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+                    isActive={hoveredLink === link.label}
+                    onHover={setHoveredLink}
+                  />
+                ))}
+              </ul>
+            </div>
 
-          {/* Company Links */}
-          <div>
-            <h4 className="font-semibold mb-4 text-secondary">Company</h4>
-            <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
-                <li key={link.label}>
-                  <a
+            {/* Company Links */}
+            <div>
+              <div className="h-12 flex items-center mb-6">
+                <h4 className="font-bold text-[#FEFAE0] uppercase text-sm tracking-widest">Company</h4>
+              </div>
+              <ul className="space-y-4">
+                {footerLinks.company.map((link) => (
+                  <LinkItem
+                    key={link.label}
+                    label={link.label}
                     href={link.href}
-                    className="text-background/70 hover:text-background transition-colors text-sm"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+                    isActive={hoveredLink === link.label}
+                    onHover={setHoveredLink}
+                  />
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
         {/* Bottom */}
-        <div className="mt-12 pt-8 border-t border-background/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-background/50 text-sm">
-            © {currentYear} AI Practice Management LLC. All rights reserved.
+        <div className="mt-16 pt-8 border-t border-[#FEFAE0]/20 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-[#FEFAE0]/60 text-sm text-center md:text-left leading-relaxed">
+            © {currentYear} AI Practice Management LLC. All rights reserved. <br className="md:hidden" />
+            Designed for healthcare financial excellence.
           </p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-2">
             <a
               href="#"
-              className="text-background/50 hover:text-background text-sm transition-colors"
+              className="text-[#FEFAE0]/60 hover:text-white text-sm transition-colors underline underline-offset-4 decoration-transparent hover:decoration-white"
             >
               Privacy Policy
             </a>
             <a
               href="#"
-              className="text-background/50 hover:text-background text-sm transition-colors"
+              className="text-[#FEFAE0]/60 hover:text-white text-sm transition-colors underline underline-offset-4 decoration-transparent hover:decoration-white"
             >
               Terms of Service
             </a>
             <a
               href="#"
-              className="text-background/50 hover:text-background text-sm transition-colors"
+              className="text-[#FEFAE0]/60 hover:text-white text-sm transition-colors underline underline-offset-4 decoration-transparent hover:decoration-white"
             >
               HIPAA Compliance
             </a>

@@ -11,9 +11,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -22,6 +24,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -39,4 +42,33 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Add to your global.css */
+@layer utilities {
+  .bg-pos-0 {
+    background-position: 0% 50%;
+  }
+
+  .bg-pos-100 {
+    background-position: 100% 50%;
+  }
+
+  .animate-gradient-shift:hover {
+    animation: gradient-shift 2s ease infinite;
+  }
+
+  /* For the letter animation */
+  .letter-animate {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: letter-reveal 0.6s forwards;
+  }
+
+  /* For word-by-word animation */
+  .word-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: word-flow 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  }
 }

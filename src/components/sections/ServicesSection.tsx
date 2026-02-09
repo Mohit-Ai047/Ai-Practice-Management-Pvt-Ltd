@@ -1,159 +1,266 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
-import {
-  FileText,
-  CreditCard,
-  ClipboardCheck,
-  Users,
-  BarChart3,
-  Shield,
-  ArrowRight,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
+// import { Link } from "react-router-dom";
+// import { motion } from "framer-motion";
+// import { ArrowUpRight } from "lucide-react";
 
+// // Images
+// import heroMedical from "@/assets/hero-medical.jpg";
+// import medicalBilling from "@/assets/medical.png";
+// import denialManage from "@/assets/denail-manage.png";
+// import arClaim from "@/assets/ar-claim.png";
+// import auditImage from "@/assets/audit.png";
+// import aiRevenueImage from "@/assets/ai-auto.png";
+
+// // Map services to specific images
+// const services = [
+//   {
+//     title: "End to End RCM",
+//     description: "Complete oversight from registration to final payment.",
+//     image: heroMedical,
+//     link: "/rcm", // Direct link to new RCM Page
+//   },
+//   {
+//     title: "Medical Billing",
+//     description: "Precision-driven billing to maximize reimbursements.",
+//     image: medicalBilling,
+//     link: "/medical-billing", // Link to new Medical Billing Page
+//   },
+//   {
+//     title: "Denial Management",
+//     description: "Transforming claim denials into recovered revenue.",
+//     image: denialManage,
+//     link: "/denial-management",
+//   },
+//   {
+//     title: "AR Claim Services",
+//     description: "Recover outstanding payments and improve cash flow.",
+//     image: arClaim,
+//     link: "/ar-claim-services",
+//   },
+//   {
+//     title: "Quality Assurance & Audit",
+//     description: "Rigorous controls ensuring accuracy and compliance.",
+//     image: auditImage,
+//     link: "/quality-assurance",
+//   },
+//   {
+//     title: "AI-Powered Revenue Automation",
+//     description: "Intelligent bots and predictive models to automate high-volume tasks.",
+//     image: aiRevenueImage,
+//     link: "/ai-revenue-automation",
+//   },
+// ];
+
+// export const ServicesSection = () => {
+//   return (
+//     <section className="bg-black py-24 min-h-screen">
+//       <div className="container mx-auto px-4">
+
+//         {/* Header */}
+//         <div className="text-center mb-16">
+//           <h2 className="text-4xl md:text-5xl font-bold mb-6 font-clash leading-tight">
+//             {"Every Tool in Our Kit Has a Purpose.".split(" ").map((word, i) => (
+//               <span
+//                 key={i}
+//                 className="animate-word-flow inline-block mr-[0.25em] last:mr-0"
+//                 style={{ animationDelay: `${i * 0.25}s` }}
+//               >
+//                 {word}
+//               </span>
+//             ))}
+//           </h2>
+//           <p className="text-4xl md:text-5xl font-bold text-white mb-6 font-clash">
+//             Our Core Specializations.
+//           </p>
+//         </div>
+//       </div>
+
+//       {/* Image Grid */}
+//       {/* Image Grid */}
+//       <div className="grid grid-cols-1 md:grid-cols-8 gap-6 max-w-[85%] mx-auto">
+//         {services.map((service, index) => {
+//           // Pattern: 50% / 30% Split
+//           // We use a constrained 85% width container with an 8-column grid.
+//           // Large: 5/8 cols ~ 53% screen width.
+//           // Small: 3/8 cols ~ 32% screen width.
+
+//           let colSpanClass = "md:col-span-3";
+//           if (index === 0 || index === 3 || index === 4) {
+//             colSpanClass = "md:col-span-5";
+//           }
+
+//           return (
+//             <motion.div
+//               key={service.title}
+//               initial={{ opacity: 0, y: 20 }}
+//               whileInView={{ opacity: 1, y: 0 }}
+//               viewport={{ once: true }}
+//               transition={{ delay: index * 0.1 }}
+//               className={`group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer ${colSpanClass}`}
+//             >
+//               {/* Background Image */}
+//               <div className="absolute inset-0">
+//                 <img
+//                   src={service.image}
+//                   alt={service.title}
+//                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+//                 />
+
+//                 {/* Bottom Gradient for Text Readability - Reduced to bottom only, no full overlay */}
+//                 <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-black/90 to-transparent" />
+//               </div>
+
+//               {/* Content */}
+//               <div className="absolute inset-0 p-8 flex flex-col justify-end">
+//                 <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+//                   <h3 className="text-2xl font-bold text-white mb-3 font-clash">
+//                     {service.title}
+//                   </h3>
+//                   <p className="text-white/80 text-sm mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+//                     {service.description}
+//                   </p>
+
+//                   {/* Arrow Button */}
+//                   <Link
+//                     to={service.link}
+//                     className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/10 backdrop-blur-md text-white border border-white/20 hover:bg-white hover:text-black transition-all duration-300"
+//                   >
+//                     <ArrowUpRight className="w-5 h-5" />
+//                   </Link>
+//                 </div>
+//               </div>
+//             </motion.div>
+//           );
+//         })}
+//       </div>
+
+
+//     </section>
+//   );
+// };
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+
+// Images
+import heroMedical from "@/assets/hero-medical.jpg";
+import medicalBilling from "@/assets/medical.png";
+import denialManage from "@/assets/denails.png";
+import arClaim from "@/assets/ar-claims.jpg";
+import auditImage from "@/assets/audit.png";
+import aiRevenueImage from "@/assets/ai-auto.png";
+
+// Map services to specific images
 const services = [
   {
-    icon: FileText,
-    title: "Revenue Cycle Management",
-    description:
-      "End-to-end RCM solutions that optimize every step of your revenue cycle, from patient registration to final payment.",
-    features: ["Claims submission", "Payment posting", "AR management"],
+    title: "End to End RCM",
+    description: "Complete oversight from registration to final payment.",
+    image: heroMedical,
+    link: "/rcm",
   },
   {
-    icon: CreditCard,
-    title: "Medical Billing Services",
-    description:
-      "Accurate and timely billing services that maximize reimbursements and minimize claim denials.",
-    features: ["Charge entry", "Claim scrubbing", "Denial management"],
+    title: "Medical Billing",
+    description: "Precision-driven billing to maximize reimbursements.",
+    image: medicalBilling,
+    link: "/medical-billing",
   },
   {
-    icon: ClipboardCheck,
-    title: "Claims Processing",
-    description:
-      "Streamlined claims processing with advanced technology to ensure faster approvals and payments.",
-    features: ["Electronic submission", "Status tracking", "Appeals handling"],
+    title: "Denial Management",
+    description: "Transforming claim denials into recovered revenue.",
+    image: denialManage,
+    link: "/denial-management",
   },
   {
-    icon: Users,
-    title: "Credentialing Services",
-    description:
-      "Comprehensive credentialing and re-credentialing services to keep your practice compliant.",
-    features: ["Provider enrollment", "CAQH management", "Payer contracts"],
+    title: "AR Claim Services",
+    description: "Recover outstanding payments and improve cash flow.",
+    image: arClaim,
+    link: "/ar-claim-services",
   },
   {
-    icon: BarChart3,
-    title: "Practice Analytics",
-    description:
-      "Data-driven insights and reporting to help you make informed decisions about your practice.",
-    features: ["KPI dashboards", "Financial reports", "Trend analysis"],
+    title: "Quality Assurance & Audit",
+    description: "Rigorous controls ensuring accuracy and compliance.",
+    image: auditImage,
+    link: "/quality-assurance",
   },
   {
-    icon: Shield,
-    title: "Compliance & Auditing",
-    description:
-      "Ensure your practice stays compliant with healthcare regulations and coding standards.",
-    features: ["HIPAA compliance", "Coding audits", "Documentation review"],
+    title: "AI-Powered Revenue Automation",
+    description: "Intelligent bots and predictive models to automate high-volume tasks.",
+    image: aiRevenueImage,
+    link: "/ai-revenue-automation",
   },
 ];
 
 export const ServicesSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const sentence = "Every Tool in Our Kit Has a Purpose.";
 
   return (
-    <section id="services" className="py-20 bg-muted/50" ref={ref}>
+    <section className="bg-black py-24 min-h-screen">
       <div className="container mx-auto px-4">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto mb-16"
-        >
-          <span className="text-sm font-medium text-primary uppercase tracking-wider">
-            What We Offer
-          </span>
-          <div className="section-divider mx-auto mt-4 mb-6" />
-          <h2 className="font-serif text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Comprehensive Healthcare Solutions
+        {/* Header with Text Animation */}
+        <div className="text-center mb-16">
+          {/* Animated Sentence */}
+          <h2 className="text-4xl md:text-6xl font-bold mb-8 font-clash leading-tight">
+            <span className="craft-text">
+              Every Tool in Our Kit Has a Purpose
+            </span>
           </h2>
-          <p className="text-muted-foreground text-lg">
-            From billing to compliance, we provide everything your practice needs
-            to thrive financially.
-          </p>
-        </motion.div>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
+          {/* Second Line */}
+          <p className="text-4xl md:text-5xl font-bold text-white mb-6 font-clash">
+            Our Core Specializations.
+          </p>
+        </div>
+      </div>
+
+      {/* Image Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-8 gap-6 max-w-[85%] mx-auto">
+        {services.map((service, index) => {
+          let colSpanClass = "md:col-span-3";
+          if (index === 0 || index === 3 || index === 4) {
+            colSpanClass = "md:col-span-5";
+          }
+
+          return (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 * index }}
-              className="group"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className={`group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer ${colSpanClass}`}
             >
-              <div className="elevated-card bg-card rounded-xl p-6 h-full border border-border hover:border-primary/30 transition-all">
-                {/* Icon */}
-                <div className="mb-5">
-                  <div className="inline-flex p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                    <service.icon className="w-6 h-6" />
-                  </div>
+              {/* Background Image */}
+              <div className="absolute inset-0">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                {/* Bottom Gradient */}
+                <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-black/90 to-transparent" />
+              </div>
+
+              {/* Content */}
+              <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  <h3 className="text-2xl font-bold text-white mb-3 font-clash">
+                    {service.title}
+                  </h3>
+                  <p className="text-white/80 text-sm mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                    {service.description}
+                  </p>
+
+                  {/* Arrow Button */}
+                  <Link
+                    to={service.link}
+                    className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/10 backdrop-blur-md text-white border border-white/20 hover:bg-white hover:text-black transition-all duration-300"
+                  >
+                    <ArrowUpRight className="w-5 h-5" />
+                  </Link>
                 </div>
-
-                {/* Content */}
-                <h3 className="font-serif text-xl font-semibold text-foreground mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground text-sm mb-4">
-                  {service.description}
-                </p>
-
-                {/* Features */}
-                <ul className="space-y-2 mb-5">
-                  {service.features.map((feature) => (
-                    <li
-                      key={feature}
-                      className="flex items-center gap-2 text-sm text-muted-foreground"
-                    >
-                      <div className="w-1.5 h-1.5 rounded-full bg-secondary" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Link */}
-                <a
-                  href="#contact"
-                  className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors"
-                >
-                  Learn more
-                  <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                </a>
               </div>
             </motion.div>
-          ))}
-        </div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center mt-12"
-        >
-          <Button
-            asChild
-            size="lg"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-8"
-          >
-            <a href="#contact">
-              Request Full Service Details
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </a>
-          </Button>
-        </motion.div>
+          );
+        })}
       </div>
     </section>
   );

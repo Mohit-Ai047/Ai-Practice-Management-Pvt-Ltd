@@ -23,7 +23,7 @@ export const MissionSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="py-20 bg-background" ref={ref}>
+    <section className="py-20 bg-background" ref={ref}>
       <div className="container mx-auto px-4">
         {/* Mission */}
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-24">
@@ -104,24 +104,77 @@ export const MissionSection = () => {
 
         {/* Vision */}
         <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Multi-Image Section */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="relative order-2 lg:order-1"
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <img
-                src={visionImage}
-                alt="Modern medical practice"
-                className="w-full h-[450px] object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent" />
+            <div className="grid-col-span-12 lg:grid-col-span-8 relative">
+              {/* Image 1 */}
+              <div className="overflow-hidden rounded-md">
+                <img
+                  src="https://www.r1rcm.com/storage/uploads/addc2fb7-8a73-4c29-8c07-57ae284c29e0/r1-our-agentic-approach-v02-light-am.gif"
+                  alt="R1 Our Agentic Approach v02 LIGHT am"
+                  loading="lazy"
+                  className="diagram-image w-full"
+                />
+              </div>
+
+              {/* Image 2 */}
+              <div className="overflow-hidden rounded-md">
+                <img
+                  src="https://www.r1rcm.com/img/9477c398-1126-43f4-9294-c2c9fd6172ec/2-orchestration.png?fm=jpg&q=80&fit=max&crop=2020,2020,0,0&w=1000"
+                  alt="2 orchestration"
+                  loading="lazy"
+                  className="diagram-image w-full absolute top-0 left-0 opacity-0"
+                />
+              </div>
+
+              {/* Image 3 */}
+              <div className="overflow-hidden rounded-md">
+                <img
+                  src="https://www.r1rcm.com/img/e1858fd0-7116-4e33-9ae0-8340c7765392/3-embedded-expertise.png?fm=jpg&q=80&fit=max&crop=,,,&w=1000"
+                  alt="3 embedded expertise"
+                  loading="lazy"
+                  className="diagram-image w-full absolute top-0 left-0 opacity-0"
+                />
+              </div>
+
+              {/* Image 4 */}
+              <div className="overflow-hidden rounded-md">
+                <img
+                  src="https://www.r1rcm.com/img/6e0891ea-22cd-42f9-a65f-64bc3a748468/4-continuous-learning-and-improvement.png?fm=jpg&q=80&fit=max&crop=,,,&w=1000"
+                  alt="4 continuous learning and improvement"
+                  loading="lazy"
+                  className="diagram-image w-full absolute top-0 left-0 opacity-0"
+                />
+              </div>
+
+              {/* Image 5 */}
+              <div className="overflow-hidden rounded-md">
+                <img
+                  src="https://www.r1rcm.com/img/90a0449e-6b79-4267-842a-145af2f6d61f/5-compliance-first-by-design.png?fm=jpg&q=80&fit=max&crop=,,,&w=1000"
+                  alt="5 compliance first by design"
+                  loading="lazy"
+                  className="diagram-image w-full absolute top-0 left-0 opacity-0"
+                />
+              </div>
+
+              {/* Image 6 */}
+              <div className="overflow-hidden rounded-md">
+                <img
+                  src="https://www.r1rcm.com/img/0cae7485-d108-494b-bfb6-223b95c9df24/6-data-foundation.png?fm=jpg&q=80&fit=max&crop=,,,&w=1000"
+                  alt="6 data foundation"
+                  loading="lazy"
+                  className="diagram-image w-full absolute top-0 left-0 opacity-0"
+                />
+              </div>
             </div>
-            <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-primary/10 rounded-2xl -z-10" />
-            <div className="absolute -top-6 -left-6 w-32 h-32 border-2 border-secondary/30 rounded-2xl -z-10" />
           </motion.div>
 
+          {/* Text Section */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -152,6 +205,7 @@ export const MissionSection = () => {
             </p>
           </motion.div>
         </div>
+
       </div>
     </section>
   );
