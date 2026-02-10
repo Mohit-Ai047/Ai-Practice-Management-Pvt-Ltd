@@ -22,7 +22,7 @@ export const MedicalContentSection = () => {
 
                         <div className="space-y-6 text-lg text-[#FEFAE0]/80 leading-relaxed font-light">
                             <p>
-                                Welcome to <span className="font-semibold text-white">AiPM</span>, the #1 medical billing partner trusted by practices across the Country. We’re not just here to process your claims; we’re here to <span className="italic text-white">accelerate your revenue</span> and streamline your operations like never before.
+                                Welcome to <span className="font-semibold text-white">AiPM</span>, the #1 medical billing partner trusted by practices across the Country. We’re not just here to process your claims; we’re here to <span className="font-serif text-white">accelerate your revenue</span> and streamline your operations like never before.
                             </p>
                             <p>
                                 Imagine a world where every claim is submitted with precision, every payment is on time, and your cash flow improves—<span className="font-semibold text-white">effortlessly.</span>
@@ -68,7 +68,7 @@ export const MedicalContentSection = () => {
                         className="text-center space-y-6"
                     >
                         <h2 className="text-3xl md:text-5xl font-serif text-[#FEFAE0]">
-                            Eliminate Denials & <span className="italic text-white">Delays.</span>
+                            Eliminate Denials & <span className="font-serif text-white">Delays.</span>
                         </h2>
                         <p className="text-xl md:text-2xl text-[#FEFAE0]/80 max-w-3xl mx-auto">
                             Tired of drowning in paperwork? We revolutionize your revenue cycle with <span className="text-white font-medium">smart automation</span> and proactive support.

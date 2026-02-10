@@ -22,10 +22,10 @@ export const AuditContentSection = () => {
 
                         <div className="space-y-6 text-lg text-[#FEFAE0]/80 leading-relaxed font-light">
                             <p>
-                                At AiPM, we believe that <span className="font-semibold text-white">proactive auditing</span> is the key to sustainable financial health. Our Quality Assurance & Audit services go beyond simple error checking—we provide a <span className="italic text-white">comprehensive shield</span> against compliance risks, revenue leakage, and payer scrutiny.
+                                At AiPM, we believe that <span className="font-semibold text-white">proactive auditing</span> is the key to sustainable financial health. Our Quality Assurance & Audit services go beyond simple error checking—we provide a <span className="font-serif text-white">comprehensive shield</span> against compliance risks, revenue leakage, and payer scrutiny.
                             </p>
                             <p>
-                                With regulatory landscapes shifting constantly, your practice needs more than just oversight; it needs <span className="font-semibold text-white">insight</span>. Our certified auditors leverage <span className="text-white italic">AI-driven analytics</span> to identify patterns, predict vulnerabilities, and implement corrective strategies before they impact your bottom line.
+                                With regulatory landscapes shifting constantly, your practice needs more than just oversight; it needs <span className="font-semibold text-white">insight</span>. Our certified auditors leverage <span className="text-white font-serif">AI-driven analytics</span> to identify patterns, predict vulnerabilities, and implement corrective strategies before they impact your bottom line.
                             </p>
                         </div>
                     </motion.div>

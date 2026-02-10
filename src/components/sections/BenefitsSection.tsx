@@ -162,6 +162,8 @@ export const BenefitsSection = () => {
   const [tagPositions, setTagPositions] = useState<any[]>([]);
   const engineRef = useRef(Matter.Engine.create());
   const groundRef = useRef<Matter.Body | null>(null);
+  const [hasSettled, setHasSettled] = useState(false);
+  const [settledTags, setSettledTags] = useState<any[]>([]);
 
   // Ref for the new section
   const newSectionRef = useRef(null);
@@ -175,12 +177,21 @@ export const BenefitsSection = () => {
     engine.gravity.y = 1.0;
 
     // Create Boundaries
-    // Ground starts higher up for the first item
-    const ground = Matter.Bodies.rectangle(400, 300, 810, 60, { isStatic: true });
+    const ground = Matter.Bodies.rectangle(400, 300, 810, 60, { 
+      isStatic: true,
+      friction: 0.8,  // Increased friction for better settling
+      restitution: 0.1 // Reduced bounce
+    });
     groundRef.current = ground;
 
-    const leftWall = Matter.Bodies.rectangle(0, 400, 60, 800, { isStatic: true });
-    const rightWall = Matter.Bodies.rectangle(800, 400, 60, 800, { isStatic: true });
+    const leftWall = Matter.Bodies.rectangle(0, 400, 60, 800, { 
+      isStatic: true,
+      friction: 0.8
+    });
+    const rightWall = Matter.Bodies.rectangle(800, 400, 60, 800, { 
+      isStatic: true,
+      friction: 0.8
+    });
 
     Matter.Composite.add(world, [ground, leftWall, rightWall]);
 
@@ -196,16 +207,14 @@ export const BenefitsSection = () => {
   // Trigger "Explosion/Fall" when hover changes
   const handleMouseEnter = (item: any, index: number) => {
     // ALWAYS clear previous dynamic bodies to prevent accumulation/overlap
-    // The second argument 'true' tells Matter.js to keep static bodies (walls/ground)
     Matter.Composite.clear(engineRef.current.world, true);
+    setHasSettled(false);
+    setSettledTags([]);
 
     setActiveItem(item);
 
     // Adjust ground position based on index (Stacking effect)
     if (groundRef.current) {
-      // Revenue (0): 180
-      // Cycle (1): 420
-      // Management (2): 720
       const groundLevels = [160, 380, 570];
       const newY = groundLevels[index];
       Matter.Body.setPosition(groundRef.current, { x: 400, y: newY });
@@ -213,22 +222,48 @@ export const BenefitsSection = () => {
 
     // Add new bodies for tags on EVERY hover
     const newBodies = item.tags.map((tag: string, i: number) => {
-      const width = tag.length * 12 + 40; // Approximate width based on char count
+      const width = Math.max(120, tag.length * 10 + 40);
+      
+      // Calculate horizontal position for better stacking
+      const columnCount = Math.min(4, item.tags.length);
+      const columnIndex = i % columnCount;
+      const rowIndex = Math.floor(i / columnCount);
+      
+      // Center the tags horizontally
+      const centerX = 400;
+      const spread = 300;
+      
+      // Calculate X position based on column
+      const xPos = centerX + (columnIndex - (columnCount - 1) / 2) * (spread / columnCount);
+      
+      // Add slight randomness
+      const randomOffset = (Math.random() - 0.5) * 30;
+      
+      // Stagger Y positions
+      const yStart = -100 - (rowIndex * 70) - (Math.random() * 40);
+
       return Matter.Bodies.rectangle(
-        400 + (Math.random() * 200 - 100), // Tighter center spread
-        -200 - (Math.random() * 300),      // More vertical stagger to prevent initial collision
-        width, 50,                         // Dynamic width, fixed height
+        xPos + randomOffset,
+        yStart,
+        width, 42,
         {
-          chamfer: { radius: 25 },
-          restitution: 0.5,
-          friction: 0.3,
-          frictionAir: 0.01,               // Less air resistance for faster fall
+          chamfer: { radius: 21 },
+          restitution: 0.2,  // Reduced bounce for better settling
+          friction: 0.6,     // Increased friction
+          frictionAir: 0.02,
+          frictionStatic: 0.8, // Increased static friction
+          density: 0.002,    // Slightly increased density
           label: tag
         }
       );
     });
 
     Matter.Composite.add(engineRef.current.world, newBodies);
+
+    // Start checking for settling after a delay
+    setTimeout(() => {
+      setHasSettled(true);
+    }, 1500); // After 1.5 seconds, consider tags settled
   };
 
   useEffect(() => {
@@ -238,13 +273,36 @@ export const BenefitsSection = () => {
       // Filter out static walls/ground
       const dynamicBodies = allBodies.filter(b => !b.isStatic);
 
-      setTagPositions(dynamicBodies.map(body => ({
-        id: body.id, // Use body ID as key
+      const positions = dynamicBodies.map(body => ({
+        id: body.id,
         tag: body.label,
         x: body.position.x,
         y: body.position.y,
-        angle: body.angle
-      })));
+        angle: body.angle,
+        velocity: body.velocity
+      }));
+
+      setTagPositions(positions);
+
+      // Check if tags have settled (low velocity)
+      if (hasSettled && dynamicBodies.length > 0) {
+        const allSettled = positions.every(pos => 
+          Math.abs(pos.velocity.x) < 0.1 && Math.abs(pos.velocity.y) < 0.1
+        );
+        
+        if (allSettled) {
+          // Sort settled tags for better alignment
+          const sortedTags = [...positions].sort((a, b) => {
+            // Sort by Y position first, then X
+            if (Math.abs(a.y - b.y) < 30) {
+              return a.x - b.x;
+            }
+            return a.y - b.y;
+          });
+          
+          setSettledTags(sortedTags);
+        }
+      }
     };
 
     Matter.Events.on(engineRef.current, 'afterUpdate', updateLoop);
@@ -252,7 +310,7 @@ export const BenefitsSection = () => {
     return () => {
       Matter.Events.off(engineRef.current, 'afterUpdate', updateLoop);
     }
-  }, []);
+  }, [hasSettled]);
 
   return (
     <section className="bg-black py-32 min-h-screen flex flex-col items-center justify-start relative overflow-hidden">
@@ -266,36 +324,64 @@ export const BenefitsSection = () => {
         </h2>
 
         <div className="flex flex-col items-center gap-20 w-full relative">
-          {items.map((item) => (
+          {items.map((item, index) => (
             <div
               key={item.id}
-              onMouseEnter={() => handleMouseEnter(item, items.indexOf(item))}
+              onMouseEnter={() => handleMouseEnter(item, index)}
               className="group cursor-pointer text-center z-10 relative"
             >
-              <h3 className={`text-7xl md:text-9xl font-serif font-bold transition-all duration-300 ${activeItem.id === item.id ? "text-[#FFFDD0] scale-110" : "text-red-700"}`}>
+              <h3 
+                className={`text-7xl md:text-9xl font-serif font-bold transition-all duration-300 ${activeItem.id === item.id ? "text-[#FFFDD0] scale-110" : "text-red-700"}`}
+              >
                 {item.title}
               </h3>
             </div>
           ))}
 
-          {/* Physics Container - The "Pills" layer */}
-          <div className="absolute inset-0 pointer-events-none z-20" style={{ width: '800px', height: '600px', left: '50%', transform: 'translateX(-50%)' }}>
+          {/* Physics Container */}
+          <div 
+            className="absolute inset-0 pointer-events-none z-20" 
+            style={{ 
+              width: '800px', 
+              height: '600px', 
+              left: '50%', 
+              transform: 'translateX(-50%)',
+              overflow: 'visible'
+            }}
+          >
             {tagPositions.map((pos) => (
               <motion.div
                 key={pos.id}
                 initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
+                animate={{ 
+                  opacity: 1, 
+                  scale: 1,
+                  rotate: hasSettled ? "0deg" : `${pos.angle}rad`,
+                  x: hasSettled ? 0 : 0,
+                  y: hasSettled ? 0 : 0
+                }}
+                transition={{ 
+                  duration: hasSettled ? 0.5 : 0,
+                  type: hasSettled ? "spring" : "tween",
+                  stiffness: hasSettled ? 100 : 0
+                }}
                 style={{
                   position: 'absolute',
                   left: pos.x,
                   top: pos.y,
-                  rotate: `${pos.angle}rad`,
                 }}
-                className="px-6 py-2 bg-black text-white rounded-full font-bold border border-[#FFFDD0] shadow-xl whitespace-nowrap transform -translate-x-1/2 -translate-y-1/2"
+                className="px-5 py-2 bg-black text-white rounded-full font-bold border border-[#FFFDD0] shadow-xl whitespace-nowrap transform -translate-x-1/2 -translate-y-1/2 text-sm"
               >
                 {pos.tag}
               </motion.div>
             ))}
+            
+            {/* Optional: Show aligned/stacked version when settled */}
+            {hasSettled && settledTags.length > 0 && (
+              <div className="absolute inset-0">
+                {/* This could show a cleaner arranged version if needed */}
+              </div>
+            )}
           </div>
         </div>
       </div>

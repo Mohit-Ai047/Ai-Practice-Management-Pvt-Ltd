@@ -22,10 +22,10 @@ export const AIContentSection = () => {
 
                         <div className="space-y-6 text-lg text-[#FEFAE0]/80 leading-relaxed font-light">
                             <p>
-                                At AiPM, we don't just use software; we deploy <span className="font-semibold text-white">intelligent neural networks</span> that learn your payer behavior, predict denials before they happen, and auto-correct claims without human intervention.
+                                At AiPM, we don't just use software; we deploy <span className="font-serif text-white">intelligent neural networks</span> that learn your payer behavior, predict denials before they happen, and auto-correct claims without human intervention.
                             </p>
                             <p>
-                                While others are still manually scrubbing claims, our <span className="text-white italic">AI-driven engine</span> is processing thousands of transactions per second—identifying patterns, closing gaps, and ensuring that your revenue cycle operates with the <span className="font-semibold text-white">precision of a machine and the insight of an expert.</span>
+                                While others are still manually scrubbing claims, our <span className="text-white font-serif">AI-driven engine</span> is processing thousands of transactions per second—identifying patterns, closing gaps, and ensuring that your revenue cycle operates with the <span className="font-serif text-white">precision of a machine and the insight of an expert.</span>
                             </p>
                         </div>
                     </motion.div>

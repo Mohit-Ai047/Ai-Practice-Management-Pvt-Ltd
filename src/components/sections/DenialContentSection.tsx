@@ -21,7 +21,7 @@ export const DenialContentSection = () => {
                             </h2>
                         </div>
 
-                        <h3 className="text-2xl md:text-3xl font-serif italic text-[#FEFAE0]">
+                        <h3 className="text-2xl md:text-3xl font-serif text-[#FEFAE0]">
                             It’s time to challenge that mindset.
                         </h3>
 
@@ -30,7 +30,7 @@ export const DenialContentSection = () => {
                                 At AiPM—recognized as the <span className="font-semibold text-white border-b border-[#FEFAE0]/30">Top Denial Management company in the Country</span>—we know that most claims are <span className="italic text-white">rejected due to preventable errors</span>, not payer policy. Whether it’s incorrect coding, missing documentation, or outdated billing practices, <span className="font-semibold text-white">we identify the root cause fast—and fix it faster.</span>
                             </p>
                             <p>
-                                Our team of <span className="italic text-white">certified billing and coding professionals</span> stays current with the latest guidelines and payer trends through continuous education. Backed by real-time databases of approved diagnostic combinations across insurers, we ensure every claim uses the most reimbursable, <span className="font-semibold text-white">payer-approved coding combinations</span>—maximizing revenue and accelerating approvals.
+                                Our team of <span className="font-serif text-white">certified billing and coding professionals</span> stays current with the latest guidelines and payer trends through continuous education. Backed by real-time databases of approved diagnostic combinations across insurers, we ensure every claim uses the most reimbursable, <span className="font-semibold text-white">payer-approved coding combinations</span>—maximizing revenue and accelerating approvals.
                             </p>
                         </div>
                     </motion.div>

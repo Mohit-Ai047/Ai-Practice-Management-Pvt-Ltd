@@ -47,7 +47,7 @@ export const ARContentSection = () => {
                                 <p>
                                     Today’s AR landscape is more complex than ever—and every delay <span className="text-red-500 font-bold">costs you.</span>
                                 </p>
-                                <p className="text-xl text-white font-medium border-l-4 border-[#FEFAE0] pl-4 italic">
+                                <p className="text-xl text-white font-medium border-l-4 border-[#FEFAE0] pl-4 font-serif">
                                     At AiPM, we don’t wait for payments. We go after them.
                                 </p>
                             </div>
@@ -63,7 +63,7 @@ export const ARContentSection = () => {
                             <div className="absolute top-0 right-0 w-32 h-32 bg-[#FEFAE0]/5 rounded-bl-full -mr-8 -mt-8" />
 
                             <p className="text-lg text-[#FEFAE0]/90 leading-relaxed">
-                                Our certified billing and AR specialists <span className="text-white font-semibold italic">track every claim, chase every dollar</span>, and follow up relentlessly—with <span className="text-white italic">insurance payers and patients alike.</span>
+                                Our certified billing and AR specialists <span className="text-white font-semibold font-serif">track every claim, chase every dollar</span>, and follow up relentlessly—with <span className="text-white font-serif">insurance payers and patients a like.</span>
                             </p>
 
                             <hr className="border-[#FEFAE0]/10" />
@@ -71,7 +71,7 @@ export const ARContentSection = () => {
                             <div className="flex gap-4 items-start">
                                 <TrendingUp className="w-8 h-8 text-[#FEFAE0] flex-shrink-0" />
                                 <p className="text-[#FEFAE0]/80">
-                                    Armed with smart tech, proven strategies, and decades of experience, we <span className="text-white italic font-medium">cut through the chaos to accelerate your cash flow.</span>
+                                    Armed with smart tech, proven strategies, and decades of experience, we <span className="text-white font-serif font-medium">cut through the chaos to accelerate your cash flow.</span>
                                 </p>
                             </div>
                         </motion.div>
@@ -90,7 +90,7 @@ export const ARContentSection = () => {
                             Confused payments shouldn't cost you revenue.
                         </p>
                         <h2 className="text-3xl md:text-5xl font-serif text-[#FEFAE0]">
-                            AiPM brings <span className="text-[#FEFAE0] italic border-b border-[#FEFAE0]/30">clarity</span>—and collections—fast.
+                            AiPM brings <span className="text-[#FEFAE0] font-serif border-b border-[#FEFAE0]/30">clarity</span>—and collections—fast.
                         </h2>
                     </motion.div>
 
@@ -108,7 +108,7 @@ export const ARContentSection = () => {
                             <div className="pl-11 space-y-4 text-[#FEFAE0]/80">
                                 <p>Denied claims. Delayed payments. Accounts piling up with no end in sight.</p>
                                 <p className="text-white font-medium text-lg">
-                                    Most practices don’t need more billing—they need <span className="italic text-[#FEFAE0]">expert AR management.</span>
+                                    Most practices don’t need more billing—they need <span className="font-serif text-[#FEFAE0]">expert AR management.</span>
                                 </p>
                             </div>
                         </motion.div>

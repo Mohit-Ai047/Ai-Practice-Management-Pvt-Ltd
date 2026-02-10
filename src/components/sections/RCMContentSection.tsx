@@ -33,7 +33,7 @@ export const RCMContentSection = () => {
                                 At AiPM, we provide <span className="font-semibold text-white">end-to-end Revenue Cycle Management solutions</span> tailored to optimize every phase of your financial workflow—from <span className="italic text-white">patient eligibility and pre-authorizations</span> to coding, billing, denial management, and final payment posting.
                             </p>
                             <p>
-                                Our <span className="font-semibold text-white underline decoration-[#FEFAE0]/30 underline-offset-4">Certified team</span> combines deep healthcare expertise with <span className="text-white italic">cutting-edge AI and machine learning</span>, ensuring maximum reimbursement, minimal delays, and full compliance. With seamless automation, real-time analytics, and personalized support, AiPM eliminates inefficiencies & revenue leaks—empowering your organization to focus on what matters most: <span className="font-bold text-white tracking-wide">PATIENT’S CARE.</span>
+                                Our <span className="font-semibold text-white underline decoration-[#FEFAE0]/30 underline-offset-4">Certified team</span> combines deep healthcare expertise with <span className="text-white font-serif">cutting-edge AI and machine learning</span>, ensuring maximum reimbursement, minimal delays, and full compliance. With seamless automation, real-time analytics, and personalized support, AiPM eliminates inefficiencies & revenue leaks—empowering your organization to focus on what matters most: <span className="font-bold text-white tracking-wide">PATIENT’S CARE.</span>
                             </p>
                         </div>
                     </motion.div>
@@ -137,7 +137,7 @@ export const RCMContentSection = () => {
 
                             <div className="py-6">
                                 <h3 className="text-2xl md:text-4xl font-bold text-white tracking-wide">
-                                    No leaks. No delays. Just maximum reimbursement. <span className="text-[#FEFAE0]">Always.</span>
+                                    No leaks. No delays. Just maximum reimbursement.
                                 </h3>
                             </div>
 
