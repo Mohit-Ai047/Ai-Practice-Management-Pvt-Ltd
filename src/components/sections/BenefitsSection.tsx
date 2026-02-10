@@ -32,7 +32,7 @@ const items = [
       "Charge Capture",
       "Revenue Integrity",
       "Payment Posting",
-      "Contract Mgmt"
+      "Contract Management"
     ]
   },
   {
@@ -262,7 +262,7 @@ export const BenefitsSection = () => {
 
         <h2 className="text-white font-serif text-6xl md:text-9xl text-center mb-24 leading-[0.8]">
           We know what <br />
-          <span className="italic">we're good at!</span>
+          <span className="font-serif">we're good at!</span>
         </h2>
 
         <div className="flex flex-col items-center gap-20 w-full relative">

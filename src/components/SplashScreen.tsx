@@ -48,7 +48,7 @@ export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
                                     },
                                 },
                             }}
-                            className="flex flex-wrap justify-center text-center gap-0.5 md:gap-1 text-2xl md:text-4xl font-medium tracking-[0.1em] mb-6"
+                            className="flex flex-wrap justify-center text-center gap-0.5 md:gap-1 text-2xl md:text-4xl font-medium tracking-[0.1em] mb-6 font-serif"
                         >
                             {mainChars.map((char, index) => (
                                 <motion.span
@@ -76,7 +76,7 @@ export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
                                     },
                                 },
                             }}
-                            className="flex flex-wrap justify-center text-center gap-0.5 text-lg md:text-2xl text-white/70 tracking-[0.2em]"
+                            className="flex flex-wrap justify-center text-center gap-0.5 text-lg md:text-2xl text-white/70 tracking-[0.2em] font-serif"
                         >
                             {subChars.map((char, index) => (
                                 <motion.span

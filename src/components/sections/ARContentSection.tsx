@@ -36,7 +36,7 @@ export const ARContentSection = () => {
                             <div className="flex items-center gap-4">
                                 <Search className="w-12 h-12 text-red-500" />
                                 <h3 className="text-3xl md:text-4xl font-bold">
-                                    Where’s your revenue <span className="text-red-500 italic">hiding?</span>
+                                    Where’s your revenue <span className="text-red-500 font-serif">hiding?</span>
                                 </h3>
                             </div>
 

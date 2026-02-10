@@ -120,10 +120,10 @@ export const Header = () => {
           setIsHovered(false);
           handleNavMouseLeave();
         }}
-        className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${isHeaderActive
-          ? "bg-black/95 backdrop-blur-md border-white/10 shadow-md py-0"
-          : "bg-transparent border-transparent py-4 bg-gradient-to-b from-black/50 to-transparent"
-          }`}
+        className={`fixed top-0 w-full z-50 transition-all duration-300 ${isHeaderActive
+          ? "bg-black/95 backdrop-blur-md py-0"
+          : "bg-transparent py-4 bg-gradient-to-b from-black/50 to-transparent"
+          } ${isHovered || isOpen ? "border-b border-white/10 shadow-md" : ""}`}
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">

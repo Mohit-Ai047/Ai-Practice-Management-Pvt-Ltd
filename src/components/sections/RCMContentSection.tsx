@@ -49,7 +49,7 @@ export const RCMContentSection = () => {
                         <div className="absolute inset-0 bg-gradient-to-br from-[#FEFAE0]/5 to-transparent opacity-50" />
 
                         <div className="relative z-10 space-y-6">
-                            <h3 className="text-2xl font-serif italic text-white text-center mb-8">Revenue Management</h3>
+                            <h3 className="text-2xl font-serif text-white text-center mb-8">Revenue Management</h3>
                             <div className="space-y-4">
                                 {[
                                     "Patient Registration",
@@ -92,7 +92,7 @@ export const RCMContentSection = () => {
                         className="text-center space-y-6"
                     >
                         <h2 className="text-3xl md:text-5xl font-serif text-[#FEFAE0]">
-                            Think Your Revenue Cycle Is Running Smoothly? <span className="italic text-white border-b-2 border-red-500/50">Think Again.</span>
+                            Think Your Revenue Cycle Is Running Smoothly? <span className="font-serif text-white border-b-2 border-red-500/50">Think Again.</span>
                         </h2>
                     </motion.div>
 
@@ -127,7 +127,7 @@ export const RCMContentSection = () => {
                         <div className="absolute top-0 right-0 w-64 h-64 bg-[#FEFAE0]/5 rounded-full blur-3xl -mr-32 -mt-32" />
 
                         <div className="relative z-10 space-y-8">
-                            <p className="text-xl md:text-3xl font-serif italic text-[#FEFAE0]">
+                            <p className="text-xl md:text-3xl font-serif text-[#FEFAE0]">
                                 At AiPM, we don’t just support your revenue—we <span className="text-white font-bold underline decoration-white/30 decoration-2 underline-offset-4">supercharge it.</span>
                             </p>
 

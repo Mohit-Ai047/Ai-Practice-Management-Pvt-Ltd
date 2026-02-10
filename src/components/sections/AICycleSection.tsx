@@ -56,7 +56,7 @@ export const AICycleSection = () => {
                     />
 
                     <div className="text-center space-y-6">
-                        <h2 className="text-3xl md:text-5xl font-serif text-[#FEFAE0] italic tracking-wide leading-tight">
+                        <h2 className="text-3xl md:text-5xl font-serif text-[#FEFAE0] font-serif tracking-wide leading-tight">
                             Automate today. Integrate seamlessly. <br />
                             Predict tomorrow. Master the future.
                         </h2>

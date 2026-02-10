@@ -17,7 +17,7 @@ export const AuditContentSection = () => {
                     >
                         <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#FEFAE0] leading-tight">
                             Quality Isn't Just a Checkbox. <br />
-                            <span className="italic text-white border-b-2 border-red-500/50">It's Your First Line of Defense.</span>
+                            <span className="font-serif text-white border-b-2 border-red-500/50">It's Your First Line of Defense.</span>
                         </h2>
 
                         <div className="space-y-6 text-lg text-[#FEFAE0]/80 leading-relaxed font-light">
@@ -68,7 +68,7 @@ export const AuditContentSection = () => {
                         className="text-center space-y-6"
                     >
                         <h2 className="text-3xl md:text-5xl font-serif text-[#FEFAE0]">
-                            Is Your Practice at <span className="text-red-500 font-bold italic">Risk?</span>
+                            Is Your Practice at <span className="text-red-500 font-bold font-serif">Risk?</span>
                         </h2>
                     </motion.div>
 
@@ -107,7 +107,7 @@ export const AuditContentSection = () => {
                                 <FileSearch className="w-8 h-8 text-[#FEFAE0]" />
                             </div>
 
-                            <p className="text-xl md:text-3xl font-serif italic text-[#FEFAE0]">
+                            <p className="text-xl md:text-3xl font-serif font-serif text-[#FEFAE0]">
                                 We don't just find errors—we <span className="text-white font-bold underline decoration-white/30 decoration-2 underline-offset-4">eliminate them.</span>
                             </p>
 

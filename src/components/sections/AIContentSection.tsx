@@ -17,7 +17,7 @@ export const AIContentSection = () => {
                     >
                         <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#FEFAE0] leading-tight">
                             AI Isn't Just a Buzzword. <br />
-                            <span className="italic text-white border-b-2 border-red-500/50">It's Your Unfair Advantage.</span>
+                            <span className="font-serif text-white border-b-2 border-red-500/50">It's Your Unfair Advantage.</span>
                         </h2>
 
                         <div className="space-y-6 text-lg text-[#FEFAE0]/80 leading-relaxed font-light">
@@ -107,7 +107,7 @@ export const AIContentSection = () => {
                                 <Zap className="w-8 h-8 text-[#FEFAE0]" />
                             </div>
 
-                            <p className="text-xl md:text-3xl font-serif italic text-[#FEFAE0]">
+                            <p className="text-xl md:text-3xl font-serif font-serif text-[#FEFAE0]">
                                 The future of RCM is automated. <br />
                                 <span className="text-white font-bold">And the future is here.</span>
                             </p>

@@ -17,7 +17,7 @@ export const MedicalContentSection = () => {
                     >
                         <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#FEFAE0] leading-tight">
                             Transform Your Medical Billing <br />
-                            <span className="italic text-white border-b-2 border-red-500/50">Experience Today.</span>
+                            <span className="font-serif text-white border-b-2 border-red-500/50">Experience Today.</span>
                         </h2>
 
                         <div className="space-y-6 text-lg text-[#FEFAE0]/80 leading-relaxed font-light">
@@ -110,7 +110,7 @@ export const MedicalContentSection = () => {
                                 <TrendingUp className="w-8 h-8 text-[#FEFAE0]" />
                             </div>
 
-                            <p className="text-xl md:text-3xl font-serif italic text-[#FEFAE0]">
+                            <p className="text-xl md:text-3xl font-serif text-[#FEFAE0]">
                                 We don't just do the work; <br />
                                 <span className="text-white font-bold underline decoration-white/30 decoration-2 underline-offset-4">we partner with you.</span>
                             </p>

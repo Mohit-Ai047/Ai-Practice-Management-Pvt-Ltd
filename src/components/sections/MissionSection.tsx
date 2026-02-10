@@ -23,7 +23,7 @@ export const MissionSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-20 bg-background" ref={ref}>
+    <section className="py-20 bg-black" ref={ref}>
       <div className="container mx-auto px-4">
         {/* Mission */}
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-24">

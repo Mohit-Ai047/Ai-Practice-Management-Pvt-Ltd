@@ -110,7 +110,7 @@ export const RCMCycleSection = () => {
             {/* Top Section: Header & Curve */}
             <div className="relative z-20 flex flex-col items-center justify-center w-full max-w-4xl px-4 mt-12 mb-8 text-center">
                 <h2
-                    className="text-4xl md:text-6xl lg:text-7xl italic font-medium text-[#FEFAE0] leading-tight tracking-tight mb-8"
+                    className="text-4xl md:text-6xl lg:text-7xl font-medium text-[#FEFAE0] leading-tight tracking-tight mb-8"
                     style={{ fontFamily: '"Times New Roman", Times, serif' }}
                 >
                     Turning expectations into unforgettable experiences!
