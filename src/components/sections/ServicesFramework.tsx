@@ -28,17 +28,23 @@ export const ServicesFramework = () => {
             <div className="container mx-auto px-4">
 
                 {/* Section Header */}
-                <div className="max-w-4xl mx-auto text-center mb-24">
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-[#FEFAE0] to-[#FEFAE0]/50 mb-6 font-clash"
-                        style={{ WebkitTextStroke: "1px rgba(254,250,224,0.2)" }}
-                    >
-                        RCM Services
-                    </motion.h2>
+             <div className="relative z-20 flex flex-col items-center justify-center w-full max-w-5xl px-4 mx-auto mt-12 mb-32">
+                    <div className="text-center space-y-6">
+                        <h2 className="text-3xl md:text-5xl font-bold text-[#FEFAE0] font-serif tracking-wide leading-tight">
+                           RCM Services
+                        </h2>
+
+                        {/* Curved Line Decoration */}
+                        <div className="w-full max-w-3xl mx-auto opacity-60">
+                            <svg viewBox="0 0 400 40" className="w-full h-auto stroke-[#FEFAE0] fill-none" preserveAspectRatio="none">
+                                <path d="M0,20 Q200,40 400,20" strokeWidth="2" />
+                            </svg>
+                        </div>
+                    </div>
                 </div>
+
+
+                
 
                 {/* Steps */}
                 <div className="space-y-32">

@@ -205,9 +205,9 @@ export const ServicesSection = () => {
           </h2>
 
           {/* Second Line */}
-          <p className="text-4xl md:text-5xl font-bold text-white mb-6 font-clash">
+          {/* <p className="text-4xl md:text-5xl font-bold text-white mb-6 font-clash">
             Our Core Specializations.
-          </p>
+          </p> */}
         </div>
       </div>
 

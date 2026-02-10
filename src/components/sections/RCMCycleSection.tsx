@@ -185,14 +185,22 @@ export const RCMCycleSection = () => {
                                 pointerEvents: 'none'
                             }}
                         >
-                            <img
-                                src={logo}
-                                alt="Drag Cursor"
-                                className="w-16 h-16 object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.5)] brightness-0 invert"
-                            />
+                            {/* Updated logo with #FFFDD0 color */}
+                            <div className="relative w-16 h-16">
+                                <img
+                                    src={logo}
+                                    alt="Drag Cursor"
+                                    className="w-16 h-16 object-contain brightness-0"
+                                    style={{
+                                        filter: 'invert(93%) sepia(28%) saturate(435%) hue-rotate(358deg) brightness(106%) contrast(105%)'
+                                    }}
+                                />
+                                <div className="absolute inset-0 drop-shadow-[0_0_15px_rgba(255,253,208,0.5)] pointer-events-none" />
+                            </div>
                         </motion.div>
                     )}
-                </AnimatePresence>            </motion.div>
+                </AnimatePresence>
+            </motion.div>
 
             {/* Vignette for edges */}
             <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-black to-transparent z-30 pointer-events-none" />

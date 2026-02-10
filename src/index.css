@@ -198,7 +198,7 @@
   .section-divider {
     height: 4px;
     width: 60px;
-    background: var(--gold-gradient);
+    background: #262625;
     border-radius: 2px;
   }
 

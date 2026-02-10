@@ -1,9 +1,9 @@
 import { useState, useRef, useLayoutEffect, useCallback, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo-1.png";
+import logo from "@/assets/logo-2.png";
 import { useIsLg } from "@/hooks/use-mobile";
 
 const navItems = [
@@ -120,25 +120,33 @@ export const Header = () => {
           setIsHovered(false);
           handleNavMouseLeave();
         }}
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${isHeaderActive
-          ? "bg-black/95 backdrop-blur-md py-0"
-          : "bg-transparent py-4 bg-gradient-to-b from-black/50 to-transparent"
-          } ${isHovered || isOpen ? "border-b border-white/10 shadow-md" : ""}`}
+        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+          isHeaderActive
+            ? "bg-black/95 backdrop-blur-md py-0"
+            : "bg-transparent py-4 bg-gradient-to-b from-black/50 to-transparent"
+        } ${isHovered || isOpen ? "border-b border-white/10 shadow-md" : ""}`}
       >
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-20">
-
-            <div className="flex items-center gap-8 lg:gap-10 flex-1 min-w-0">
-              <Link to="/" className="flex-shrink-0">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex items-center justify-between h-16 sm:h-20">
+            {/* Logo and Company Name */}
+            <div className="flex items-center flex-shrink-0">
+              <Link to="/" className="flex items-center gap-2 sm:gap-3">
                 <img
                   src={logo}
-                  alt="AI Practice Management LLC"
-                  className="h-14 sm:h-16 w-auto transition-all duration-300 brightness-0 invert"
+                  alt="Ai Practice Management LLC"
+                  className="h-10 sm:h-14 md:h-16 w-auto transition-all duration-300 brightness-0 invert"
                 />
+                <div className="hidden sm:flex flex-col leading-tight">
+                  <span className="text-white font-semibold tracking-wide text-[16px] sm:text-[18px] md:text-[20px] ml-1 sm:ml-2">
+                    Ai PRACTICE<br className="sm:hidden" /> MANAGEMENT
+                  </span>
+                </div>
               </Link>
+            </div>
 
-              {/* Desktop Navigation */}
-              <nav ref={navRef} className="hidden lg:flex items-center gap-1 flex-1">
+            {/* Desktop Navigation - Added space between logo and first menu item */}
+            <nav ref={navRef} className="hidden lg:flex items-center justify-center flex-1 ml-16 xl:ml-24 2xl:ml-32">
+              <div className="flex items-center gap-1 xl:gap-2">
                 {navItems.map((item) => (
                   <div
                     key={item.label}
@@ -154,10 +162,13 @@ export const Header = () => {
                   >
                     <Link
                       to={item.href}
-                      className={`px-4 py-3 text-sm font-medium rounded-md transition-all duration-200 flex items-center gap-1 group/nav ${location.pathname === item.href ? "text-blue-400" : "text-white/80 hover:text-white"
-                        }`}
+                      className={`px-3 xl:px-4 py-2.5 xl:py-3 text-[15px] xl:text-[17px] font-medium rounded-md transition-all duration-200 flex items-center gap-1 group/nav ${
+                        location.pathname === item.href 
+                          ? "text-[#FFFDD0]" 
+                          : "text-white/80 hover:text-[#FFFDD0]"
+                      }`}
                     >
-                      <span>{item.label}</span>
+                      <span className="whitespace-nowrap">{item.label}</span>
                       {item.submenu && (
                         <motion.span
                           animate={{ rotate: isDropdownOpen(item.label) ? 180 : 0 }}
@@ -170,17 +181,18 @@ export const Header = () => {
                     </Link>
                   </div>
                 ))}
-              </nav>
-            </div>
+              </div>
+            </nav>
 
             {/* CTA Button */}
             <div className="hidden lg:block flex-shrink-0">
               <Button
                 asChild
-                className={`font-semibold px-6 transition-all duration-300 ${isHeaderActive
-                  ? "bg-white text-black hover:bg-gray-200"
-                  : "bg-white text-black hover:bg-gray-200"
-                  }`}
+                className={`font-semibold px-5 xl:px-6 py-2 xl:py-2.5 text-sm xl:text-base transition-all duration-300 ${
+                  isHeaderActive
+                    ? "bg-white text-black hover:bg-gray-200"
+                    : "bg-white text-black hover:bg-gray-200"
+                }`}
               >
                 <Link to="/contact">Get Started</Link>
               </Button>
@@ -190,8 +202,9 @@ export const Header = () => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="lg:hidden p-2 transition-colors text-white"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
             </button>
           </div>
         </div>
@@ -219,7 +232,7 @@ export const Header = () => {
                         <Link
                           key={subItem.label}
                           to={subItem.href}
-                          className="block px-4 py-3 text-sm text-white/80 hover:bg-white/10 hover:text-white transition-colors"
+                          className="block px-4 py-3 text-[15px] xl:text-[17px] text-white/80 hover:bg-white/10 hover:text-[#FFFDD0] transition-colors whitespace-nowrap"
                         >
                           {subItem.label}
                         </Link>
@@ -239,38 +252,71 @@ export const Header = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden bg-black border-t border-white/10 overflow-hidden shadow-inner"
+              className="lg:hidden bg-black/95 backdrop-blur-md border-t border-white/10 overflow-hidden shadow-inner"
             >
-              <nav className="container mx-auto px-4 py-4 space-y-1">
-                {navItems.map((item) => (
-                  <div key={item.label}>
-                    {item.submenu ? (
-                      <>
-                        <button
-                          onClick={() => setMobileSubmenuOpen(prev => prev === item.label ? null : item.label)}
-                          className="w-full flex items-center justify-between px-4 py-3 text-white hover:bg-white/10 rounded-lg"
+              <div className="container mx-auto px-4 py-4">
+                {/* Mobile CTA Button */}
+                <div className="mb-4 px-2">
+                  <Button
+                    asChild
+                    className="w-full bg-white text-black hover:bg-gray-200 font-semibold py-3"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <Link to="/contact">Get Started</Link>
+                  </Button>
+                </div>
+
+                <nav className="space-y-1">
+                  {navItems.map((item) => (
+                    <div key={item.label}>
+                      {item.submenu ? (
+                        <>
+                          <button
+                            onClick={() => setMobileSubmenuOpen(prev => prev === item.label ? null : item.label)}
+                            className="w-full flex items-center justify-between px-4 py-3 text-white hover:bg-white/10 hover:text-[#FFFDD0] rounded-lg text-base sm:text-lg"
+                          >
+                            {item.label}
+                            <ChevronDown 
+                              className={`w-4 h-4 transition-transform duration-200 ${
+                                mobileSubmenuOpen === item.label ? 'rotate-180' : ''
+                              }`} 
+                            />
+                          </button>
+                          {mobileSubmenuOpen === item.label && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: "auto" }}
+                              exit={{ opacity: 0, height: 0 }}
+                              className="overflow-hidden"
+                            >
+                              <div className="pl-6 pr-2 pb-2 space-y-1 bg-zinc-900/50 rounded-lg mx-2">
+                                {item.submenu.map(sub => (
+                                  <Link
+                                    key={sub.label}
+                                    to={sub.href}
+                                    onClick={() => setIsOpen(false)}
+                                    className="block px-4 py-2.5 text-sm sm:text-base text-white/70 hover:text-[#FFFDD0] hover:bg-white/5 rounded transition-colors"
+                                  >
+                                    {sub.label}
+                                  </Link>
+                                ))}
+                              </div>
+                            </motion.div>
+                          )}
+                        </>
+                      ) : (
+                        <Link
+                          to={item.href}
+                          onClick={() => setIsOpen(false)}
+                          className="block px-4 py-3 rounded-lg text-white hover:bg-white/10 hover:text-[#FFFDD0] text-base sm:text-lg"
                         >
                           {item.label}
-                          <ChevronDown className={`w-4 h-4 transition-transform ${mobileSubmenuOpen === item.label ? 'rotate-180' : ''}`} />
-                        </button>
-                        {mobileSubmenuOpen === item.label && (
-                          <div className="pl-4 pb-2 space-y-1 bg-zinc-900 rounded-b-lg">
-                            {item.submenu.map(sub => (
-                              <Link key={sub.label} to={sub.href} onClick={() => setIsOpen(false)} className="block px-4 py-2 text-sm text-white/60 hover:text-white">
-                                {sub.label}
-                              </Link>
-                            ))}
-                          </div>
-                        )}
-                      </>
-                    ) : (
-                      <Link to={item.href} onClick={() => setIsOpen(false)} className="block px-4 py-3 rounded-lg text-white hover:bg-white/10">
-                        {item.label}
-                      </Link>
-                    )}
-                  </div>
-                ))}
-              </nav>
+                        </Link>
+                      )}
+                    </div>
+                  ))}
+                </nav>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

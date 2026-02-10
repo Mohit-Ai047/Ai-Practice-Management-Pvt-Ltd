@@ -46,7 +46,7 @@ const LinkItem = ({
   >
     <Link
       to={href}
-      className="text-[#FEFAE0] hover:text-red-500 transition-colors duration-300 ease-out text-base flex items-center w-fit relative z-20"
+      className="text-[#FEFAE0] hover:text-red-700 transition-colors duration-300 ease-out text-base flex items-center w-fit relative z-20"
     >
       <span className="w-1.5 h-1.5 rounded-full bg-[#FEFAE0] group-hover:bg-[#FEFAE0] mr-0 group-hover:mr-2 transition-all opacity-0 group-hover:opacity-100"></span>
       <span className="relative z-10">{label}</span>
@@ -60,7 +60,7 @@ const LinkItem = ({
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="absolute top-1/2 -translate-y-1/2 left-full ml-2 origin-left w-auto min-w-[12rem] bg-[#FF3831] rounded-xl py-8 px-6 z-50 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col items-center justify-center text-center hidden md:flex pointer-events-none"
+          className="absolute top-1/2 -translate-y-1/2 left-full ml-2 origin-left w-auto min-w-[12rem] bg-red-600 rounded-xl py-8 px-6 z-50 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col items-center justify-center text-center hidden md:flex pointer-events-none"
         >
 
           <motion.span
@@ -89,10 +89,10 @@ export const Footer = () => {
           <div className="lg:w-[40%] pr-8">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 bg-black border border-[#FEFAE0]/30 rounded-lg flex items-center justify-center overflow-hidden">
-                <img src={logo} alt="AI Practice Management" className="w-full h-full object-contain p-2 invert" />
+                <img src={logo} alt="Ai Practice Management" className="w-full h-full object-contain p-2 invert" />
               </div>
               <h3 className="font-serif font-bold text-xl leading-tight whitespace-nowrap">
-                AI Practice Management LLC
+                Ai Practice Management LLC
               </h3>
             </div>
             <p className="text-[#FEFAE0] mb-6 max-w-sm leading-relaxed text-lg">
