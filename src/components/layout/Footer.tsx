@@ -11,6 +11,7 @@ const footerLinks = {
     { label: "Denial Management", href: "/denial-management" },
     { label: "AR Claim Services", href: "/ar-claim-services" },
     { label: "Quality Assurance & Audit", href: "/quality-assurance" },
+    { label: "AI-Powered Revenue Automation", href: "/ai-revenue-automation" },
   ],
   specialties: [
     { label: "Pain Medicine", href: "/specialties/pain-medicine-specialist" },
@@ -190,7 +191,7 @@ export const Footer = () => {
         {/* Bottom */}
         <div className="mt-16 pt-8 border-t border-[#FEFAE0]/20 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-[#FEFAE0]/60 text-sm text-center md:text-left leading-relaxed">
-            © {currentYear} AI Practice Management LLC. All rights reserved. <br className="md:hidden" />
+            © {currentYear} Ai Practice Management LLC. All rights reserved. <br className="md:hidden" />
             Designed for healthcare financial excellence.
           </p>
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-2">

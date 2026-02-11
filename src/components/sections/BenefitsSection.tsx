@@ -73,42 +73,42 @@ const featuredBenefits = [
     title: "Intelligent Revenue Capture",
     description:
       "Leverage advanced AI-powered analytics to maximize revenue capture, automate claim processing, and ensure compliance with real-time data insights.",
-    link: "/rcm"
+    link: "/benefits/intelligent-revenue-capture"
   },
   {
     image: rcmSolutionsImg,
     title: "Next-Generation RCM Solutions",
     description:
       "Unlock the future of healthcare administration with our comprehensive AI-driven practice management platform featuring intelligent automation.",
-    link: "/rcm"
+    link: "/benefits/next-gen-rcm-solutions"
   },
   {
     image: healthcareAnalyticsImg,
     title: "Real-Time Performance Dashboards",
     description:
       "Monitor your practice's financial health with comprehensive dashboards displaying revenue trends, claim status, and key performance metrics.",
-    link: "/services"
+    link: "/benefits/real-time-performance-dashboards"
   },
   {
     image: medicalTeamImg,
     title: "Expert Medical Billing Team",
     description:
       "Our dedicated team of certified medical billing specialists works collaboratively to ensure accurate coding, timely submissions, and maximum reimbursement.",
-    link: "/medical-billing"
+    link: "/benefits/expert-medical-billing-team"
   },
   {
     image: healthcareSecurityImg,
     title: "HIPAA-Compliant Data Security",
     description:
       "Your patient data is protected with enterprise-grade security measures, encrypted transmissions, and full HIPAA compliance.",
-    link: "/quality-assurance"
+    link: "/benefits/hipaa-compliant-data-security"
   },
   {
     image: arClaimsImg,
     title: "AR Claims Management & Recovery",
     description:
       "Maximize your revenue with proactive accounts receivable management, real-time claim tracking, denial prevention strategies.",
-    link: "/ar-claim-services"
+    link: "/benefits/ar-claims-management"
   },
 ];
 
@@ -177,18 +177,18 @@ export const BenefitsSection = () => {
     engine.gravity.y = 1.0;
 
     // Create Boundaries
-    const ground = Matter.Bodies.rectangle(400, 300, 810, 60, { 
+    const ground = Matter.Bodies.rectangle(400, 300, 810, 60, {
       isStatic: true,
       friction: 0.8,  // Increased friction for better settling
       restitution: 0.1 // Reduced bounce
     });
     groundRef.current = ground;
 
-    const leftWall = Matter.Bodies.rectangle(0, 400, 60, 800, { 
+    const leftWall = Matter.Bodies.rectangle(0, 400, 60, 800, {
       isStatic: true,
       friction: 0.8
     });
-    const rightWall = Matter.Bodies.rectangle(800, 400, 60, 800, { 
+    const rightWall = Matter.Bodies.rectangle(800, 400, 60, 800, {
       isStatic: true,
       friction: 0.8
     });
@@ -223,22 +223,22 @@ export const BenefitsSection = () => {
     // Add new bodies for tags on EVERY hover
     const newBodies = item.tags.map((tag: string, i: number) => {
       const width = Math.max(120, tag.length * 10 + 40);
-      
+
       // Calculate horizontal position for better stacking
       const columnCount = Math.min(4, item.tags.length);
       const columnIndex = i % columnCount;
       const rowIndex = Math.floor(i / columnCount);
-      
+
       // Center the tags horizontally
       const centerX = 400;
       const spread = 300;
-      
+
       // Calculate X position based on column
       const xPos = centerX + (columnIndex - (columnCount - 1) / 2) * (spread / columnCount);
-      
+
       // Add slight randomness
       const randomOffset = (Math.random() - 0.5) * 30;
-      
+
       // Stagger Y positions
       const yStart = -100 - (rowIndex * 70) - (Math.random() * 40);
 
@@ -286,10 +286,10 @@ export const BenefitsSection = () => {
 
       // Check if tags have settled (low velocity)
       if (hasSettled && dynamicBodies.length > 0) {
-        const allSettled = positions.every(pos => 
+        const allSettled = positions.every(pos =>
           Math.abs(pos.velocity.x) < 0.1 && Math.abs(pos.velocity.y) < 0.1
         );
-        
+
         if (allSettled) {
           // Sort settled tags for better alignment
           const sortedTags = [...positions].sort((a, b) => {
@@ -299,7 +299,7 @@ export const BenefitsSection = () => {
             }
             return a.y - b.y;
           });
-          
+
           setSettledTags(sortedTags);
         }
       }
@@ -330,7 +330,7 @@ export const BenefitsSection = () => {
               onMouseEnter={() => handleMouseEnter(item, index)}
               className="group cursor-pointer text-center z-10 relative"
             >
-              <h3 
+              <h3
                 className={`text-7xl md:text-9xl font-serif font-bold transition-all duration-300 ${activeItem.id === item.id ? "text-[#FFFDD0] scale-110" : "text-red-700"}`}
               >
                 {item.title}
@@ -339,12 +339,12 @@ export const BenefitsSection = () => {
           ))}
 
           {/* Physics Container */}
-          <div 
-            className="absolute inset-0 pointer-events-none z-20" 
-            style={{ 
-              width: '800px', 
-              height: '600px', 
-              left: '50%', 
+          <div
+            className="absolute inset-0 pointer-events-none z-20"
+            style={{
+              width: '800px',
+              height: '600px',
+              left: '50%',
               transform: 'translateX(-50%)',
               overflow: 'visible'
             }}
@@ -353,14 +353,14 @@ export const BenefitsSection = () => {
               <motion.div
                 key={pos.id}
                 initial={{ opacity: 0, scale: 0 }}
-                animate={{ 
-                  opacity: 1, 
+                animate={{
+                  opacity: 1,
                   scale: 1,
                   rotate: hasSettled ? "0deg" : `${pos.angle}rad`,
                   x: hasSettled ? 0 : 0,
                   y: hasSettled ? 0 : 0
                 }}
-                transition={{ 
+                transition={{
                   duration: hasSettled ? 0.5 : 0,
                   type: hasSettled ? "spring" : "tween",
                   stiffness: hasSettled ? 100 : 0
@@ -375,7 +375,7 @@ export const BenefitsSection = () => {
                 {pos.tag}
               </motion.div>
             ))}
-            
+
             {/* Optional: Show aligned/stacked version when settled */}
             {hasSettled && settledTags.length > 0 && (
               <div className="absolute inset-0">
@@ -400,7 +400,7 @@ export const BenefitsSection = () => {
           </span>
           <div className="w-20 h-0.5 bg-[#FEFAE0]/30 mx-auto mt-4 mb-6" />
           <h2 className="font-serif text-3xl lg:text-4xl font-bold text-white mb-4">
-            Benefits of Working With AIPM
+            Benefits of Working With AiPM
           </h2>
           <p className="text-white/60 text-lg">
             Experience the difference that expertise and dedication can make for
@@ -418,24 +418,24 @@ export const BenefitsSection = () => {
               transition={{ duration: 0.7, delay: 0.1 * index }}
               className="group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              <div className="aspect-[4/3] overflow-hidden">
-                <img
-                  src={benefit.image}
-                  alt={benefit.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="p-6">
-                {/* Link Wrapper for Title */}
-                <h3 className="font-serif text-xl lg:text-2xl font-semibold text-white mb-3 hover:text-[#FEFAE0] transition-colors">
-                  <Link to={benefit.link}>
+              <Link to={benefit.link} className="block h-full">
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img
+                    src={benefit.image}
+                    alt={benefit.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-6">
+                  {/* Title */}
+                  <h3 className="font-serif text-xl lg:text-2xl font-semibold text-white mb-3 group-hover:text-[#FEFAE0] transition-colors">
                     {benefit.title}
-                  </Link>
-                </h3>
-                <p className="text-white/60 leading-relaxed text-sm">
-                  {benefit.description}
-                </p>
-              </div>
+                  </h3>
+                  <p className="text-white/60 leading-relaxed text-sm">
+                    {benefit.description}
+                  </p>
+                </div>
+              </Link>
             </motion.div>
           ))}
         </div>

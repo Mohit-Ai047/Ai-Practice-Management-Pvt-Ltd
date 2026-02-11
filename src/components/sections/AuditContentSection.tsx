@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { ShieldCheck, FileSearch, Scale, AlertOctagon, CheckCircle2, ArrowRight } from "lucide-react";
 
 export const AuditContentSection = () => {
@@ -115,10 +116,10 @@ export const AuditContentSection = () => {
                                 Our comprehensive audits provide actionable feedback loops that train your staff, refine your workflows, and build a fortress around your revenue.
                             </p>
 
-                            <div className="inline-flex items-center gap-2 text-[#FEFAE0]/60 uppercase tracking-widest text-sm border-t border-[#FEFAE0]/10 pt-8">
+                            <Link to="/contact" className="inline-flex items-center gap-2 text-[#FEFAE0]/60 uppercase tracking-widest text-sm border-t border-[#FEFAE0]/10 pt-8 hover:text-[#FEFAE0] transition-colors cursor-pointer">
                                 <span>Secure your financial future</span>
                                 <ArrowRight className="w-4 h-4" />
-                            </div>
+                            </Link>
                         </div>
                     </motion.div>
                 </div>

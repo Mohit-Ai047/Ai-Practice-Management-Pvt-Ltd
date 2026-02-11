@@ -93,7 +93,7 @@ export const HeroSection = () => {
             </span>
           </h1>
 
-          <motion.p className="text-xl text-primary-foreground/90 mb-4 font-serif italic">
+          <motion.p className="text-xl text-primary-foreground/90 mb-4 font-serif">
             Go Beyond—Maximize Your Reimbursements
           </motion.p>
 

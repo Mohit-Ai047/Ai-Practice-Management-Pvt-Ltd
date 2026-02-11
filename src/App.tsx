@@ -19,6 +19,7 @@ import QualityAssurancePage from "./pages/QualityAssurancePage";
 import AIRevenueAutomationPage from "./pages/AIRevenueAutomationPage";
 import ContactPage from "./pages/ContactPage";
 import SpecialtyDetailPage from "./pages/SpecialtyDetailPage";
+import BenefitDetailPage from "./pages/BenefitDetailPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -48,6 +49,7 @@ const App = () => {
               <Route path="quality-assurance" element={<QualityAssurancePage />} />
               <Route path="ai-revenue-automation" element={<AIRevenueAutomationPage />} />
               <Route path="benefits" element={<BenefitsPage />} />
+              <Route path="benefits/:id" element={<BenefitDetailPage />} />
               <Route path="specialties" element={<SpecialtiesPage />} />
               <Route path="specialties/:id" element={<SpecialtyDetailPage />} />
               <Route path="contact" element={<ContactPage />} />

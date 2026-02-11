@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
     Users,
     Zap,
@@ -141,10 +142,10 @@ export const RCMContentSection = () => {
                                 </h3>
                             </div>
 
-                            <div className="inline-flex items-center gap-2 text-[#FEFAE0]/60 uppercase tracking-widest text-sm border-t border-[#FEFAE0]/10 pt-8">
+                            <Link to="/contact" className="inline-flex items-center gap-2 text-[#FEFAE0]/60 uppercase tracking-widest text-sm border-t border-[#FEFAE0]/10 pt-8 hover:text-[#FEFAE0] transition-colors cursor-pointer">
                                 <span>Discover what your RCM should really be doing</span>
                                 <ArrowRight className="w-4 h-4" />
-                            </div>
+                            </Link>
                         </div>
                     </motion.div>
                 </div>

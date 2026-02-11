@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Brain, Sparkles, Workflow, Zap, Lock, ArrowRight } from "lucide-react";
 
 export const AIContentSection = () => {
@@ -116,10 +117,10 @@ export const AIContentSection = () => {
                                 Join the forward-thinking practices that have already transformed their financial operations with AiPM's AI-Powered Revenue Automation.
                             </p>
 
-                            <div className="inline-flex items-center gap-2 text-[#FEFAE0]/60 uppercase tracking-widest text-sm border-t border-[#FEFAE0]/10 pt-8">
+                            <Link to="/contact" className="inline-flex items-center gap-2 text-[#FEFAE0]/60 uppercase tracking-widest text-sm border-t border-[#FEFAE0]/10 pt-8 hover:text-[#FEFAE0] transition-colors cursor-pointer">
                                 <span>Future-proof your revenue</span>
                                 <ArrowRight className="w-4 h-4" />
-                            </div>
+                            </Link>
                         </div>
                     </motion.div>
                 </div>

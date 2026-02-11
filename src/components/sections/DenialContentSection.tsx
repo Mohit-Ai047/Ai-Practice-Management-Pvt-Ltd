@@ -69,7 +69,7 @@ export const DenialContentSection = () => {
                             What makes us different?
                         </h2>
                         <p className="text-xl md:text-2xl text-[#FEFAE0]/80 max-w-3xl mx-auto">
-                            We don’t just respond—we resolve. <span className="text-white font-medium">Within 24 hours</span>, our dedicated denial specialists:
+                            We don’t just respond—we resolve denials <span className="text-white font-medium">Within 24 hours</span>, our dedicated denial specialists:
                         </p>
                     </motion.div>
 
@@ -120,7 +120,7 @@ export const DenialContentSection = () => {
                                 Don’t let denials stall your cash flow.
                             </p>
                             <h3 className="text-2xl md:text-4xl font-bold text-red-500 drop-shadow-sm">
-                                Let AiPM turn every rejected claim into revenue—within 24 hours !!!
+                                AiPM turn every rejected claim into revenue
                             </h3>
                         </div>
                     </motion.div>

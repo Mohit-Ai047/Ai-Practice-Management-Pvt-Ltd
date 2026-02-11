@@ -49,34 +49,36 @@ export const AICycleSection = () => {
                     {/* Header Text Section */}
                     <div className="text-center space-y-6 mb-12">
                         <h2 className="text-3xl md:text-5xl font-bold text-[#FEFAE0] font-serif tracking-wide leading-tight">
-                            Automate today. Integrate seamlessly. <br />
+                            Automate today. Integrate&nbsp;seamlessly. <br />
                             Predict tomorrow. Master the future.
                         </h2>
 
                         {/* Curved Line Decoration */}
-                    <div className="w-full h-16 md:h-24 relative flex items-center justify-center -mt-4">
-                        <svg className="w-full h-full absolute inset-0 text-[#FEFAE0]" viewBox="0 0 1000 100" preserveAspectRatio="none">
-                            <path
-                                d="M0,0 Q500,100 1000,0"
-                                stroke="currentColor"
-                                strokeWidth="1.5"
-                                fill="none"
-                                vectorEffect="non-scaling-stroke"
-                                className="opacity-40"
-                            />
-                        </svg>
-                    </div>
+                        <div className="w-full h-16 md:h-24 relative flex items-center justify-center -mt-4">
+                            <svg className="w-full h-full absolute inset-0 text-[#FEFAE0]" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                                <path
+                                    d="M0,0 Q500,100 1000,0"
+                                    stroke="currentColor"
+                                    strokeWidth="1.5"
+                                    fill="none"
+                                    vectorEffect="non-scaling-stroke"
+                                    className="opacity-40"
+                                />
+                            </svg>
+                        </div>
                     </div>
 
                     {/* Video Section - moved after header */}
-                    <video
-                        src={aiVideo}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="w-full h-auto rounded-2xl shadow-2xl border border-[#FEFAE0]/10"
-                    />
+                    <div className="w-full max-w-4xl mx-auto rounded-2xl shadow-2xl border border-[#FEFAE0]/10 overflow-hidden">
+                        <video
+                            src={aiVideo}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            className="w-full h-auto scale-110 origin-top"
+                        />
+                    </div>
                 </div>
 
                 {/* Steps Layout */}

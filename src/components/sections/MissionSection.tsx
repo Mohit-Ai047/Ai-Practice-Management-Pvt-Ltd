@@ -43,7 +43,7 @@ export const MissionSection = () => {
               Revolutionizing Medical Billing
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-              At AI Practice Management, our mission is to revolutionize medical
+              At Ai Practice Management, our mission is to revolutionize medical
               billing by delivering seamless, efficient, and automated solutions.
               With over a decade of expertise across various specialties, we are
               committed to simplifying financial operations for healthcare

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Stethoscope, FileText, TrendingUp, CheckCircle2, ArrowRight, ShieldCheck } from "lucide-react";
 
 export const MedicalContentSection = () => {
@@ -15,9 +16,9 @@ export const MedicalContentSection = () => {
                         transition={{ duration: 0.6 }}
                         className="space-y-8"
                     >
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#FEFAE0] leading-tight">
-                            Transform Your Medical Billing <br />
-                            <span className="font-serif text-white border-b-2 border-red-500/50">Experience Today.</span>
+                        <h2 className="text-4xl md:text-5xl lg:text-5xl font-serif text-[#FEFAE0] leading-tight">
+                            Transform Your Medical <br />
+                            Billing <span className="font-serif text-white border-b-2 border-red-500/50">Experience Today.</span>
                         </h2>
 
                         <div className="space-y-6 text-lg text-[#FEFAE0]/80 leading-relaxed font-light">
@@ -119,10 +120,10 @@ export const MedicalContentSection = () => {
                                 Reduce stress, cut down on denials, and ensure your practice sees faster reimbursements with the future of medical billing.
                             </p>
 
-                            <div className="inline-flex items-center gap-2 text-[#FEFAE0]/60 uppercase tracking-widest text-sm border-t border-[#FEFAE0]/10 pt-8">
+                            <Link to="/contact" className="inline-flex items-center gap-2 text-[#FEFAE0]/60 uppercase tracking-widest text-sm border-t border-[#FEFAE0]/10 pt-8 hover:text-[#FEFAE0] transition-colors cursor-pointer">
                                 <span>Start optimizing today</span>
                                 <ArrowRight className="w-4 h-4" />
-                            </div>
+                            </Link>
                         </div>
                     </motion.div>
                 </div>

@@ -20,16 +20,16 @@ import painMedicine from "@/assets/pain-medicine.png";
 import gastroenterology from "@/assets/gastro.png";
 import spineSurgery from "@/assets/spine-surgeon (2).png";
 import orthopedics from "@/assets/orthopedics.jpg";
-import neurosurgery from "@/assets/neurosurgeon.jpg";
-import chiropractic from "@/assets/chiropractic.jpg";
+import neurosurgery from "@/assets/neurosurgeon.png";
+import chiropractic from "@/assets/chiropractic.png";
 import dmeEquipment from "@/assets/dme.png";
-import hospitalBilling from "@/assets/hospital-billing.jpg";
-import internalmedicine from "@/assets/internalmedicine.jpg";
+import hospitalBilling from "@/assets/hospital-billing.png";
+import internalmedicine from "@/assets/internalmedicine.png";
 import urgentCare from "@/assets/urgent_care.jpg";
 import endoscopy from "@/assets/endoscopy.png";
-import gynecologist from "@/assets/gynecologist.jpg";
-import pathalogy from "@/assets/pathalogy.jpg";
-import psychiatrist from "@/assets/psychiatrist.jpg"
+import gynecologist from "@/assets/gynecologist.png";
+import pathalogy from "@/assets/pathalogy.png";
+import psychiatrist from "@/assets/psychiatrist.png"
 
 export interface Specialty {
     id: string;

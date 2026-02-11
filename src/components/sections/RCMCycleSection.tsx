@@ -57,7 +57,7 @@ const Card = ({ step, globalProgress, index, total }: { step: any; globalProgres
                 height: 'min(240px, 45vw)'
             }}
         >
-            <div className="w-full h-full rounded-[100%] border border-[#FEFAE0]/20 bg-[#0a0a0a] hover:bg-[#FEFAE0]/5 transition-colors duration-500 p-6 flex flex-col items-center justify-between text-center shadow-2xl relative overflow-hidden group cursor-grab active:cursor-grabbing">
+            <div className="w-full h-full rounded-[100%] border border-[#FEFAE0]/20 bg-[#0a0a0a] hover:bg-[#FEFAE0]/5 transition-colors duration-500 p-6 flex flex-col items-center justify-center gap-6 text-center shadow-2xl relative overflow-hidden group cursor-grab active:cursor-grabbing">
 
                 {/* 1. Logo / Icon at Top */}
                 <div className="mt-1 w-10 h-10 flex items-center justify-center border border-[#FEFAE0] rounded-full bg-black group-hover:scale-110 transition-transform duration-500">
@@ -74,12 +74,7 @@ const Card = ({ step, globalProgress, index, total }: { step: any; globalProgres
                     </p>
                 </div>
 
-                {/* 3. Read More at Bottom */}
-                <div className="mb-1 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="text-[10px] uppercase tracking-widest text-[#FEFAE0] border-b border-[#FEFAE0]/30 pb-0.5">
-                        Read More
-                    </span>
-                </div>
+
             </div>
         </motion.div>
     );
