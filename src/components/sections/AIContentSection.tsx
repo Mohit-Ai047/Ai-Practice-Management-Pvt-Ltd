@@ -68,7 +68,7 @@ export const AIContentSection = () => {
                         className="text-center space-y-6"
                     >
                         <h2 className="text-3xl md:text-5xl font-serif text-[#FEFAE0]">
-                            Stop Working Harder. <span className="italic text-white">Start Working Smarter.</span>
+                            Stop Working Harder. <span className="font-serif text-white">Start Working Smarter.</span>
                         </h2>
                     </motion.div>
 

@@ -16,16 +16,20 @@ import {
     FileSearch
 } from "lucide-react";
 
-import painMedicine from "@/assets/pain_medicine.jpg";
-import gastroenterology from "@/assets/gastroenterology.jpg";
-import spineSurgery from "@/assets/spine_surgery.jpg";
+import painMedicine from "@/assets/pain-medicine.png";
+import gastroenterology from "@/assets/gastro.png";
+import spineSurgery from "@/assets/spine-surgeon (2).png";
 import orthopedics from "@/assets/orthopedics.jpg";
-import neurosurgery from "@/assets/neurosurgery.jpg";
+import neurosurgery from "@/assets/neurosurgeon.jpg";
 import chiropractic from "@/assets/chiropractic.jpg";
-import dmeEquipment from "@/assets/dme_equipment.jpg";
-import hospitalBilling from "@/assets/hospital_billing.jpg";
-import internalMedicine from "@/assets/internal_medicine.jpg";
+import dmeEquipment from "@/assets/dme.png";
+import hospitalBilling from "@/assets/hospital-billing.jpg";
+import internalmedicine from "@/assets/internalmedicine.jpg";
 import urgentCare from "@/assets/urgent_care.jpg";
+import endoscopy from "@/assets/endoscopy.png";
+import gynecologist from "@/assets/gynecologist.jpg";
+import pathalogy from "@/assets/pathalogy.jpg";
+import psychiatrist from "@/assets/psychiatrist.jpg"
 
 export interface Specialty {
     id: string;
@@ -71,7 +75,7 @@ export const specialties: Specialty[] = [
             "We specialize in navigating the bundling rules associated with multiple scope procedures. When multiple techniques are used (e.g., biopsy vs. snare polypectomy) or distinct lesions are treated, we utilize the correct modifiers (like 59, XS, or XU) to unbundle services legitimately and capture full reimbursement for the work performed.",
             "Furthermore, we aggressively manage the accounts receivable for endoscopic procedures, focusing on rapid claim scrubbing to catch issues like missing referring provider information or invalid diagnosis codes before submission. This proactive stance significantly lowers days in A/R."
         ],
-        image: gastroenterology
+        image: endoscopy
     },
     {
         id: "spine-surgeon",
@@ -131,7 +135,7 @@ export const specialties: Specialty[] = [
             "We focus on capturing reimbursement for in-office procedures such as colposcopies, IUD insertions, and ultrasounds. We ensure that the cost of devices (like LARC) is fully reimbursed effectively, managing the buy-and-bill process to protect practice cash flow.",
             "Preventive care is a cornerstone of gynecology. We ensure that annual well-woman exams are coded correctly to trigger 100% coverage where applicable, while separately billing for problem-oriented services addressed during the same visit (Modifier 25) to capturing the full value of the encounter."
         ],
-        image: internalMedicine
+        image: gynecologist
     },
     {
         id: "psychiatrist",
@@ -143,7 +147,7 @@ export const specialties: Specialty[] = [
             "We manage the authorization requirements for recurring therapy sessions and psychological testing. Our team tracks unit counts and date ranges, proactively requesting extensions to prevent gaps in payment for ongoing treatment plans.",
             "Telehealth has become vital in psychiatry. We ensure that all tele-psychiatry sessions are billed with the correct place-of-service codes and modifiers (95/GT) to ensure parity reimbursement with in-person visits, as regulations continue to evolve."
         ],
-        image: internalMedicine
+        image: psychiatrist
     },
     {
         id: "pathology-lab",
@@ -155,7 +159,7 @@ export const specialties: Specialty[] = [
             "We aggressively manage the professional component (Modifier 26) vs. technical component (Modifier TC) billing to ensure accurate payment splits. This is crucial for hospital-based pathologists and independent labs alike.",
             "Our team also handles the complex appeals process for molecular pathology and genetic testing claims, which often face initial experimental denials. We prepare dossiers of clinical utility evidence to support these high-value claims."
         ],
-        image: gastroenterology
+        image: pathalogy
     },
     {
         id: "dme",
@@ -191,7 +195,7 @@ export const specialties: Specialty[] = [
             "We unlock new revenue streams by managing the billing for Chronic Care Management (CCM) and Transitional Care Management (TCM). These services require specific timing and documentation tracking, which our team handles to ensure you are paid for non-face-to-time patient coordination.",
             "Preventive services often have zero cost-sharing for patients but strict coding rules. We ensure that annual wellness visits are billed correctly and that any concurrent problem-focused visits are separately identified with Modifier 25 to capture the full scope of your work."
         ],
-        image: internalMedicine
+        image: internalmedicine
     },
     {
         id: "urgent-care-emergency-medicine",

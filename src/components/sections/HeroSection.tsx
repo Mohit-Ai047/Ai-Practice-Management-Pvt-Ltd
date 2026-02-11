@@ -57,9 +57,9 @@ export const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block px-4 py-20.5 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-full text-sm font-medium mb-6">
+            {/* <span className="inline-block px-4 py-20.5 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-full text-sm font-medium mb-6">
               Revenue Cycle Management Experts
-            </span>
+            </span> */}
           </motion.div>
 
           <h1 className="font-serif text-4xl sm:text-5xl lg:text-7xl text-white leading-tight mb-6 font-normal">

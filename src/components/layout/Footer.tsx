@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/final-logo.png";
+import logo from "../../assets/logo-2.png";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -89,7 +89,7 @@ export const Footer = () => {
           <div className="lg:w-[40%] pr-8">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 bg-black border border-[#FEFAE0]/30 rounded-lg flex items-center justify-center overflow-hidden">
-                <img src={logo} alt="Ai Practice Management" className="w-full h-full object-contain p-2 invert" />
+                <img src={logo} alt="Ai Practice Management" className="w-full h-full object-contain p-2 brightness-0 invert" />
               </div>
               <h3 className="font-serif font-bold text-xl leading-tight whitespace-nowrap">
                 Ai Practice Management LLC
