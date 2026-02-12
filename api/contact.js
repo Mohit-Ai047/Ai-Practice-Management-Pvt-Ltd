@@ -1,12 +1,15 @@
+import express from 'express';
 import { sql } from "@vercel/postgres";
 import { Resend } from "resend";
+
+const app = express();
+app.use(express.json());
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
 
-export async function POST(request) {
+app.post('/api/contact', async (req, res) => {
     try {
-        const body = await request.json();
         const {
             name,
             email,
@@ -14,13 +17,10 @@ export async function POST(request) {
             service,
             message,
             smsConsent,
-        } = body || {};
+        } = req.body;
 
         if (!name || !email || !message) {
-            return new Response(
-                JSON.stringify({ error: "Missing required fields." }),
-                { status: 400, headers: { "Content-Type": "application/json" } }
-            );
+            return res.status(400).json({ error: "Missing required fields." });
         }
 
         // Ensure table exists (safe to run multiple times)
@@ -54,7 +54,7 @@ export async function POST(request) {
             // Send full details to admin
             if (ADMIN_EMAIL) {
                 await resend.emails.send({
-                    from: process.env.MAIL_FROM || "mohit@aipracticemanagement.com",
+                    from: process.env.MAIL_FROM || "mohit@aipracticemanagement.com", // update verified domain
                     to: ADMIN_EMAIL,
                     subject: "New contact form submission",
                     text: [
@@ -71,16 +71,12 @@ export async function POST(request) {
             }
         }
 
-        return new Response(
-            JSON.stringify({ success: true }),
-            { status: 200, headers: { "Content-Type": "application/json" } }
-        );
+        res.status(200).json({ success: true });
     } catch (error) {
         console.error("Contact API error:", error);
-        return new Response(
-            JSON.stringify({ error: "Something went wrong." }),
-            { status: 500, headers: { "Content-Type": "application/json" } }
-        );
+        res.status(500).json({ error: "Something went wrong." });
     }
-}
+});
+
+export default app;
 
