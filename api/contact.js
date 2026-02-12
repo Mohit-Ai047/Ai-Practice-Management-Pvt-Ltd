@@ -1,15 +1,12 @@
-import express from 'express';
 import { sql } from "@vercel/postgres";
 import { Resend } from "resend";
-
-const app = express();
-app.use(express.json());
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
 
-app.post('/api/contact', async (req, res) => {
+export async function POST(request) {
     try {
+        const body = await request.json();
         const {
             name,
             email,
@@ -17,10 +14,13 @@ app.post('/api/contact', async (req, res) => {
             service,
             message,
             smsConsent,
-        } = req.body;
+        } = body || {};
 
         if (!name || !email || !message) {
-            return res.status(400).json({ error: "Missing required fields." });
+            return new Response(
+                JSON.stringify({ error: "Missing required fields." }),
+                { status: 400, headers: { "Content-Type": "application/json" } }
+            );
         }
 
         // Ensure table exists (safe to run multiple times)
@@ -71,12 +71,16 @@ app.post('/api/contact', async (req, res) => {
             }
         }
 
-        res.status(200).json({ success: true });
+        return new Response(
+            JSON.stringify({ success: true }),
+            { status: 200, headers: { "Content-Type": "application/json" } }
+        );
     } catch (error) {
         console.error("Contact API error:", error);
-        res.status(500).json({ error: "Something went wrong." });
+        return new Response(
+            JSON.stringify({ error: "Something went wrong: " + error.message }),
+            { status: 500, headers: { "Content-Type": "application/json" } }
+        );
     }
-});
-
-export default app;
+}
 
