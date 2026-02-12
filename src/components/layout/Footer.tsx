@@ -47,7 +47,7 @@ const LinkItem = ({
   >
     <Link
       to={href}
-      className="text-[#FEFAE0] hover:text-red-700 transition-colors duration-300 ease-out text-base flex items-center w-fit relative z-20"
+      className="text-[#FEFAE0] hover:text-[#24c9c0] transition-colors duration-300 ease-out text-base flex items-center w-fit relative z-20"
     >
       <span className="w-1.5 h-1.5 rounded-full bg-[#FEFAE0] group-hover:bg-[#FEFAE0] mr-0 group-hover:mr-2 transition-all opacity-0 group-hover:opacity-100"></span>
       <span className="relative z-10">{label}</span>
@@ -61,7 +61,7 @@ const LinkItem = ({
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="absolute top-1/2 -translate-y-1/2 left-full ml-2 origin-left w-auto min-w-[12rem] bg-red-600 rounded-xl py-8 px-6 z-50 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col items-center justify-center text-center hidden md:flex pointer-events-none"
+          className="absolute top-1/2 -translate-y-1/2 left-full ml-2 origin-left w-auto min-w-[12rem] bg-[#24c9c0] rounded-xl py-8 px-6 z-50 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col items-center justify-center text-center hidden md:flex pointer-events-none"
         >
 
           <motion.span

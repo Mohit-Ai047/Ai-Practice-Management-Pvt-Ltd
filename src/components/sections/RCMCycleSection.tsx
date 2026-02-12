@@ -11,6 +11,7 @@ import {
     Hand,
 } from "lucide-react";
 import logo from "@/assets/bg-remove.png";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const rcmSteps = [
     { id: 1, title: "Patient Pre-Authorization", icon: ClipboardCheck, description: "We secure necessary authorizations before care begins, preventing downstream delays and ensuring services are covered." },
@@ -22,7 +23,11 @@ const rcmSteps = [
     { id: 7, title: "Reporting", icon: BarChart, description: "Gain actionable analytics and deep insights into your practice's performance to drive strategic growth." },
 ];
 
+
+
 const Card = ({ step, globalProgress, index, total }: { step: any; globalProgress: any; index: number; total: number }) => {
+    const isMobile = useIsMobile();
+
     // Calculate local progress (offset)
     // We add the offset (index/total) to the global progress
     const offset = index / total;
@@ -33,11 +38,14 @@ const Card = ({ step, globalProgress, index, total }: { step: any; globalProgres
     });
 
     // Map progress [0,1] to visual properties
-    const x = useTransform(progress, [0, 1], ["130vw", "-60vw"]);
+    // Significantly increased travel distance on mobile to space items out (reduce clutter/overlap)
+    const xRange = isMobile ? ["400vw", "-125vw"] : ["130vw", "-60vw"];
+    const x = useTransform(progress, [0, 1], xRange);
 
-    // Y Pattern: High (-450) -> Low (120) -> High (-450)
-    // We use a 3-point keyframe approximation
-    const y = useTransform(progress, [0, 0.5, 1], [-450, 120, -450]);
+    // Y Pattern: High -> Low -> High
+    // Reduced vertical travel on mobile to keep items visible and prevent excessive movement
+    const yValues = isMobile ? [-100, 50, -100] : [-450, 120, -450];
+    const y = useTransform(progress, [0, 0.5, 1], yValues);
 
     // Scale: 0.9 -> 1.0 -> 0.9
     const scale = useTransform(progress, [0, 0.5, 1], [0.9, 1.0, 0.9]);
@@ -54,10 +62,11 @@ const Card = ({ step, globalProgress, index, total }: { step: any; globalProgres
                 scale,
                 zIndex,
                 width: 'min(360px, 65vw)',
-                height: 'min(240px, 45vw)'
+                minHeight: 'min(240px, 45vw)',
+                height: 'auto'
             }}
         >
-            <div className="w-full h-full rounded-[100%] border border-[#FEFAE0]/20 bg-[#0a0a0a] hover:bg-[#FEFAE0]/5 transition-colors duration-500 p-6 flex flex-col items-center justify-center gap-6 text-center shadow-2xl relative overflow-hidden group cursor-grab active:cursor-grabbing">
+            <div className="w-full h-full rounded-[100%] border border-[#FEFAE0]/20 bg-[#0a0a0a] hover:bg-[#FEFAE0]/5 transition-colors duration-500 p-6 flex flex-col items-center justify-center gap-4 text-center shadow-2xl relative overflow-hidden group cursor-grab active:cursor-grabbing py-8">
 
                 {/* 1. Logo / Icon at Top */}
                 <div className="mt-1 w-10 h-10 flex items-center justify-center border border-[#FEFAE0] rounded-full bg-black group-hover:scale-110 transition-transform duration-500">
@@ -87,9 +96,11 @@ export const RCMCycleSection = () => {
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
     const [isHovering, setIsHovering] = useState(false);
+    const isMobile = useIsMobile();
 
     // Auto-scroll speed
-    const speed = 0.0005; // Adjust for base speed
+    // Slower progress on mobile because the travel distance (xRange) is much larger
+    const speed = isMobile ? 0.0002 : 0.0005;
 
     useAnimationFrame((t, delta) => {
         if (!isDragging) {
@@ -129,7 +140,7 @@ export const RCMCycleSection = () => {
             {/* Draggable Area Container */}
             <motion.div
                 ref={containerRef}
-                className="relative w-full h-[400px] md:h-[450px] z-10 w-full mt-4 cursor-none"
+                className="relative w-full h-[400px] md:h-[450px] z-10 w-full mt-12 md:mt-4 cursor-none"
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }} // Infinite drag by monitoring delta
                 dragElastic={0}

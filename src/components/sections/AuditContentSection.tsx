@@ -17,7 +17,7 @@ export const AuditContentSection = () => {
                         className="space-y-8"
                     >
                         <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#FEFAE0] leading-tight">
-                            Quality Isn't Just a Checkbox. <br />
+                            Quality Isn't Just a Checkbox,.. <br />
                             <span className="font-serif text-white border-b-2 border-red-500/50">It's Your First Line of Defense.</span>
                         </h2>
 

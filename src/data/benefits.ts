@@ -64,9 +64,9 @@ export const benefitsData = [
         image: medicalTeamImg,
         shortDescription: "Our dedicated team of certified medical billing specialists works collaboratively to ensure accurate coding, timely submissions, and maximum reimbursement.",
         fullDescription: [
-            "Technology is powerful, but it requires human expertise to truly excel. Our Expert Medical Billing Team consists of certified coders (CPC, CCS-P) and seasoned billing professionals who understand the nuances of your specialty. We act as an extension of your practice.",
+            "Technology is powerful, but it requires human expertise to truly excel. Our Expert Medical Billing Team consists of certified coders and seasoned billing professionals who understand the nuances of your specialty. We act as an extension of your practice.",
             "We don't just submit claims; we fight for them. When a complex denial lands, our specialists investigate, craft appeals with clinical evidence, and follow up until payment is secured. We handle the heavy lifting of payer communication so your staff doesn't have to wait on hold.",
-            "Continuous education is a core value. Our team undergoes regular training on updates to CPT, ICD-10, and HCPCS codes, as well as payer-specific policy changes. This ensures that your claims are always compliant and optimized for the maximum reimbursement allowed."
+            "Continuous education is a core value. Our team undergoes regular training  as well as payer-specific policy changes. This ensures that your claims are always compliant and optimized for the maximum reimbursement allowed."
         ],
         features: [
             "Certified Coders & Billers",

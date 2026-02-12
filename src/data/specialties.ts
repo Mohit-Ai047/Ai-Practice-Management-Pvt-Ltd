@@ -72,7 +72,7 @@ export const specialties: Specialty[] = [
         description: "Maximizing facility and professional fee reimbursement.",
         fullDescription: [
             "Endoscopy centers face unique billing challenges where facility fees and professional fees must be perfectly aligned. Our RCM process ensures that technical components are billed with the appropriate revenue codes for ASCs or hospital outpatient departments, securing the facility's financial health.",
-            "We specialize in navigating the bundling rules associated with multiple scope procedures. When multiple techniques are used (e.g., biopsy vs. snare polypectomy) or distinct lesions are treated, we utilize the correct modifiers (like 59, XS, or XU) to unbundle services legitimately and capture full reimbursement for the work performed.",
+            "We specialize in navigating the bundling rules associated with multiple scope procedures. When multiple techniques are used (e.g., biopsy vs. snare polypectomy) or distinct lesions are treated, we utilize the correct modifiers to unbundle services legitimately and capture full reimbursement for the work performed.",
             "Furthermore, we aggressively manage the accounts receivable for endoscopic procedures, focusing on rapid claim scrubbing to catch issues like missing referring provider information or invalid diagnosis codes before submission. This proactive stance significantly lowers days in A/R."
         ],
         image: endoscopy
@@ -108,7 +108,7 @@ export const specialties: Specialty[] = [
         description: "Expert revenue management for critical neurosurgical cases.",
         fullDescription: [
             "Neurosurgery billing demands an exceptional level of anatomical and procedural knowledge. We specialize in the intricate coding of cranial procedures, aneurysms, and complex spinal disorders. Our certified coders review operative notes to capture additional levels of complexity that generic coding software might miss.",
-            "Assistant surgeon fees (Modifier 80/81/82) are a significant revenue component for neurosurgery groups. We ensure that these claims are submitted with the necessary supporting documentation to prove the medical necessity of a second surgeon, a common pain point for denials.",
+            "Assistant surgeon fees are a significant revenue component for neurosurgery groups. We ensure that these claims are submitted with the necessary supporting documentation to prove the medical necessity of a second surgeon, a common pain point for denials.",
             "We also maintain a rigorous follow-up process for high-dollar claims. Neuro claims are frequently subjected to intense payer scrutiny and medical records requests. Our team proactively manages these audits to minimize payment delays and defend your revenue."
         ],
         image: neurosurgery
@@ -133,7 +133,7 @@ export const specialties: Specialty[] = [
         fullDescription: [
             "Changes in women's health coding require constant vigilance. We expert manage global maternity billing, ensuring that the initial prenatal visit, delivery, and postpartum care are billed according to the patient's specific insurance plan—whether bundled or itemized.",
             "We focus on capturing reimbursement for in-office procedures such as colposcopies, IUD insertions, and ultrasounds. We ensure that the cost of devices (like LARC) is fully reimbursed effectively, managing the buy-and-bill process to protect practice cash flow.",
-            "Preventive care is a cornerstone of gynecology. We ensure that annual well-woman exams are coded correctly to trigger 100% coverage where applicable, while separately billing for problem-oriented services addressed during the same visit (Modifier 25) to capturing the full value of the encounter."
+            "Preventive care is a cornerstone of gynecology. We ensure that annual well-woman exams are coded correctly to trigger 100% coverage where applicable, while separately billing for problem-oriented services addressed during the same visit to capturing the full value of the encounter."
         ],
         image: gynecologist
     },
@@ -145,7 +145,7 @@ export const specialties: Specialty[] = [
         fullDescription: [
             "Behavioral health RCM is unique due to the 'carve-out' nature of many mental health benefits. We specialize in verifying specific mental health coverage, which often differs from medical benefits, to prevent surprise denials for non-covered services.",
             "We manage the authorization requirements for recurring therapy sessions and psychological testing. Our team tracks unit counts and date ranges, proactively requesting extensions to prevent gaps in payment for ongoing treatment plans.",
-            "Telehealth has become vital in psychiatry. We ensure that all tele-psychiatry sessions are billed with the correct place-of-service codes and modifiers (95/GT) to ensure parity reimbursement with in-person visits, as regulations continue to evolve."
+            "Telehealth has become vital in psychiatry. We ensure that all tele-psychiatry sessions are billed with the correct place-of-service codes and modifiers to ensure parity reimbursement with in-person visits, as regulations continue to evolve."
         ],
         image: psychiatrist
     },
@@ -156,7 +156,7 @@ export const specialties: Specialty[] = [
         description: "High-throughput RCM for accurate lab reimbursement.",
         fullDescription: [
             "Pathology labs operate on high volume and thin margins, making efficiency paramount. Our automated RCM solutions rapidly process thousands of claims, checking for valid diagnosis codes that support the specific lab panels ordered, reducing 'medical necessity' rejections.",
-            "We aggressively manage the professional component (Modifier 26) vs. technical component (Modifier TC) billing to ensure accurate payment splits. This is crucial for hospital-based pathologists and independent labs alike.",
+            "We aggressively manage the professional component (Modifier 26) vs. technical component billing to ensure accurate payment splits. This is crucial for hospital-based pathologists and independent labs alike.",
             "Our team also handles the complex appeals process for molecular pathology and genetic testing claims, which often face initial experimental denials. We prepare dossiers of clinical utility evidence to support these high-value claims."
         ],
         image: pathalogy
@@ -168,7 +168,7 @@ export const specialties: Specialty[] = [
         description: "Automating RCM for equipment and supply claims.",
         fullDescription: [
             "DME billing is notoriously paperwork-intensive. We streamline the collection and validation of Certificates of Medical Necessity (CMNs) and Detailed Written Orders (DWOs) before the claim is submitted, eliminating the primary cause of DME denials.",
-            "We manage the entire rental cycle for capped-rental items (like oxygen or wheelchairs), ensuring that modifiers (RR, KH, KI, KJ) change correctly over time and that maintenance and servicing payments are captured when the title transfers.",
+            "We manage the entire rental cycle for capped-rental items (like oxygen or wheelchairs), ensuring that modifiers change correctly over time and that maintenance and servicing payments are captured when the title transfers.",
             "Our system also tracks the resupply schedules for recurring items (like CPAP supplies or diabetic testing materials), ensuring that refill claims are generated at the earliest billable date to maximize recurring revenue."
         ],
         image: dmeEquipment
@@ -193,7 +193,7 @@ export const specialties: Specialty[] = [
         fullDescription: [
             "In internal medicine, volume and variety are key. We ensure that Evaluation and Management (E&M) levels are supported by documentation, preventing down-coding by payers. We also educate providers on the criteria for time-based vs. complexity-based coding to optimize levels.",
             "We unlock new revenue streams by managing the billing for Chronic Care Management (CCM) and Transitional Care Management (TCM). These services require specific timing and documentation tracking, which our team handles to ensure you are paid for non-face-to-time patient coordination.",
-            "Preventive services often have zero cost-sharing for patients but strict coding rules. We ensure that annual wellness visits are billed correctly and that any concurrent problem-focused visits are separately identified with Modifier 25 to capture the full scope of your work."
+            "Preventive services often have zero cost-sharing for patients but strict coding rules. We ensure that annual wellness visits are billed correctly and that any concurrent problem-focused visits are separately identified to capture the full scope of your work."
         ],
         image: internalmedicine
     },

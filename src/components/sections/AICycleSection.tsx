@@ -12,7 +12,7 @@ const aiSteps = [
     {
         id: 1,
         title: "Automate",
-        description: "Automate repetitive, high-volume tasks such as data entry, eligibility verification, and claim status checks. By deploying intelligent bots, we eliminate manual errors and free up human talent for complex decision-making.",
+        description: "Automate repetitive, high-volume workflows including data entry, eligibility verification, and claim status checks. Our intelligent automation reduces manual errors, enhances operational efficiency, and reallocates human effort to higher-value decision-making, with all data safeguarded in accordance with HIPAA security and compliance standards.",
         icon: Bot,
         letter: "A"
     },

@@ -120,11 +120,10 @@ export const Header = () => {
           setIsHovered(false);
           handleNavMouseLeave();
         }}
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          isHeaderActive
-            ? "bg-black/95 backdrop-blur-md py-0"
-            : "bg-transparent py-4 bg-gradient-to-b from-black/50 to-transparent"
-        } ${isHovered || isOpen ? "border-b border-white/10 shadow-md" : ""}`}
+        className={`fixed top-0 w-full z-50 transition-all duration-300 ${isHeaderActive
+          ? "bg-black/95 backdrop-blur-md py-0"
+          : "bg-transparent py-4 bg-gradient-to-b from-black/50 to-transparent"
+          } ${isHovered || isOpen ? "border-b border-white/10 shadow-md" : ""}`}
       >
         <div className="container mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16 sm:h-20">
@@ -162,11 +161,10 @@ export const Header = () => {
                   >
                     <Link
                       to={item.href}
-                      className={`px-3 xl:px-4 py-2.5 xl:py-3 text-[15px] xl:text-[17px] font-medium rounded-md transition-all duration-200 flex items-center gap-1 group/nav ${
-                        location.pathname === item.href 
-                          ? "text-[#FFFDD0]" 
-                          : "text-white/80 hover:text-[#FFFDD0]"
-                      }`}
+                      className={`px-3 xl:px-4 py-2.5 xl:py-3 text-[15px] xl:text-[17px] font-medium rounded-md transition-all duration-200 flex items-center gap-1 group/nav ${location.pathname === item.href
+                        ? "text-[#FFFDD0]"
+                        : "text-white/80 hover:text-[#FFFDD0]"
+                        }`}
                     >
                       <span className="whitespace-nowrap">{item.label}</span>
                       {item.submenu && (
@@ -188,11 +186,10 @@ export const Header = () => {
             <div className="hidden lg:block flex-shrink-0">
               <Button
                 asChild
-                className={`font-semibold px-5 xl:px-6 py-2 xl:py-2.5 text-sm xl:text-base transition-all duration-300 ${
-                  isHeaderActive
-                    ? "bg-white text-black hover:bg-gray-200"
-                    : "bg-white text-black hover:bg-gray-200"
-                }`}
+                className={`font-semibold px-5 xl:px-6 py-2 xl:py-2.5 text-sm xl:text-base transition-all duration-300 ${isHeaderActive
+                  ? "bg-white text-black hover:bg-gray-200"
+                  : "bg-white text-black hover:bg-gray-200"
+                  }`}
               >
                 <Link to="/contact">Get Started</Link>
               </Button>
@@ -245,43 +242,45 @@ export const Header = () => {
           </AnimatePresence>
         )}
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden bg-black/95 backdrop-blur-md border-t border-white/10 overflow-hidden shadow-inner"
-            >
-              <div className="container mx-auto px-4 py-4">
-                {/* Mobile CTA Button */}
-                <div className="mb-4 px-2">
-                  <Button
-                    asChild
-                    className="w-full bg-white text-black hover:bg-gray-200 font-semibold py-3"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <Link to="/contact">Get Started</Link>
-                  </Button>
-                </div>
+      </header>
 
-                <nav className="space-y-1">
-                  {navItems.map((item) => (
-                    <div key={item.label}>
-                      {item.submenu ? (
-                        <>
-                          <button
-                            onClick={() => setMobileSubmenuOpen(prev => prev === item.label ? null : item.label)}
-                            className="w-full flex items-center justify-between px-4 py-3 text-white hover:bg-white/10 hover:text-[#FFFDD0] rounded-lg text-base sm:text-lg"
-                          >
-                            {item.label}
-                            <ChevronDown 
-                              className={`w-4 h-4 transition-transform duration-200 ${
-                                mobileSubmenuOpen === item.label ? 'rotate-180' : ''
-                              }`} 
-                            />
-                          </button>
+      {/* Mobile Menu - Rendered outside header for better stacking context if needed, but keeping inside for now with fixed positioning adjustment */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "calc(100vh - 64px)" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="fixed top-16 sm:top-20 left-0 w-full z-40 bg-black/95 backdrop-blur-md border-t border-white/10 overflow-y-auto shadow-inner lg:hidden"
+          >
+            <div className="container mx-auto px-4 py-6 pb-20">
+              {/* Mobile CTA Button */}
+              <div className="mb-6 px-2">
+                <Button
+                  asChild
+                  className="w-full bg-white text-black hover:bg-gray-200 font-semibold py-6 text-lg"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <Link to="/contact">Get Started</Link>
+                </Button>
+              </div>
+
+              <nav className="space-y-2">
+                {navItems.map((item) => (
+                  <div key={item.label}>
+                    {item.submenu ? (
+                      <>
+                        <button
+                          onClick={() => setMobileSubmenuOpen(prev => prev === item.label ? null : item.label)}
+                          className="w-full flex items-center justify-between px-4 py-4 text-white hover:bg-white/10 hover:text-[#FFFDD0] rounded-lg text-lg font-medium transition-colors"
+                        >
+                          {item.label}
+                          <ChevronDown
+                            className={`w-5 h-5 transition-transform duration-200 ${mobileSubmenuOpen === item.label ? 'rotate-180' : ''
+                              }`}
+                          />
+                        </button>
+                        <AnimatePresence>
                           {mobileSubmenuOpen === item.label && (
                             <motion.div
                               initial={{ opacity: 0, height: 0 }}
@@ -289,13 +288,13 @@ export const Header = () => {
                               exit={{ opacity: 0, height: 0 }}
                               className="overflow-hidden"
                             >
-                              <div className="pl-6 pr-2 pb-2 space-y-1 bg-zinc-900/50 rounded-lg mx-2">
+                              <div className="pl-4 pr-2 py-2 space-y-1 bg-white/5 rounded-lg mx-2 mt-1 mb-2">
                                 {item.submenu.map(sub => (
                                   <Link
                                     key={sub.label}
                                     to={sub.href}
                                     onClick={() => setIsOpen(false)}
-                                    className="block px-4 py-2.5 text-sm sm:text-base text-white/70 hover:text-[#FFFDD0] hover:bg-white/5 rounded transition-colors"
+                                    className="block px-4 py-3 text-[15px] text-white/80 hover:text-[#FFFDD0] hover:bg-white/5 rounded-md transition-colors"
                                   >
                                     {sub.label}
                                   </Link>
@@ -303,24 +302,24 @@ export const Header = () => {
                               </div>
                             </motion.div>
                           )}
-                        </>
-                      ) : (
-                        <Link
-                          to={item.href}
-                          onClick={() => setIsOpen(false)}
-                          className="block px-4 py-3 rounded-lg text-white hover:bg-white/10 hover:text-[#FFFDD0] text-base sm:text-lg"
-                        >
-                          {item.label}
-                        </Link>
-                      )}
-                    </div>
-                  ))}
-                </nav>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </header>
+                        </AnimatePresence>
+                      </>
+                    ) : (
+                      <Link
+                        to={item.href}
+                        onClick={() => setIsOpen(false)}
+                        className="block px-4 py-4 rounded-lg text-white hover:bg-white/10 hover:text-[#FFFDD0] text-lg font-medium transition-colors"
+                      >
+                        {item.label}
+                      </Link>
+                    )}
+                  </div>
+                ))}
+              </nav>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };

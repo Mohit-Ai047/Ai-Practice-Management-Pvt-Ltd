@@ -31,7 +31,7 @@ export const RCMContentSection = () => {
 
                         <div className="space-y-6 text-lg text-[#FEFAE0]/80 leading-relaxed font-light">
                             <p>
-                                At AiPM, we provide <span className="font-semibold text-white">end-to-end Revenue Cycle Management solutions</span> tailored to optimize every phase of your financial workflow—from <span className="italic text-white">patient eligibility and pre-authorizations</span> to coding, billing, denial management, and final payment posting.
+                                At AiPM, we provide <span className="font-semibold text-white">end-to-end Revenue Cycle Management solutions</span> tailored to optimize every phase of your financial workflow—from <span className="font-serif text-white">patient eligibility and pre-authorizations</span> to coding, billing, denial management, and final payment posting.
                             </p>
                             <p>
                                 Our <span className="font-semibold text-white underline decoration-[#FEFAE0]/30 underline-offset-4">Certified team</span> combines deep healthcare expertise with <span className="text-white font-serif">cutting-edge AI and machine learning</span>, ensuring maximum reimbursement, minimal delays, and full compliance. With seamless automation, real-time analytics, and personalized support, AiPM eliminates inefficiencies & revenue leaks—empowering your organization to focus on what matters most: <span className="font-bold text-white tracking-wide">PATIENT’S CARE.</span>
@@ -54,14 +54,15 @@ export const RCMContentSection = () => {
                             <div className="space-y-4">
                                 {[
                                     "Patient Registration",
-                                    "Patient Exam",
+                                    "Health Evaluation",
                                     "Coding",
                                     "Charge Entry",
                                     "Claim Submission",
+                                    "Account Receivables",
                                     "Payment Processing",
                                     "Patient Billing",
-                                    "Collection",
-                                    "Revenue"
+                                    "Practice Revenue",
+                                    "Reports"
                                 ].map((step, i) => (
                                     <motion.div
                                         key={i}
@@ -72,11 +73,11 @@ export const RCMContentSection = () => {
                                         className="flex items-center gap-3"
                                         style={{ marginLeft: `${i * 12}px` }}
                                     >
-                                        <div className={`w-3 h-3 rounded-full ${i === 8 ? 'bg-red-500 box-shadow-glow' : 'bg-[#FEFAE0]'}`} />
-                                        <span className={`text-sm md:text-base ${i === 8 ? 'text-red-500 font-bold text-lg' : 'text-[#FEFAE0]/70'}`}>
+                                        <div className={`w-3 h-3 rounded-full ${i === 10 ? 'bg-500 box-shadow-glow' : 'bg-[#FEFAE0]'}`} />
+                                        <span className={`text-sm md:text-base ${i === 9 ? 'text-500 font-bold text-lg' : 'text-[#FEFAE0]/70'}`}>
                                             {step}
                                         </span>
-                                        {i < 8 && <div className="h-4 w-px bg-[#FEFAE0]/20 ml-1.5 absolute mt-5" />}
+                                        {i < 10 && <div className="h-4 w-px bg-[#FEFAE0]/20 ml-1.5 absolute mt-5" />}
                                     </motion.div>
                                 ))}
                             </div>

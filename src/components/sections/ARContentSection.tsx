@@ -242,7 +242,7 @@ export const ARContentSection = () => {
                             Confused payments shouldn't cost you revenue.
                         </p>
                         <h2 className="text-3xl md:text-5xl font-serif text-[#FEFAE0]">
-                            AiPM brings <span className="text-[#FEFAE0] font-serif border-b border-[#FEFAE0]/30">clarity</span>—and collections—fast.
+                            AiPM strengthens financial oversight and maximizes recovery efficiency
                         </h2>
                     </motion.div>
 
@@ -260,7 +260,7 @@ export const ARContentSection = () => {
                             <div className="pl-11 space-y-4 text-[#FEFAE0]/80">
                                 <p>Denied claims. Delayed payments. Accounts piling up with no end in sight.</p>
                                 <p className="text-white font-medium text-lg">
-                                    Most practices don’t need more billing—they need <span className="font-serif text-[#FEFAE0]">expert AR management.</span>
+                                    Most practices don’t need additional billing services—they need expert
                                 </p>
                             </div>
                         </motion.div>

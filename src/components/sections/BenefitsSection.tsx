@@ -18,6 +18,7 @@ import healthcareAnalyticsImg from "@/assets/real time.jpg";
 import medicalTeamImg from "@/assets/medical team.jpg";
 import healthcareSecurityImg from "@/assets/healthcare-security.jpg";
 import arClaimsImg from "@/assets/ar-claims.jpg";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const items = [
   {
@@ -164,6 +165,8 @@ export const BenefitsSection = () => {
   const groundRef = useRef<Matter.Body | null>(null);
   const [hasSettled, setHasSettled] = useState(false);
   const [settledTags, setSettledTags] = useState<any[]>([]);
+  const isMobile = useIsMobile();
+  const WORLD_HEIGHT = 1000;
 
   // Ref for the new section
   const newSectionRef = useRef(null);
@@ -177,18 +180,19 @@ export const BenefitsSection = () => {
     engine.gravity.y = 1.0;
 
     // Create Boundaries
+    // Create Boundaries
     const ground = Matter.Bodies.rectangle(400, 300, 810, 60, {
       isStatic: true,
-      friction: 0.8,  // Increased friction for better settling
-      restitution: 0.1 // Reduced bounce
+      friction: 0.8,
+      restitution: 0.1
     });
     groundRef.current = ground;
 
-    const leftWall = Matter.Bodies.rectangle(0, 400, 60, 800, {
+    const leftWall = Matter.Bodies.rectangle(0, WORLD_HEIGHT / 2, 60, WORLD_HEIGHT, {
       isStatic: true,
       friction: 0.8
     });
-    const rightWall = Matter.Bodies.rectangle(800, 400, 60, 800, {
+    const rightWall = Matter.Bodies.rectangle(800, WORLD_HEIGHT / 2, 60, WORLD_HEIGHT, {
       isStatic: true,
       friction: 0.8
     });
@@ -215,14 +219,18 @@ export const BenefitsSection = () => {
 
     // Adjust ground position based on index (Stacking effect)
     if (groundRef.current) {
-      const groundLevels = [160, 380, 570];
+      const groundLevels = isMobile ? [180, 360, 540] : [160, 380, 570];
       const newY = groundLevels[index];
       Matter.Body.setPosition(groundRef.current, { x: 400, y: newY });
     }
 
     // Add new bodies for tags on EVERY hover
     const newBodies = item.tags.map((tag: string, i: number) => {
-      const width = Math.max(120, tag.length * 10 + 40);
+      const baseWidth = isMobile ? 80 : 120;
+      const charMultiplier = isMobile ? 8 : 10;
+      const padding = isMobile ? 20 : 40;
+      const width = Math.max(baseWidth, tag.length * charMultiplier + padding);
+      const height = isMobile ? 32 : 42;
 
       // Calculate horizontal position for better stacking
       const columnCount = Math.min(4, item.tags.length);
@@ -231,7 +239,7 @@ export const BenefitsSection = () => {
 
       // Center the tags horizontally
       const centerX = 400;
-      const spread = 300;
+      const spread = isMobile ? 280 : 300;
 
       // Calculate X position based on column
       const xPos = centerX + (columnIndex - (columnCount - 1) / 2) * (spread / columnCount);
@@ -245,14 +253,14 @@ export const BenefitsSection = () => {
       return Matter.Bodies.rectangle(
         xPos + randomOffset,
         yStart,
-        width, 42,
+        width, height,
         {
-          chamfer: { radius: 21 },
-          restitution: 0.2,  // Reduced bounce for better settling
-          friction: 0.6,     // Increased friction
-          frictionAir: 0.02,
-          frictionStatic: 0.8, // Increased static friction
-          density: 0.002,    // Slightly increased density
+          chamfer: { radius: height / 2 },
+          restitution: 0.1, // Reduced bounce further to prevent bouncing off
+          friction: 0.9,     // Max friction
+          frictionAir: 0.05, // Increase drag
+          frictionStatic: 1.0, // Sticky
+          density: 0.005,    // Heavy
           label: tag
         }
       );
@@ -323,7 +331,7 @@ export const BenefitsSection = () => {
           <span className="font-serif">we're good at!</span>
         </h2>
 
-        <div className="flex flex-col items-center gap-20 w-full relative">
+        <div className="flex flex-col items-center gap-32 md:gap-20 w-full relative">
           {items.map((item, index) => (
             <div
               key={item.id}
@@ -331,7 +339,7 @@ export const BenefitsSection = () => {
               className="group cursor-pointer text-center z-10 relative"
             >
               <h3
-                className={`text-7xl md:text-9xl font-serif font-bold transition-all duration-300 ${activeItem.id === item.id ? "text-[#FFFDD0] scale-110" : "text-red-700"}`}
+                className={`text-5xl md:text-9xl font-serif font-bold transition-all duration-300 ${activeItem.id === item.id ? "text-[#FFFDD0] scale-110" : "text-[#24c9c0]"}`}
               >
                 {item.title}
               </h3>
@@ -343,7 +351,7 @@ export const BenefitsSection = () => {
             className="absolute inset-0 pointer-events-none z-20"
             style={{
               width: '800px',
-              height: '600px',
+              height: isMobile ? '700px' : '600px',
               left: '50%',
               transform: 'translateX(-50%)',
               overflow: 'visible'

@@ -91,7 +91,7 @@ const BenefitDetailPage = () => {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="relative hidden md:block max-w-sm mx-auto w-full md:mt-32"
+                        className="relative block max-w-sm mx-auto w-full mt-12 md:mt-32"
                     >
                         <div className="aspect-[3/4] rounded-3xl overflow-hidden border border-white/10 relative group shadow-2xl shadow-[#FEFAE0]/5">
                             <img

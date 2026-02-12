@@ -117,7 +117,7 @@ export const HeroSection = () => {
           <div className="mt-12 grid grid-cols-3 gap-6 max-w-lg">
             <StatItem icon={<TrendingUp />} value="30%" label="Revenue Increase" />
             <StatItem icon={<Shield />} value="10+" label="Years Experience" />
-            <StatItem icon={<Clock />} value="48h" label="Faster Claims" />
+            <StatItem icon={<Clock />} value="48h" label="Payer Claim Submission" />
           </div>
         </div>
       </div>
