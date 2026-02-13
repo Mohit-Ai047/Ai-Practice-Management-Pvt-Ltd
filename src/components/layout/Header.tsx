@@ -127,8 +127,8 @@ export const Header = () => {
       >
         <div className="container mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16 sm:h-20">
-            {/* Logo and Company Name */}
-            <div className="flex items-center flex-shrink-0">
+            {/* Logo - Left */}
+            <div className="flex items-center flex-shrink-0 z-20">
               <Link to="/" className="flex items-center gap-2 sm:gap-3">
                 <img
                   src={logo}
@@ -137,10 +137,17 @@ export const Header = () => {
                 />
                 <div className="hidden sm:flex flex-col leading-tight">
                   <span className="text-white font-semibold tracking-wide text-[16px] sm:text-[18px] md:text-[20px] ml-1 sm:ml-2">
-                    Ai PRACTICE<br className="sm:hidden" /> MANAGEMENT
+                    <span className="hidden sm:inline">Ai PRACTICE<br className="lg:hidden" /> MANAGEMENT LLC</span>
                   </span>
                 </div>
               </Link>
+            </div>
+
+            {/* Mobile Center Text "AiPM" */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 sm:hidden z-10">
+              <span className="text-white font-serif font-bold text-xl tracking-wide">
+                AiPM
+              </span>
             </div>
 
             {/* Desktop Navigation - Added space between logo and first menu item */}

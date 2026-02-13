@@ -39,12 +39,12 @@ const Card = ({ step, globalProgress, index, total }: { step: any; globalProgres
 
     // Map progress [0,1] to visual properties
     // Significantly increased travel distance on mobile to space items out (reduce clutter/overlap)
-    const xRange = isMobile ? ["400vw", "-125vw"] : ["130vw", "-60vw"];
+    const xRange = isMobile ? ["320vw", "-120vw"] : ["130vw", "-60vw"];
     const x = useTransform(progress, [0, 1], xRange);
 
     // Y Pattern: High -> Low -> High
     // Reduced vertical travel on mobile to keep items visible and prevent excessive movement
-    const yValues = isMobile ? [-100, 50, -100] : [-450, 120, -450];
+    const yValues = isMobile ? [-60, 30, -60] : [-450, 120, -450];
     const y = useTransform(progress, [0, 0.5, 1], yValues);
 
     // Scale: 0.9 -> 1.0 -> 0.9
@@ -61,12 +61,15 @@ const Card = ({ step, globalProgress, index, total }: { step: any; globalProgres
                 y,
                 scale,
                 zIndex,
-                width: 'min(360px, 65vw)',
-                minHeight: 'min(240px, 45vw)',
-                height: 'auto'
+                width: isMobile ? '70vw' : '20vw',
+                height: isMobile ? '70vw' : '20vw',
+                maxWidth: '300px',
+                maxHeight: '300px',
+                minWidth: '220px',
+                minHeight: '220px',
             }}
         >
-            <div className="w-full h-full rounded-[100%] border border-[#FEFAE0]/20 bg-[#0a0a0a] hover:bg-[#FEFAE0]/5 transition-colors duration-500 p-6 flex flex-col items-center justify-center gap-4 text-center shadow-2xl relative overflow-hidden group cursor-grab active:cursor-grabbing py-8">
+            <div className="w-full h-full rounded-full border border-[#FEFAE0]/20 bg-[#0a0a0a] hover:bg-[#FEFAE0]/5 transition-colors duration-500 p-8 flex flex-col items-center justify-center gap-4 text-center shadow-2xl relative overflow-hidden group cursor-grab active:cursor-grabbing">
 
                 {/* 1. Logo / Icon at Top */}
                 <div className="mt-1 w-10 h-10 flex items-center justify-center border border-[#FEFAE0] rounded-full bg-black group-hover:scale-110 transition-transform duration-500">
@@ -75,10 +78,10 @@ const Card = ({ step, globalProgress, index, total }: { step: any; globalProgres
 
                 {/* 2. Headline & Description */}
                 <div className="flex flex-col gap-2 z-10 px-2">
-                    <h3 className="font-serif text-lg md:text-xl font-medium text-[#FEFAE0] leading-tight">
+                    <h3 className="font-serif text-[15px] sm:text-lg md:text-xl font-medium text-[#FEFAE0] leading-tight">
                         {step.title}
                     </h3>
-                    <p className="text-xs text-[#FEFAE0]/70 font-light leading-relaxed px-2">
+                    <p className="text-[10px] sm:text-xs text-[#FEFAE0]/70 font-light leading-relaxed px-2">
                         {step.description}
                     </p>
                 </div>

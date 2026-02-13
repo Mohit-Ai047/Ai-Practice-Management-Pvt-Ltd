@@ -89,14 +89,14 @@ export const Footer = () => {
           {/* Brand */}
           <div className="lg:w-[40%] pr-8">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-black border border-[#FEFAE0]/30 rounded-lg flex items-center justify-center overflow-hidden">
-                <img src={logo} alt="Ai Practice Management" className="w-full h-full object-contain p-2 brightness-0 invert" />
+              <div className="w-12 h-12 bg-black border border-[#FEFAE0]/30 rounded-lg flex items-center justify-center overflow-hidden flex-shrink-0">
+                <img src={logo} alt="Ai Practice Management" className="w-full h-full object-contain p-1 brightness-0 invert" />
               </div>
-              <h3 className="font-serif font-bold text-xl leading-tight whitespace-nowrap">
+              <h3 className="font-serif font-bold text-base sm:text-xl leading-tight whitespace-nowrap">
                 Ai Practice Management LLC
               </h3>
             </div>
-            <p className="text-[#FEFAE0] mb-6 max-w-sm leading-relaxed text-lg">
+            <p className="text-[#FEFAE0] mb-6 max-w-sm leading-relaxed text-sm sm:text-lg">
               Exceeding expectations with quality RCM services. Your trusted
               partner in healthcare revenue optimization and administrative excellence.
             </p>
