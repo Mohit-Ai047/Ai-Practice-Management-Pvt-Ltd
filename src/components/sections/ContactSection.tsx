@@ -141,22 +141,39 @@ export const ContactSection = () => {
               </div>
 
               {/* Social Links */}
-              <div className="mt-8 pt-6 border-t border-white/10">
-                <p className="text-sm text-white/50 mb-4">
-                  Stay Connected
-                </p>
-                <div className="flex gap-3">
-                  {["LinkedIn", "Facebook", "Instagram"].map((social) => (
-                    <a
-                      key={social}
-                      href="#"
-                      className="px-4 py-2 bg-white/5 rounded-lg text-sm text-white hover:bg-white/10 transition-colors"
-                    >
-                      {social}
-                    </a>
-                  ))}
-                </div>
+              <div className="flex gap-3 mt-5">
+                <a
+                  href="https://www.linkedin.com/company/ai-practice-management-llc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg text-sm text-white hover:bg-white/10 transition-colors"
+                >
+                  <i className="fa-brands fa-linkedin-in text-[#0A66C2]"></i>
+                  LinkedIn
+                </a>
+
+                {/* <a
+                  href="https://www.facebook.com/your-page-name"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg text-sm text-white hover:bg-white/10 transition-colors"
+                >
+                  <i className="fa-brands fa-x-twitter"></i>
+                  Twitter
+                </a> */}
+
+                <a
+                  href="https://www.instagram.com/aipm_llc2025"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg text-sm text-white hover:bg-white/10 transition-colors"
+                >
+                  <i className="fa-brands fa-instagram text-pink-500"></i>
+                  Instagram
+                </a>
               </div>
+
+
             </div>
           </motion.div>
 
