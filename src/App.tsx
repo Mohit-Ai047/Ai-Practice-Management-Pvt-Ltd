@@ -20,6 +20,8 @@ import AIRevenueAutomationPage from "./pages/AIRevenueAutomationPage";
 import ContactPage from "./pages/ContactPage";
 import SpecialtyDetailPage from "./pages/SpecialtyDetailPage";
 import BenefitDetailPage from "./pages/BenefitDetailPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -53,6 +55,8 @@ const App = () => {
               <Route path="specialties" element={<SpecialtiesPage />} />
               <Route path="specialties/:id" element={<SpecialtyDetailPage />} />
               <Route path="contact" element={<ContactPage />} />
+              <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
+              <Route path="terms-and-conditions" element={<TermsAndConditionsPage />} />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>

@@ -195,18 +195,18 @@ export const Footer = () => {
             Designed for healthcare financial excellence.
           </p>
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-2">
-            <a
-              href="#"
+            <Link
+              to="/privacy-policy"
               className="text-[#FEFAE0]/60 hover:text-white text-sm transition-colors underline underline-offset-4 decoration-transparent hover:decoration-white"
             >
               Privacy Policy
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/terms-and-conditions"
               className="text-[#FEFAE0]/60 hover:text-white text-sm transition-colors underline underline-offset-4 decoration-transparent hover:decoration-white"
             >
               Terms of Service
-            </a>
+            </Link>
             <a
               href="#"
               className="text-[#FEFAE0]/60 hover:text-white text-sm transition-colors underline underline-offset-4 decoration-transparent hover:decoration-white"
