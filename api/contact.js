@@ -58,7 +58,7 @@ export async function POST(request) {
             try {
                 // Send confirmation email to user
                 const userEmailResult = await resend.emails.send({
-                    from: process.env.MAIL_FROM || "onboarding@resend.dev", // Use onboarding for testing
+                    from: process.env.MAIL_FROM || "mohit@aipracticemanagement.com", // Use onboarding for testing
                     to: email,
                     subject: "We received your message",
                     text: `Hi ${name || ""},\n\nThank you for contacting us. We have received your message and will get back to you soon.\n\nMessage:\n${message}\n\nBest regards,\nThe Team`,
@@ -71,7 +71,7 @@ export async function POST(request) {
                 // Send admin notification
                 if (ADMIN_EMAIL) {
                     const adminEmailResult = await resend.emails.send({
-                        from: process.env.MAIL_FROM || "onboarding@resend.dev",
+                        from: process.env.MAIL_FROM || "mohit@aipracticemanagement.com",
                         to: ADMIN_EMAIL,
                         subject: "New contact form submission",
                         text: [
