@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { Layout } from "./components/layout/Layout";
 import { SplashScreen } from "./components/SplashScreen";
+import { SecurityGuard } from "./components/SecurityGuard";
 import HomePage from "./pages/HomePage";
 import ServicesPage from "./pages/ServicesPage";
 import RCMPage from "./pages/RCMPage";
@@ -36,6 +37,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        <SecurityGuard />
         <Toaster />
         <Sonner />
         <BrowserRouter>

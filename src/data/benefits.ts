@@ -76,12 +76,12 @@ export const benefitsData = [
         ]
     },
     {
-        id: "hipaa-compliant-data-security",
-        title: "HIPAA-Compliant Data Security",
+        id: "hipaa-compliance-data-security",
+        title: "HIPAA-Compliance Data Security",
         image: healthcareSecurityImg,
         shortDescription: "Your patient data is protected with enterprise-grade security measures, encrypted transmissions, and full HIPAA compliance.",
         fullDescription: [
-            "In an era of increasing cyber threats, the security of patient health information (PHI) is non-negotiable. We employ state-of-the-art encryption standards for data both in transit and at rest. Our infrastructure is built on secure, HIPAA-compliant servers with redundant backups to ensure business continuity.",
+            "In an era of increasing cyber threats, the security of patient health information (PHI) is non-negotiable. We employ state-of-the-art encryption standards for data both in transit and at rest. Our infrastructure is built on secure, HIPAA-Compliance servers with redundant backups to ensure business continuity.",
             "Our security protocols extend beyond technology to people and processes. We conduct regular risk assessments, penetration testing, and staff training to mitigate internal and external vulnerabilities. Strict access controls ensure that only authorized personnel can view sensitive information.",
             "Compliance is an ongoing journey, not a one-time checkmark. We stay abreast of all HIPAA, HITECH, and other regulatory updates to ensure your practice remains compliant. Partnering with us means you can rest easy knowing your patient data—and your reputation—are safe."
         ],

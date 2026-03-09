@@ -49,7 +49,6 @@ const LinkItem = ({
       to={href}
       className="text-[#FEFAE0] hover:text-[#24c9c0] transition-colors duration-300 ease-out text-base flex items-center w-fit relative z-20"
     >
-      <span className="w-1.5 h-1.5 rounded-full bg-[#FEFAE0] group-hover:bg-[#FEFAE0] mr-0 group-hover:mr-2 transition-all opacity-0 group-hover:opacity-100"></span>
       <span className="relative z-10">{label}</span>
     </Link>
 
@@ -121,12 +120,20 @@ export const Footer = () => {
                 </div>
                 <span className="text-base">info@aipracticemanagement.us</span>
               </a>
-              <div className="flex items-center gap-3 text-[#FEFAE0]">
-                <div className="w-8 h-8 rounded-full bg-[#FEFAE0]/10 flex items-center justify-center">
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=8+The+Green+STE+22363+Dover+DE+19901"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-3 text-[#FEFAE0] hover:text-white transition-colors group"
+              >
+                <div className="w-8 h-8 rounded-full bg-[#FEFAE0]/10 flex items-center justify-center mt-1 flex-shrink-0 group-hover:bg-[#FEFAE0]/20 transition-colors">
                   <MapPin className="w-4 h-4" />
                 </div>
-                <span className="text-base">Serving Healthcare Providers Nationwide</span>
-              </div>
+                <span className="text-base leading-relaxed">
+                  8 The Green STE 22363, Dover, 19901<br />
+                  Delaware, U.S.A.
+                </span>
+              </a>
             </div>
           </div>
 

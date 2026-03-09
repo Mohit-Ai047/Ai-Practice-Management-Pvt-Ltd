@@ -99,10 +99,10 @@ const featuredBenefits = [
   },
   {
     image: healthcareSecurityImg,
-    title: "HIPAA-Compliant Data Security",
+    title: "HIPAA-Compliance Data Security",
     description:
       "Your patient data is protected with enterprise-grade security measures, encrypted transmissions, and full HIPAA compliance.",
-    link: "/benefits/hipaa-compliant-data-security"
+    link: "/benefits/hipaa-Compliance-data-security"
   },
   {
     image: arClaimsImg,
@@ -138,7 +138,7 @@ const benefitStats = [
   {
     icon: CheckCircle,
     stat: "100%",
-    title: "HIPAA Compliant",
+    title: "HIPAA Compliance",
     description:
       "Full compliance with all healthcare regulations and security standards.",
   },

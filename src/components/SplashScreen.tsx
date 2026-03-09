@@ -32,10 +32,10 @@ export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
     }, [onComplete]);
 
     return (
-        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black text-white px-4">
+        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black text-white px-6">
             <AnimatePresence>
                 {startAnimation && (
-                    <>
+                    <div className="space-y-8 w-full max-w-screen-xl mx-auto flex flex-col items-center">
                         <motion.div
                             initial="hidden"
                             animate="visible"
@@ -44,22 +44,29 @@ export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
                                 visible: {
                                     opacity: 1,
                                     transition: {
-                                        staggerChildren: 0.05,
+                                        staggerChildren: 0.04,
                                     },
                                 },
                             }}
-                            className="flex flex-wrap justify-center text-center gap-0.5 md:gap-1 text-2xl md:text-4xl font-medium tracking-[0.1em] mb-6 font-serif"
+                            className="flex flex-wrap justify-center text-center gap-y-2 text-2xl md:text-3xl lg:text-5xl font-medium tracking-wide font-serif w-full"
                         >
-                            {mainChars.map((char, index) => (
-                                <motion.span
-                                    key={`main-${index}`}
-                                    variants={{
-                                        hidden: { opacity: 0, y: 10 },
-                                        visible: { opacity: 1, y: 0 },
-                                    }}
-                                >
-                                    {char === " " ? "\u00A0" : char}
-                                </motion.span>
+                            {mainText.split(" ").map((word, wordIndex) => (
+                                <span key={`main-word-${wordIndex}`} className="inline-block whitespace-nowrap">
+                                    {word.split("").map((char, charIndex) => (
+                                        <motion.span
+                                            key={`main-char-${charIndex}`}
+                                            variants={{
+                                                hidden: { opacity: 0, y: 10 },
+                                                visible: { opacity: 1, y: 0 },
+                                            }}
+                                            className="inline-block"
+                                        >
+                                            {char}
+                                        </motion.span>
+                                    ))}
+                                    {/* Add a space after the word that IS allowed to break */}
+                                    <span className="inline-block">&nbsp;</span>
+                                </span>
                             ))}
                         </motion.div>
 
@@ -71,26 +78,32 @@ export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
                                 visible: {
                                     opacity: 1,
                                     transition: {
-                                        delayChildren: 2, // Start after main text roughly
-                                        staggerChildren: 0.05,
+                                        delayChildren: 1.2,
+                                        staggerChildren: 0.03,
                                     },
                                 },
                             }}
-                            className="flex flex-wrap justify-center text-center gap-0.5 text-lg md:text-2xl text-white/70 tracking-[0.2em] font-serif"
+                            className="flex flex-wrap justify-center text-center gap-y-1 text-base sm:text-lg md:text-2xl text-white/70 tracking-widest font-serif w-full"
                         >
-                            {subChars.map((char, index) => (
-                                <motion.span
-                                    key={`sub-${index}`}
-                                    variants={{
-                                        hidden: { opacity: 0 },
-                                        visible: { opacity: 1 },
-                                    }}
-                                >
-                                    {char === " " ? "\u00A0" : char}
-                                </motion.span>
+                            {subText.split(" ").map((word, wordIndex) => (
+                                <span key={`sub-word-${wordIndex}`} className="inline-block whitespace-nowrap">
+                                    {word.split("").map((char, charIndex) => (
+                                        <motion.span
+                                            key={`sub-char-${charIndex}`}
+                                            variants={{
+                                                hidden: { opacity: 0 },
+                                                visible: { opacity: 1 },
+                                            }}
+                                            className="inline-block"
+                                        >
+                                            {char}
+                                        </motion.span>
+                                    ))}
+                                    <span className="inline-block">&nbsp;</span>
+                                </span>
                             ))}
                         </motion.div>
-                    </>
+                    </div>
                 )}
             </AnimatePresence>
         </div>

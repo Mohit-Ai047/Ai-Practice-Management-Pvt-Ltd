@@ -62,34 +62,36 @@ export const HeroSection = () => {
             </span> */}
           </motion.div>
 
-          <h1 className="font-serif text-4xl sm:text-5xl lg:text-7xl text-white leading-tight mb-6 font-normal">
-            Boost Your Revenue with <br />
-            <span className="font-bold">Smart </span>
-            <span className="font-bold inline-flex">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={textIndex}
-                  initial="hidden"
-                  animate="visible"
-                  exit="hidden"
-                  variants={{
-                    visible: { transition: { staggerChildren: 0.1 } },
-                    hidden: {},
-                  }}
-                >
-                  {characters.map((char, i) => (
-                    <motion.span
-                      key={i}
-                      variants={{
-                        hidden: { opacity: 0, y: 10 },
-                        visible: { opacity: 1, y: 0 },
-                      }}
-                    >
-                      {char}
-                    </motion.span>
-                  ))}
-                </motion.span>
-              </AnimatePresence>
+          <h1 className="font-serif text-3xl sm:text-5xl lg:text-7xl text-white leading-[1.1] mb-6 font-normal">
+            Boost Your Revenue <br />
+            <span className="inline-block">
+              with <span className="font-bold text-secondary">Smart </span>
+              <span className="font-bold inline-flex">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={textIndex}
+                    initial="hidden"
+                    animate="visible"
+                    exit="hidden"
+                    variants={{
+                      visible: { transition: { staggerChildren: 0.1 } },
+                      hidden: {},
+                    }}
+                  >
+                    {characters.map((char, i) => (
+                      <motion.span
+                        key={i}
+                        variants={{
+                          hidden: { opacity: 0, y: 10 },
+                          visible: { opacity: 1, y: 0 },
+                        }}
+                      >
+                        {char}
+                      </motion.span>
+                    ))}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
             </span>
           </h1>
 

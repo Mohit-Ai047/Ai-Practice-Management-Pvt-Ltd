@@ -23,8 +23,8 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Location",
-    value: "Serving Healthcare Providers Nationwide",
-    href: null,
+    value: "8 The Green STE 22363, Dover, 19901 Delaware, U.S.A.",
+    href: "https://maps.google.com/?q=8+The+Green+STE+22363,+Dover,+19901+Delaware,+U.S.A.",
   },
 ];
 
@@ -81,7 +81,7 @@ export const ContactSection = () => {
   };
 
   return (
-    <section className="py-20 bg-black text-white" ref={ref}>
+    <section className="py-20 bg-black text-white overflow-x-hidden" ref={ref}>
       <div className="container mx-auto px-4">
         {/* Header */}
         <motion.div
@@ -94,7 +94,7 @@ export const ContactSection = () => {
             Get In Touch
           </span>
           <div className="section-divider mx-auto mt-4 mb-6" />
-          <h2 className="font-serif text-3xl lg:text-4xl font-bold mb-4">
+          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
             Ready to Optimize Your Revenue?
           </h2>
           <p className="text-white/70 text-lg">
@@ -111,8 +111,8 @@ export const ContactSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:col-span-2 space-y-6"
           >
-            <div className="bg-zinc-900 rounded-2xl p-8 border border-white/10">
-              <h3 className="font-serif text-2xl font-semibold mb-6 text-white">
+            <div className="bg-zinc-900 rounded-2xl p-5 sm:p-8 border border-white/10 w-full">
+              <h3 className="font-serif text-xl sm:text-2xl font-semibold mb-6 text-white">
                 Contact Information
               </h3>
               <div className="space-y-6">
@@ -128,12 +128,16 @@ export const ContactSection = () => {
                       {item.href ? (
                         <a
                           href={item.href}
-                          className="font-medium text-white hover:text-secondary transition-colors"
+                          target={item.icon === MapPin ? "_blank" : undefined}
+                          rel={item.icon === MapPin ? "noopener noreferrer" : undefined}
+                          className="font-medium text-white hover:text-secondary transition-colors break-all text-sm sm:text-base lg:text-lg"
                         >
                           {item.value}
                         </a>
                       ) : (
-                        <p className="font-medium text-white">{item.value}</p>
+                        <p className="font-medium text-white break-words text-sm sm:text-base lg:text-lg">
+                          {item.value}
+                        </p>
                       )}
                     </div>
                   </div>
@@ -141,39 +145,27 @@ export const ContactSection = () => {
               </div>
 
               {/* Social Links */}
-              <div className="flex gap-3 mt-5">
+              <div className="flex flex-wrap gap-2 sm:gap-3 mt-8 w-full">
                 <a
                   href="https://www.linkedin.com/company/ai-practice-management-llc"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg text-sm text-white hover:bg-white/10 transition-colors"
+                  className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-white/5 rounded-lg text-xs sm:text-sm text-white hover:bg-white/10 transition-colors"
                 >
                   <i className="fa-brands fa-linkedin-in text-[#0A66C2]"></i>
                   LinkedIn
                 </a>
 
-                {/* <a
-                  href="https://www.facebook.com/your-page-name"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg text-sm text-white hover:bg-white/10 transition-colors"
-                >
-                  <i className="fa-brands fa-x-twitter"></i>
-                  Twitter
-                </a> */}
-
                 <a
                   href="https://www.instagram.com/aipm_llc2025"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg text-sm text-white hover:bg-white/10 transition-colors"
+                  className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-white/5 rounded-lg text-xs sm:text-sm text-white hover:bg-white/10 transition-colors"
                 >
                   <i className="fa-brands fa-instagram text-pink-500"></i>
                   Instagram
                 </a>
               </div>
-
-
             </div>
           </motion.div>
 
@@ -184,7 +176,7 @@ export const ContactSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="lg:col-span-3"
           >
-            <div className="bg-zinc-900 rounded-2xl p-8 shadow-xl border border-white/10">
+            <div className="bg-zinc-900 rounded-2xl p-6 sm:p-8 shadow-xl border border-white/10">
               {isSubmitted ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
