@@ -174,8 +174,8 @@ const PrivacyPolicyPage = () => {
                             <div className="space-y-2 opacity-90">
                                 <p className="font-bold">Ai Practice Management LLC</p>
                                 <p>
-                                    <a href="mailto:info@aipracticemanagement.us" className="text-[#24c9c0] hover:underline">
-                                        info@aipracticemanagement.us
+                                    <a href="mailto:info@aipracticemanagement.com" className="text-[#24c9c0] hover:underline">
+                                        info@aipracticemanagement.com
                                     </a>
                                 </p>
                                 <p>

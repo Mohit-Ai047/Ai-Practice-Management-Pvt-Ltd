@@ -17,8 +17,8 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    value: "info@aipracticemanagement.us",
-    href: "mailto:info@aipracticemanagement.us",
+    value: "info@aipracticemanagement.com",
+    href: "mailto:info@aipracticemanagement.com",
   },
   {
     icon: MapPin,

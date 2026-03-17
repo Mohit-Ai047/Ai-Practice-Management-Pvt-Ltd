@@ -112,13 +112,13 @@ export const Footer = () => {
                 <span className="text-base">(302) 741-4001</span>
               </a>
               <a
-                href="mailto:info@aipracticemanagement.us"
+                href="mailto:info@aipracticemanagement.com"
                 className="flex items-center gap-3 text-[#FEFAE0] hover:text-white transition-colors group"
               >
                 <div className="w-8 h-8 rounded-full bg-[#FEFAE0]/10 flex items-center justify-center group-hover:bg-[#FEFAE0]/20 transition-colors">
                   <Mail className="w-4 h-4" />
                 </div>
-                <span className="text-base">info@aipracticemanagement.us</span>
+                <span className="text-base">info@aipracticemanagement.com</span>
               </a>
               <a
                 href="https://www.google.com/maps/search/?api=1&query=8+The+Green+STE+22363+Dover+DE+19901"
