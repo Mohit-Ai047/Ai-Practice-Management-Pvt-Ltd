@@ -122,7 +122,7 @@ export const Footer = () => {
                 <span className="text-base">info@aipracticemanagement.com</span>
               </a>
               <a
-                href="https://www.google.com/maps/search/?api=1&query=8+The+Green+STE+22363+Dover+DE+19901"
+                href="https://maps.app.goo.gl/mbmHQL9Li5JPTccu9"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-start gap-3 text-[#FEFAE0] hover:text-white transition-colors group"
@@ -131,8 +131,8 @@ export const Footer = () => {
                   <MapPin className="w-4 h-4" />
                 </div>
                 <span className="text-base leading-relaxed">
-                  8 The Green STE 22363, Dover, 19901<br />
-                  Delaware, U.S.A.
+                  B 417,418 Arjun Icconic opp. Satya 2 Shashtrinagar<br />
+                   Ahmedabad, Gujarat, India.
                 </span>
               </a>
             </div>
