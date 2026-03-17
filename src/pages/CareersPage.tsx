@@ -37,9 +37,32 @@ export default function CareersPage() {
     const [appForm, setAppForm] = useState({ name: "", email: "", phone: "", message: "" });
     const [resumeFile, setResumeFile] = useState<File | null>(null);
     const [resumeDragOver, setResumeDragOver] = useState(false);
+    const [resumeUploading, setResumeUploading] = useState(false);
+    const [uploadedResumeUrl, setUploadedResumeUrl] = useState<string | null>(null);
     const [appSubmitting, setAppSubmitting] = useState(false);
     const [appSuccess, setAppSuccess] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
+
+    const handleFileSelect = async (file: File) => {
+        setResumeFile(file);
+        setResumeUploading(true);
+        setUploadedResumeUrl(null);
+        try {
+            const formData = new FormData();
+            formData.append("file", file);
+            const res = await fetch("/api/upload", {
+                method: "POST",
+                body: formData,
+            });
+            if (!res.ok) throw new Error("Upload failed");
+            const data = await res.json();
+            setUploadedResumeUrl(data.url);
+        } catch (err) {
+            console.error("Resume upload failed:", err);
+        } finally {
+            setResumeUploading(false);
+        }
+    };
 
     useEffect(() => {
         fetch("/api/jobs")
@@ -530,24 +553,6 @@ export default function CareersPage() {
                                         e.preventDefault();
                                         setAppSubmitting(true);
                                         try {
-                                            let resume_url = null;
-                                            let resume_name = null;
-
-                                            // Upload resume file first if present
-                                            if (resumeFile) {
-                                                resume_name = resumeFile.name;
-                                                const uploadData = new FormData();
-                                                uploadData.append("file", resumeFile);
-                                                const uploadRes = await fetch("/api/upload", {
-                                                    method: "POST",
-                                                    body: uploadData,
-                                                });
-                                                if (uploadRes.ok) {
-                                                    const uploadJson = await uploadRes.json();
-                                                    resume_url = uploadJson.url;
-                                                }
-                                            }
-
                                             const res = await fetch("/api/applications", {
                                                 method: "POST",
                                                 headers: { "Content-Type": "application/json" },
@@ -556,8 +561,8 @@ export default function CareersPage() {
                                                     email: appForm.email,
                                                     phone: appForm.phone,
                                                     message: appForm.message || null,
-                                                    resume_name,
-                                                    resume_url,
+                                                    resume_name: resumeFile?.name || null,
+                                                    resume_url: uploadedResumeUrl,
                                                 }),
                                             });
                                             if (!res.ok) throw new Error("Failed");
@@ -642,7 +647,7 @@ export default function CareersPage() {
                                                 e.preventDefault();
                                                 setResumeDragOver(false);
                                                 const f = e.dataTransfer.files[0];
-                                                if (f) setResumeFile(f);
+                                                if (f) handleFileSelect(f);
                                             }}
                                             className={`border-2 border-dashed rounded-xl px-4 py-7 text-center cursor-pointer transition-all ${resumeDragOver
                                                 ? "border-[#24c9c0] bg-[#24c9c0]/10"
@@ -654,14 +659,19 @@ export default function CareersPage() {
                                             <input
                                                 ref={fileInputRef}
                                                 type="file"
-                                                accept=".pdf,.doc,.docx"
+                                                accept=".pdf,.doc,.docx,.png,.jpg,.jpeg"
                                                 className="hidden"
                                                 onChange={(e) => {
                                                     const f = e.target.files?.[0];
-                                                    if (f) setResumeFile(f);
+                                                    if (f) handleFileSelect(f);
                                                 }}
                                             />
-                                            {resumeFile ? (
+                                            {resumeUploading ? (
+                                                <div className="flex items-center justify-center gap-2 text-[#24c9c0]">
+                                                    <Loader2 className="w-5 h-5 animate-spin" />
+                                                    <span className="text-sm font-medium">Uploading {resumeFile?.name}...</span>
+                                                </div>
+                                            ) : resumeFile ? (
                                                 <div className="flex items-center justify-center gap-2 text-[#24c9c0]">
                                                     <CheckCircle2 className="w-5 h-5" />
                                                     <span className="text-sm font-medium">{resumeFile.name}</span>
@@ -670,7 +680,7 @@ export default function CareersPage() {
                                                 <>
                                                     <Upload className="w-5 h-5 text-[#FEFAE0]/30 mx-auto mb-2" />
                                                     <p className="text-sm text-[#FEFAE0]/45">Click to choose a file or drag here</p>
-                                                    <p className="text-xs text-[#FEFAE0]/25 mt-1">Size limit: 10 MB · PDF, DOC, DOCX</p>
+                                                    <p className="text-xs text-[#FEFAE0]/25 mt-1">Size limit: 10 MB · PDF, DOC, DOCX, PNG, JPG</p>
                                                 </>
                                             )}
                                         </div>
@@ -678,7 +688,7 @@ export default function CareersPage() {
 
                                     <button
                                         type="submit"
-                                        disabled={appSubmitting}
+                                        disabled={appSubmitting || resumeUploading}
                                         className="w-full py-4 bg-[#24c9c0] hover:bg-[#20b3aa] text-black font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 text-sm disabled:opacity-60"
                                     >
                                         {appSubmitting ? (

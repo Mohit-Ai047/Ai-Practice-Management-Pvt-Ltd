@@ -2,29 +2,32 @@ import { put } from "@vercel/blob";
 
 export async function POST(request) {
     try {
-        const formData = await request.formData();
-        const file = formData.get("file");
+        const body = await request.json();
+        const { filename, data, contentType } = body;
 
-        if (!file || typeof file === "string") {
+        if (!filename || !data) {
             return new Response(
-                JSON.stringify({ error: "No file provided" }),
+                JSON.stringify({ error: "filename and data are required" }),
                 { status: 400, headers: { "Content-Type": "application/json" } }
             );
         }
 
-        // Upload to Vercel Blob
-        const blob = await put(file.name, file, {
+        // Decode base64 data
+        const buffer = Buffer.from(data, "base64");
+
+        const blob = await put(filename, buffer, {
             access: "public",
+            contentType: contentType || "application/octet-stream",
         });
 
         return new Response(
-            JSON.stringify({ url: blob.url, filename: file.name }),
+            JSON.stringify({ url: blob.url, filename }),
             { status: 200, headers: { "Content-Type": "application/json" } }
         );
     } catch (error) {
         console.error("Upload error:", error);
         return new Response(
-            JSON.stringify({ error: "Failed to upload file" }),
+            JSON.stringify({ error: error.message || "Upload failed" }),
             { status: 500, headers: { "Content-Type": "application/json" } }
         );
     }

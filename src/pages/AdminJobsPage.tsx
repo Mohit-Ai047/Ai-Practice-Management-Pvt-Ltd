@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Variants } from "framer-motion";
-import { Plus, Edit2, Trash2, X, Check, Loader2, Briefcase, MapPin, Clock, Lock, Eye, EyeOff, ShieldCheck, Users, Mail, Phone, FileText } from "lucide-react";
+import { Plus, Edit2, Trash2, X, Check, Loader2, Briefcase, MapPin, Clock, Lock, Eye, EyeOff, ShieldCheck, Users, Mail, Phone, FileText, Download, ExternalLink } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 
 // ─── Change this to your desired admin password ───────────────────────────────
@@ -90,6 +90,8 @@ export default function AdminJobsPage() {
     const [applications, setApplications] = useState<Application[]>([]);
     const [appsLoading, setAppsLoading] = useState(false);
     const [deletingAppId, setDeletingAppId] = useState<number | null>(null);
+    const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+    const [previewName, setPreviewName] = useState<string>("");
 
     const fetchJobs = () => {
         if (!isAuthenticated) return;
@@ -772,17 +774,34 @@ export default function AdminJobsPage() {
                                                 </a>
                                                 {app.resume_name && (
                                                     app.resume_url ? (
-                                                        <a
-                                                            href={app.resume_url}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            className="flex items-center gap-1.5 text-sm text-[#24c9c0] hover:text-[#20b3aa] transition-colors underline underline-offset-2"
-                                                        >
-                                                            <FileText className="w-3.5 h-3.5" />{app.resume_name}
-                                                        </a>
+                                                        <div className="flex items-center gap-2">
+                                                            <button
+                                                                onClick={() => { setPreviewUrl(app.resume_url); setPreviewName(app.resume_name || "Resume"); }}
+                                                                className="flex items-center gap-1.5 text-sm text-[#24c9c0] hover:text-[#20b3aa] transition-colors underline underline-offset-2"
+                                                            >
+                                                                <FileText className="w-3.5 h-3.5" />{app.resume_name}
+                                                            </button>
+                                                            <a
+                                                                href={app.resume_url}
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                                className="p-1 text-[#FEFAE0]/30 hover:text-[#24c9c0] transition-colors"
+                                                                title="Open in new tab"
+                                                            >
+                                                                <ExternalLink className="w-3.5 h-3.5" />
+                                                            </a>
+                                                            <a
+                                                                href={app.resume_url}
+                                                                download={app.resume_name}
+                                                                className="p-1 text-[#FEFAE0]/30 hover:text-[#24c9c0] transition-colors"
+                                                                title="Download"
+                                                            >
+                                                                <Download className="w-3.5 h-3.5" />
+                                                            </a>
+                                                        </div>
                                                     ) : (
-                                                        <span className="flex items-center gap-1.5 text-sm text-[#FEFAE0]/55">
-                                                            <FileText className="w-3.5 h-3.5" />{app.resume_name}
+                                                        <span className="flex items-center gap-1.5 text-sm text-[#FEFAE0]/35">
+                                                            <FileText className="w-3.5 h-3.5" />{app.resume_name} <span className="text-[#FEFAE0]/20 text-xs">(no file)</span>
                                                         </span>
                                                     )
                                                 )}
@@ -810,6 +829,74 @@ export default function AdminJobsPage() {
                     )}
                 </motion.div>
             )}
+            {/* ── Resume Preview Modal ── */}
+            <AnimatePresence>
+                {previewUrl && (
+                    <>
+                        <motion.div
+                            key="preview-backdrop"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setPreviewUrl(null)}
+                            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50"
+                        />
+                        <motion.div
+                            key="preview-panel"
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.95 }}
+                            className="fixed inset-4 md:inset-10 z-50 bg-zinc-950 border border-[#FEFAE0]/10 rounded-2xl overflow-hidden flex flex-col"
+                        >
+                            {/* Header */}
+                            <div className="flex items-center justify-between px-5 py-3 border-b border-[#FEFAE0]/10 bg-white/[0.02]">
+                                <div className="flex items-center gap-2">
+                                    <FileText className="w-4 h-4 text-[#24c9c0]" />
+                                    <span className="text-[#FEFAE0] text-sm font-medium">{previewName}</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <a
+                                        href={previewUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="p-2 text-[#FEFAE0]/50 hover:text-[#24c9c0] hover:bg-white/[0.05] rounded-lg transition-colors"
+                                        title="Open in new tab"
+                                    >
+                                        <ExternalLink className="w-4 h-4" />
+                                    </a>
+                                    <a
+                                        href={previewUrl}
+                                        download={previewName}
+                                        className="p-2 text-[#FEFAE0]/50 hover:text-[#24c9c0] hover:bg-white/[0.05] rounded-lg transition-colors"
+                                        title="Download"
+                                    >
+                                        <Download className="w-4 h-4" />
+                                    </a>
+                                    <button
+                                        onClick={() => setPreviewUrl(null)}
+                                        className="p-2 text-[#FEFAE0]/50 hover:text-[#FEFAE0] hover:bg-white/[0.05] rounded-lg transition-colors"
+                                    >
+                                        <X className="w-4 h-4" />
+                                    </button>
+                                </div>
+                            </div>
+                            {/* Content */}
+                            <div className="flex-1 overflow-auto flex items-center justify-center p-4 bg-zinc-900">
+                                {previewName.match(/\.(png|jpg|jpeg|gif|webp)$/i) ? (
+                                    <img src={previewUrl} alt={previewName} className="max-w-full max-h-full object-contain rounded-lg" />
+                                ) : (
+                                    <iframe
+                                        src={previewUrl}
+                                        title={previewName}
+                                        className="w-full h-full rounded-lg bg-white"
+                                        style={{ minHeight: "100%" }}
+                                    />
+                                )}
+                            </div>
+                        </motion.div>
+                    </>
+                )}
+            </AnimatePresence>
         </div>
     );
 }
