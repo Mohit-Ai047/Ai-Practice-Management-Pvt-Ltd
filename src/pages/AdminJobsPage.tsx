@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Variants } from "framer-motion";
-import { Plus, Edit2, Trash2, X, Check, Loader2, Briefcase, MapPin, Clock, Lock, Eye, EyeOff, ShieldCheck } from "lucide-react";
+import { Plus, Edit2, Trash2, X, Check, Loader2, Briefcase, MapPin, Clock, Lock, Eye, EyeOff, ShieldCheck, Users, Mail, Phone, FileText } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 
 // ─── Change this to your desired admin password ───────────────────────────────
@@ -13,6 +13,17 @@ interface Job {
     title: string;
     description: string;
     location: string | null;
+    status: string;
+    created_at: string;
+}
+
+interface Application {
+    id: number;
+    name: string;
+    email: string;
+    phone: string;
+    message: string | null;
+    resume_name: string | null;
     status: string;
     created_at: string;
 }
@@ -74,8 +85,12 @@ export default function AdminJobsPage() {
     const [deletingId, setDeletingId] = useState<number | null>(null);
     const { toast } = useToast();
 
+    const [activeTab, setActiveTab] = useState<"jobs" | "applications">("jobs");
+    const [applications, setApplications] = useState<Application[]>([]);
+    const [appsLoading, setAppsLoading] = useState(false);
+    const [deletingAppId, setDeletingAppId] = useState<number | null>(null);
+
     const fetchJobs = () => {
-        // Only fetch if authenticated
         if (!isAuthenticated) return;
         setLoading(true);
         fetch("/api/jobs?admin=true")
@@ -89,8 +104,32 @@ export default function AdminJobsPage() {
             });
     };
 
+    const fetchApplications = () => {
+        if (!isAuthenticated) return;
+        setAppsLoading(true);
+        fetch("/api/applications")
+            .then((res) => res.json())
+            .then((data) => { setApplications(Array.isArray(data) ? data : []); setAppsLoading(false); })
+            .catch(() => { setAppsLoading(false); });
+    };
+
+    const handleDeleteApp = async (id: number) => {
+        if (!confirm("Delete this application?")) return;
+        setDeletingAppId(id);
+        try {
+            const res = await fetch(`/api/applications?id=${id}`, { method: "DELETE" });
+            if (!res.ok) throw new Error("Failed");
+            toast({ title: "Deleted", description: "Application removed." });
+            fetchApplications();
+        } catch {
+            toast({ variant: "destructive", title: "Error", description: "Failed to delete." });
+        } finally {
+            setDeletingAppId(null);
+        }
+    };
+
     useEffect(() => {
-        if (isAuthenticated) fetchJobs();
+        if (isAuthenticated) { fetchJobs(); fetchApplications(); }
     }, [isAuthenticated]);
 
     // ── Password Lock Screen ───────────────────────────────────────────────────
@@ -158,8 +197,8 @@ export default function AdminJobsPage() {
                                             placeholder="Enter admin password"
                                             autoFocus
                                             className={`w-full bg-white/[0.04] border rounded-xl pl-11 pr-12 py-3.5 text-[#FEFAE0] placeholder-[#FEFAE0]/20 focus:outline-none focus:ring-2 transition-all text-sm ${pwError
-                                                    ? "border-red-500/60 focus:ring-red-500/30 focus:border-red-500/60"
-                                                    : "border-[#FEFAE0]/12 focus:ring-[#24c9c0]/40 focus:border-[#24c9c0]/40"
+                                                ? "border-red-500/60 focus:ring-red-500/30 focus:border-red-500/60"
+                                                : "border-[#FEFAE0]/12 focus:ring-[#24c9c0]/40 focus:border-[#24c9c0]/40"
                                                 }`}
                                         />
                                         <button
@@ -331,6 +370,34 @@ export default function AdminJobsPage() {
                     >
                         <Plus className="w-4 h-4" />
                         Add Job Posting
+                    </button>
+                </motion.div>
+
+                {/* Tab switcher */}
+                <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1, duration: 0.4 }}
+                    className="flex gap-1 mb-8 bg-white/[0.03] rounded-xl p-1 border border-[#FEFAE0]/8 w-fit"
+                >
+                    <button
+                        onClick={() => setActiveTab("jobs")}
+                        className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all ${activeTab === "jobs" ? "bg-[#24c9c0] text-black" : "text-[#FEFAE0]/50 hover:text-[#FEFAE0]/80 hover:bg-white/[0.04]"}`}
+                    >
+                        <Briefcase className="w-4 h-4" />
+                        Job Postings
+                    </button>
+                    <button
+                        onClick={() => setActiveTab("applications")}
+                        className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all ${activeTab === "applications" ? "bg-[#24c9c0] text-black" : "text-[#FEFAE0]/50 hover:text-[#FEFAE0]/80 hover:bg-white/[0.04]"}`}
+                    >
+                        <Users className="w-4 h-4" />
+                        Applications
+                        {applications.length > 0 && (
+                            <span className={`ml-1 px-1.5 py-0.5 rounded-full text-xs font-bold ${activeTab === "applications" ? "bg-black/20 text-black" : "bg-[#24c9c0]/20 text-[#24c9c0]"}`}>
+                                {applications.length}
+                            </span>
+                        )}
                     </button>
                 </motion.div>
 
@@ -654,6 +721,83 @@ export default function AdminJobsPage() {
                     </>
                 )}
             </AnimatePresence>
+
+            {/* ── Applications Tab ── */}
+            {activeTab === "applications" && (
+                <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4 }}
+                >
+                    {appsLoading ? (
+                        <div className="flex flex-col items-center justify-center py-24 gap-3">
+                            <Loader2 className="w-8 h-8 text-[#24c9c0] animate-spin" />
+                            <p className="text-[#FEFAE0]/40 text-sm">Loading applications...</p>
+                        </div>
+                    ) : applications.length === 0 ? (
+                        <div className="text-center py-20 bg-white/[0.02] border border-[#FEFAE0]/8 rounded-2xl">
+                            <Users className="w-10 h-10 text-[#FEFAE0]/15 mx-auto mb-3" />
+                            <p className="text-[#FEFAE0]/40 text-sm">No applications received yet.</p>
+                        </div>
+                    ) : (
+                        <div className="space-y-4">
+                            {applications.map((app) => (
+                                <motion.div
+                                    key={app.id}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="bg-white/[0.03] border border-[#FEFAE0]/10 rounded-2xl p-6 hover:border-[#24c9c0]/25 transition-all"
+                                >
+                                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                                        <div className="flex-1 space-y-3">
+                                            <div className="flex items-center gap-3">
+                                                <div className="w-10 h-10 rounded-full bg-[#24c9c0]/10 border border-[#24c9c0]/20 flex items-center justify-center flex-shrink-0">
+                                                    <span className="text-[#24c9c0] font-bold text-sm">{app.name.charAt(0).toUpperCase()}</span>
+                                                </div>
+                                                <div>
+                                                    <h3 className="text-lg font-semibold text-[#FEFAE0]">{app.name}</h3>
+                                                    <p className="text-[#FEFAE0]/35 text-xs">Applied {formatDate(app.created_at)}</p>
+                                                </div>
+                                                <span className={`ml-auto md:ml-3 px-2.5 py-0.5 rounded-full text-xs font-medium ${app.status === "new" ? "bg-[#24c9c0]/15 text-[#24c9c0] border border-[#24c9c0]/30" : "bg-white/5 text-[#FEFAE0]/50 border border-[#FEFAE0]/10"}`}>
+                                                    {app.status === "new" ? "\u2726 New" : app.status}
+                                                </span>
+                                            </div>
+                                            <div className="flex flex-wrap gap-4 pl-[52px]">
+                                                <a href={`mailto:${app.email}`} className="flex items-center gap-1.5 text-sm text-[#FEFAE0]/55 hover:text-[#24c9c0] transition-colors">
+                                                    <Mail className="w-3.5 h-3.5" />{app.email}
+                                                </a>
+                                                <a href={`tel:${app.phone}`} className="flex items-center gap-1.5 text-sm text-[#FEFAE0]/55 hover:text-[#24c9c0] transition-colors">
+                                                    <Phone className="w-3.5 h-3.5" />{app.phone}
+                                                </a>
+                                                {app.resume_name && (
+                                                    <span className="flex items-center gap-1.5 text-sm text-[#FEFAE0]/55">
+                                                        <FileText className="w-3.5 h-3.5" />{app.resume_name}
+                                                    </span>
+                                                )}
+                                            </div>
+                                            {app.message && (
+                                                <div className="pl-[52px]">
+                                                    <p className="text-[#FEFAE0]/45 text-sm leading-relaxed bg-white/[0.02] rounded-xl p-3 border border-[#FEFAE0]/5">
+                                                        &ldquo;{app.message}&rdquo;
+                                                    </p>
+                                                </div>
+                                            )}
+                                        </div>
+                                        <button
+                                            onClick={() => handleDeleteApp(app.id)}
+                                            disabled={deletingAppId === app.id}
+                                            className="flex-shrink-0 p-2.5 text-[#FEFAE0]/30 hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors disabled:opacity-50"
+                                            title="Delete application"
+                                        >
+                                            {deletingAppId === app.id ? <Loader2 className="w-4 h-4 animate-spin" /> : <Trash2 className="w-4 h-4" />}
+                                        </button>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    )}
+                </motion.div>
+            )}
         </div>
     );
 }

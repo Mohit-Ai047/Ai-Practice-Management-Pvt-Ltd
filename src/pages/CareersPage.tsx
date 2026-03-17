@@ -529,10 +529,25 @@ export default function CareersPage() {
                                     onSubmit={async (e) => {
                                         e.preventDefault();
                                         setAppSubmitting(true);
-                                        // Simulate a brief delay (replace with real API call)
-                                        await new Promise(r => setTimeout(r, 1200));
-                                        setAppSubmitting(false);
-                                        setAppSuccess(true);
+                                        try {
+                                            const res = await fetch("/api/applications", {
+                                                method: "POST",
+                                                headers: { "Content-Type": "application/json" },
+                                                body: JSON.stringify({
+                                                    name: appForm.name,
+                                                    email: appForm.email,
+                                                    phone: appForm.phone,
+                                                    message: appForm.message || null,
+                                                    resume_name: resumeFile?.name || null,
+                                                }),
+                                            });
+                                            if (!res.ok) throw new Error("Failed");
+                                            setAppSuccess(true);
+                                        } catch {
+                                            alert("Something went wrong. Please try again.");
+                                        } finally {
+                                            setAppSubmitting(false);
+                                        }
                                     }}
                                     className="bg-white/[0.03] border border-[#FEFAE0]/10 rounded-2xl p-7 md:p-9 space-y-5"
                                 >
