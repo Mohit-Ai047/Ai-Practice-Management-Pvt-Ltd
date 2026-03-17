@@ -268,7 +268,7 @@ export default function CareersPage() {
                                     layoutId={`job-card-${job.id}`}
                                     onClick={() => setSelectedJob(job)}
                                     className="group relative bg-white/[0.03] border border-[#FEFAE0]/10 rounded-2xl p-6 md:p-8 cursor-pointer hover:border-[#24c9c0]/40 hover:bg-white/[0.06] transition-all duration-300"
-                                    style={{ wiPVT LTDhange: "transform" }}
+                                    style={{ willChange: "transform" }}
                                     whileHover={{ y: -3 }}
                                 >
                                     {/* Glow on hover */}
