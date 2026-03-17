@@ -11,8 +11,8 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    value: "(302) 741-4001",
-    href: "tel:(302)741-4001",
+    value: "+91 7069791126",
+    href: "tel:+917069791126",
   },
   {
     icon: Mail,
@@ -23,8 +23,8 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Location",
-    value: "8 The Green STE 22363, Dover, 19901 Delaware, U.S.A.",
-    href: "https://maps.google.com/?q=8+The+Green+STE+22363,+Dover,+19901+Delaware,+U.S.A.",
+    value: "B 417,418 Arjun Icconic opp. Satya 2 Shashtrinagar Ahmedabad, Gujarat, India",
+    href: "https://maps.app.goo.gl/WfhqkweTSuews2tSA",
   },
 ];
 
@@ -147,7 +147,7 @@ export const ContactSection = () => {
               {/* Social Links */}
               <div className="flex flex-wrap gap-2 sm:gap-3 mt-8 w-full">
                 <a
-                  href="https://www.linkedin.com/company/ai-practice-management-llc"
+                  href="https://www.linkedin.com/company/ai-practice-management-PVT LTD"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-white/5 rounded-lg text-xs sm:text-sm text-white hover:bg-white/10 transition-colors"
@@ -157,7 +157,7 @@ export const ContactSection = () => {
                 </a>
 
                 <a
-                  href="https://www.instagram.com/aipm_llc2025"
+                  href="https://www.instagram.com/aipm_PVT LTD2025"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-white/5 rounded-lg text-xs sm:text-sm text-white hover:bg-white/10 transition-colors"

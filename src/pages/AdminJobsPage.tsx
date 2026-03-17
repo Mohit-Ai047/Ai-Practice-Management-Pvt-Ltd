@@ -93,6 +93,9 @@ export default function AdminJobsPage() {
     const [previewUrl, setPreviewUrl] = useState<string | null>(null);
     const [previewName, setPreviewName] = useState<string>("");
 
+    // Proxy private blob URLs through our API
+    const getProxyUrl = (blobUrl: string) => `/api/resume?url=${encodeURIComponent(blobUrl)}`;
+
     const fetchJobs = () => {
         if (!isAuthenticated) return;
         setLoading(true);
@@ -249,7 +252,7 @@ export default function AdminJobsPage() {
 
                     {/* Footer note */}
                     <p className="text-center text-[#FEFAE0]/20 text-xs mt-5">
-                        Authorised personnel only · Ai Practice Management LLC
+                        Authorised personnel only · Ai Practice Management PVT LTD
                     </p>
                 </motion.div>
             </div>
@@ -776,13 +779,13 @@ export default function AdminJobsPage() {
                                                     app.resume_url ? (
                                                         <div className="flex items-center gap-2">
                                                             <button
-                                                                onClick={() => { setPreviewUrl(app.resume_url); setPreviewName(app.resume_name || "Resume"); }}
+                                                                onClick={() => { setPreviewUrl(getProxyUrl(app.resume_url!)); setPreviewName(app.resume_name || "Resume"); }}
                                                                 className="flex items-center gap-1.5 text-sm text-[#24c9c0] hover:text-[#20b3aa] transition-colors underline underline-offset-2"
                                                             >
                                                                 <FileText className="w-3.5 h-3.5" />{app.resume_name}
                                                             </button>
                                                             <a
-                                                                href={app.resume_url}
+                                                                href={getProxyUrl(app.resume_url!)}
                                                                 target="_blank"
                                                                 rel="noopener noreferrer"
                                                                 className="p-1 text-[#FEFAE0]/30 hover:text-[#24c9c0] transition-colors"
@@ -791,7 +794,7 @@ export default function AdminJobsPage() {
                                                                 <ExternalLink className="w-3.5 h-3.5" />
                                                             </a>
                                                             <a
-                                                                href={app.resume_url}
+                                                                href={getProxyUrl(app.resume_url!)}
                                                                 download={app.resume_name}
                                                                 className="p-1 text-[#FEFAE0]/30 hover:text-[#24c9c0] transition-colors"
                                                                 title="Download"

@@ -133,12 +133,12 @@ export const Header = () => {
               <Link to="/" className="flex items-center gap-2 sm:gap-3">
                 <img
                   src={logo}
-                  alt="Ai Practice Management LLC"
+                  alt="Ai Practice Management PVT LTD"
                   className="h-10 sm:h-14 md:h-16 w-auto transition-all duration-300 brightness-0 invert"
                 />
                 <div className="hidden sm:flex flex-col leading-tight">
                   <span className="text-white font-semibold tracking-wide text-[16px] sm:text-[18px] md:text-[20px] ml-1 sm:ml-2">
-                    <span className="hidden sm:inline">Ai PRACTICE<br className="lg:hidden" /> MANAGEMENT LLC</span>
+                    <span className="hidden sm:inline">Ai PRACTICE<br className="lg:hidden" /> MANAGEMENT PVT LTD</span>
                   </span>
                 </div>
               </Link>

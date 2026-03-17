@@ -37,31 +37,18 @@ export default function CareersPage() {
     const [appForm, setAppForm] = useState({ name: "", email: "", phone: "", message: "" });
     const [resumeFile, setResumeFile] = useState<File | null>(null);
     const [resumeDragOver, setResumeDragOver] = useState(false);
-    const [resumeUploading, setResumeUploading] = useState(false);
-    const [uploadedResumeUrl, setUploadedResumeUrl] = useState<string | null>(null);
     const [appSubmitting, setAppSubmitting] = useState(false);
     const [appSuccess, setAppSuccess] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
-    const handleFileSelect = async (file: File) => {
-        setResumeFile(file);
-        setResumeUploading(true);
-        setUploadedResumeUrl(null);
-        try {
-            const formData = new FormData();
-            formData.append("file", file);
-            const res = await fetch("/api/upload", {
-                method: "POST",
-                body: formData,
-            });
-            if (!res.ok) throw new Error("Upload failed");
-            const data = await res.json();
-            setUploadedResumeUrl(data.url);
-        } catch (err) {
-            console.error("Resume upload failed:", err);
-        } finally {
-            setResumeUploading(false);
-        }
+    // Convert file to base64
+    const fileToBase64 = (file: File): Promise<string> => {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result as string);
+            reader.onerror = reject;
+        });
     };
 
     useEffect(() => {
@@ -149,7 +136,7 @@ export default function CareersPage() {
                             transition={{ delay: 0.35, duration: 0.6 }}
                             className="text-lg md:text-xl text-[#FEFAE0]/70 max-w-2xl mx-auto mb-10 leading-relaxed"
                         >
-                            Join Ai Practice Management LLC and help redefine healthcare
+                            Join Ai Practice Management PVT LTD and help redefine healthcare
                             revenue cycle management. We're growing fast and looking for
                             driven professionals ready to make an impact.
                         </motion.p>
@@ -281,7 +268,7 @@ export default function CareersPage() {
                                     layoutId={`job-card-${job.id}`}
                                     onClick={() => setSelectedJob(job)}
                                     className="group relative bg-white/[0.03] border border-[#FEFAE0]/10 rounded-2xl p-6 md:p-8 cursor-pointer hover:border-[#24c9c0]/40 hover:bg-white/[0.06] transition-all duration-300"
-                                    style={{ willChange: "transform" }}
+                                    style={{ wiPVT LTDhange: "transform" }}
                                     whileHover={{ y: -3 }}
                                 >
                                     {/* Glow on hover */}
@@ -553,6 +540,15 @@ export default function CareersPage() {
                                         e.preventDefault();
                                         setAppSubmitting(true);
                                         try {
+                                            let filePayload = null;
+                                            if (resumeFile) {
+                                                const base64 = await fileToBase64(resumeFile);
+                                                filePayload = {
+                                                    name: resumeFile.name,
+                                                    data: base64,
+                                                    type: resumeFile.type,
+                                                };
+                                            }
                                             const res = await fetch("/api/applications", {
                                                 method: "POST",
                                                 headers: { "Content-Type": "application/json" },
@@ -561,8 +557,7 @@ export default function CareersPage() {
                                                     email: appForm.email,
                                                     phone: appForm.phone,
                                                     message: appForm.message || null,
-                                                    resume_name: resumeFile?.name || null,
-                                                    resume_url: uploadedResumeUrl,
+                                                    file: filePayload,
                                                 }),
                                             });
                                             if (!res.ok) throw new Error("Failed");
@@ -647,7 +642,7 @@ export default function CareersPage() {
                                                 e.preventDefault();
                                                 setResumeDragOver(false);
                                                 const f = e.dataTransfer.files[0];
-                                                if (f) handleFileSelect(f);
+                                                if (f) setResumeFile(f);
                                             }}
                                             className={`border-2 border-dashed rounded-xl px-4 py-7 text-center cursor-pointer transition-all ${resumeDragOver
                                                 ? "border-[#24c9c0] bg-[#24c9c0]/10"
@@ -663,15 +658,10 @@ export default function CareersPage() {
                                                 className="hidden"
                                                 onChange={(e) => {
                                                     const f = e.target.files?.[0];
-                                                    if (f) handleFileSelect(f);
+                                                    if (f) setResumeFile(f);
                                                 }}
                                             />
-                                            {resumeUploading ? (
-                                                <div className="flex items-center justify-center gap-2 text-[#24c9c0]">
-                                                    <Loader2 className="w-5 h-5 animate-spin" />
-                                                    <span className="text-sm font-medium">Uploading {resumeFile?.name}...</span>
-                                                </div>
-                                            ) : resumeFile ? (
+                                            {resumeFile ? (
                                                 <div className="flex items-center justify-center gap-2 text-[#24c9c0]">
                                                     <CheckCircle2 className="w-5 h-5" />
                                                     <span className="text-sm font-medium">{resumeFile.name}</span>
@@ -688,7 +678,7 @@ export default function CareersPage() {
 
                                     <button
                                         type="submit"
-                                        disabled={appSubmitting || resumeUploading}
+                                        disabled={appSubmitting}
                                         className="w-full py-4 bg-[#24c9c0] hover:bg-[#20b3aa] text-black font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 text-sm disabled:opacity-60"
                                     >
                                         {appSubmitting ? (

@@ -11,13 +11,13 @@ const PrivacyPolicyPage = () => {
                     transition={{ duration: 0.6 }}
                 >
                     <h1 className="text-4xl md:text-5xl font-bold font-serif mb-2 text-[#FEFAE0]">Privacy Policy</h1>
-                    <h2 className="text-xl text-[#24c9c0] mb-8">Ai Practice Management LLC</h2>
+                    <h2 className="text-xl text-[#24c9c0] mb-8">Ai Practice Management PVT LTD</h2>
 
                     <div className="space-y-8 text-[#FEFAE0] leading-relaxed">
                         <section>
                             <h3 className="text-2xl font-bold text-[#FEFAE0] mb-4">Introduction</h3>
                             <p className="opacity-90">
-                                Ai Practice Management LLC ("Ai Practice Management" or "we") is a healthcare support organization that
+                                Ai Practice Management PVT LTD ("Ai Practice Management" or "we") is a healthcare support organization that
                                 provides services and solutions to medical and dental providers across major states in the United States. We
                                 are committed to protecting the privacy and personal information of our clients, website visitors, and those
                                 who engage with our communication platforms, including SMS messaging. This Privacy Policy outlines how we
@@ -28,7 +28,7 @@ const PrivacyPolicyPage = () => {
                         <section>
                             <h3 className="text-2xl font-bold text-[#FEFAE0] mb-4">Scope</h3>
                             <p className="mb-4 opacity-90">
-                                This Privacy Policy applies to all personal data collected by AI Practice Management LLC, including but not
+                                This Privacy Policy applies to all personal data collected by AI Practice Management PVT LTD, including but not
                                 limited to:
                             </p>
                             <ul className="list-disc pl-6 space-y-2 opacity-90">
@@ -60,7 +60,7 @@ const PrivacyPolicyPage = () => {
 
                         <section>
                             <h3 className="text-2xl font-bold text-[#FEFAE0] mb-4">Types of Personal Data Collected</h3>
-                            <p className="mb-4 opacity-90">Ai Practice Management LLC may collect the following categories of personal data:</p>
+                            <p className="mb-4 opacity-90">Ai Practice Management PVT LTD may collect the following categories of personal data:</p>
                             <ul className="list-disc pl-6 space-y-2 opacity-90">
                                 <li>
                                     <strong className="text-[#FEFAE0]">Contact Information:</strong> name, phone number, email address, office address
@@ -108,7 +108,7 @@ const PrivacyPolicyPage = () => {
                         <section>
                             <h3 className="text-2xl font-bold text-[#FEFAE0] mb-4">Opt-Out Process</h3>
                             <p className="opacity-90">
-                                You may choose to stop receiving text messages from Ai Practice Management LLC at any time. To opt out, simply
+                                You may choose to stop receiving text messages from Ai Practice Management PVT LTD at any time. To opt out, simply
                                 reply to any text message you receive from us or text (332) 254-9771 with the word 'STOP' or 'UNSUBSCRIBE.'
                                 Once we receive your opt-out request, we will promptly remove your number from our messaging list.
                             </p>
@@ -116,7 +116,7 @@ const PrivacyPolicyPage = () => {
 
                         <section>
                             <h3 className="text-2xl font-bold text-[#FEFAE0] mb-4">How We Disclose Personal Data</h3>
-                            <p className="mb-4 opacity-90">Ai Practice Management LLC may disclose personal data:</p>
+                            <p className="mb-4 opacity-90">Ai Practice Management PVT LTD may disclose personal data:</p>
                             <ul className="list-disc pl-6 space-y-2 opacity-90">
                                 <li>To service providers and vendors strictly for operational purposes</li>
                                 <li>To government or regulatory authorities, if required by law</li>
@@ -172,7 +172,7 @@ const PrivacyPolicyPage = () => {
                                 If you have any questions about this Privacy Policy or how we handle your personal information, please contact us:
                             </p>
                             <div className="space-y-2 opacity-90">
-                                <p className="font-bold">Ai Practice Management LLC</p>
+                                <p className="font-bold">Ai Practice Management PVT LTD</p>
                                 <p>
                                     <a href="mailto:info@aipracticemanagement.com" className="text-[#24c9c0] hover:underline">
                                         info@aipracticemanagement.com

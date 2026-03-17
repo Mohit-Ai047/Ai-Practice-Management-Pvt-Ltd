@@ -93,7 +93,7 @@ export const Footer = () => {
                 <img src={logo} alt="Ai Practice Management" className="w-full h-full object-contain p-1 brightness-0 invert" />
               </div>
               <h3 className="font-serif font-bold text-base sm:text-xl leading-tight whitespace-nowrap">
-                Ai Practice Management LLC
+                Ai Practice Management PVT LTD
               </h3>
             </div>
             <p className="text-[#FEFAE0] mb-6 max-w-sm leading-relaxed text-sm sm:text-lg">
@@ -110,7 +110,7 @@ export const Footer = () => {
                 <div className="w-8 h-8 rounded-full bg-[#FEFAE0]/10 flex items-center justify-center group-hover:bg-[#FEFAE0]/20 transition-colors">
                   <Phone className="w-4 h-4" />
                 </div>
-                <span className="text-base">(302) 741-4001</span>
+                <span className="text-base">+91 7069791126</span>
               </a>
               <a
                 href="mailto:info@aipracticemanagement.com"
@@ -199,7 +199,7 @@ export const Footer = () => {
         {/* Bottom */}
         <div className="mt-16 pt-8 border-t border-[#FEFAE0]/20 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-[#FEFAE0]/60 text-sm text-center md:text-left leading-relaxed">
-            © {currentYear} Ai Practice Management LLC. All rights reserved. <br className="md:hidden" />
+            © {currentYear} Ai Practice Management PVT LTD. All rights reserved. <br className="md:hidden" />
             Designed for healthcare financial excellence.
           </p>
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-2">

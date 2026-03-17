@@ -1,4 +1,4 @@
-# Ai Practice Management LLC
+# Ai Practice Management PVT LTD
 
 Professional Revenue Cycle Management and Medical Billing services for healthcare providers.
 
@@ -44,4 +44,4 @@ npm run dev
 
 ---
 
-© 2025 Ai Practice Management LLC. All rights reserved.
+© 2025 Ai Practice Management PVT LTD. All rights reserved.

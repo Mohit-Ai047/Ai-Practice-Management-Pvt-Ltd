@@ -8,7 +8,7 @@ interface SplashScreenProps {
 export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
     const [startAnimation, setStartAnimation] = useState(false);
     const mainText = "When Practice Revenue Matters, We Deliver.";
-    const subText = "Ai Practice Management LLC.";
+    const subText = "Ai Practice Management PVT LTD.";
 
     const mainChars = mainText.split("");
     const subChars = subText.split("");

@@ -11,22 +11,22 @@ const TermsAndConditionsPage = () => {
                     transition={{ duration: 0.6 }}
                 >
                     <h1 className="text-4xl md:text-5xl font-bold font-serif mb-2 text-[#FEFAE0]">Terms and Conditions</h1>
-                    <h2 className="text-xl text-[#24c9c0] mb-8">Welcome to Ai Practice Management LLC!</h2>
+                    <h2 className="text-xl text-[#24c9c0] mb-8">Welcome to Ai Practice Management PVT LTD!</h2>
 
                     <div className="space-y-8 text-[#FEFAE0] leading-relaxed">
                         <section>
                             <p className="opacity-90">
-                                These terms and conditions outline the rules and regulations for the use of Ai Practice Management LLC's Website, located at https://aipracticemanagement.us.
+                                These terms and conditions outline the rules and regulations for the use of Ai Practice Management PVT LTD's Website, located at https://aipracticemanagement.us.
                             </p>
                             <p className="opacity-90 mt-4">
-                                By accessing this website, we assume you accept these terms and conditions. Do not continue to use Ai Practice Management LLC if you do not agree to take all of the terms and conditions stated on this page.
+                                By accessing this website, we assume you accept these terms and conditions. Do not continue to use Ai Practice Management PVT LTD if you do not agree to take all of the terms and conditions stated on this page.
                             </p>
                         </section>
 
                         <section>
                             <h3 className="text-2xl font-bold text-[#FEFAE0] mb-4">Cookies</h3>
                             <p className="opacity-90 mb-4">
-                                The website uses cookies to help personalize your online experience. By accessing Ai Practice Management LLC, you agreed to use the required cookies.
+                                The website uses cookies to help personalize your online experience. By accessing Ai Practice Management PVT LTD, you agreed to use the required cookies.
                             </p>
                             <p className="opacity-90 mb-4">
                                 A cookie is a text file that is placed on your hard disk by a web page server. Cookies cannot be used to run programs or deliver viruses to your computer. Cookies are uniquely assigned to you and can only be read by a web server in the domain that issued the cookie to you.
@@ -39,23 +39,23 @@ const TermsAndConditionsPage = () => {
                         <section>
                             <h3 className="text-2xl font-bold text-[#FEFAE0] mb-4">License</h3>
                             <p className="opacity-90 mb-4">
-                                Unless otherwise stated, Ai Practice Management LLC and/or its licensors own the intellectual property rights for all material on Ai Practice Management LLC. All intellectual property rights are reserved. You may access this from Ai Practice Management LLC for your own personal use subjected to restrictions set in these terms and conditions.
+                                Unless otherwise stated, Ai Practice Management PVT LTD and/or its licensors own the intellectual property rights for all material on Ai Practice Management PVT LTD. All intellectual property rights are reserved. You may access this from Ai Practice Management PVT LTD for your own personal use subjected to restrictions set in these terms and conditions.
                             </p>
                             <p className="opacity-90 mb-2">You must not:</p>
                             <ul className="list-disc pl-6 space-y-2 opacity-90">
-                                <li>Copy or republish material from Ai Practice Management LLC</li>
-                                <li>Sell, rent, or sub-license material from Ai Practice Management LLC</li>
-                                <li>Reproduce, duplicate or copy material from Ai Practice Management LLC</li>
-                                <li>Redistribute content from Ai Practice Management LLC</li>
+                                <li>Copy or republish material from Ai Practice Management PVT LTD</li>
+                                <li>Sell, rent, or sub-license material from Ai Practice Management PVT LTD</li>
+                                <li>Reproduce, duplicate or copy material from Ai Practice Management PVT LTD</li>
+                                <li>Redistribute content from Ai Practice Management PVT LTD</li>
                             </ul>
                             <p className="opacity-90 mt-4">
                                 This Agreement shall begin on the date hereof.
                             </p>
                             <p className="opacity-90 mt-4">
-                                Parts of this website offer users an opportunity to post and exchange opinions and information in certain areas of the website. Ai Practice Management LLC does not filter, edit, publish or review Comments before their presence on the website. Comments do not reflect the views and opinions of Ai Practice Management LLC, its agents, and/or affiliates. Comments reflect the views and opinions of the person who posts their views and opinions. To the extent permitted by applicable laws, Ai Practice Management LLC shall not be liable for the Comments or any liability, damages, or expenses caused and/or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website.
+                                Parts of this website offer users an opportunity to post and exchange opinions and information in certain areas of the website. Ai Practice Management PVT LTD does not filter, edit, publish or review Comments before their presence on the website. Comments do not reflect the views and opinions of Ai Practice Management PVT LTD, its agents, and/or affiliates. Comments reflect the views and opinions of the person who posts their views and opinions. To the extent permitted by applicable laws, Ai Practice Management PVT LTD shall not be liable for the Comments or any liability, damages, or expenses caused and/or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website.
                             </p>
                             <p className="opacity-90 mt-4">
-                                Ai Practice Management LLC reserves the right to monitor all Comments and remove any Comments that can be considered inappropriate, offensive, or causes breach of these Terms and Conditions.
+                                Ai Practice Management PVT LTD reserves the right to monitor all Comments and remove any Comments that can be considered inappropriate, offensive, or causes breach of these Terms and Conditions.
                             </p>
                             <p className="opacity-90 mt-4">You warrant and represent that:</p>
                             <ul className="list-disc pl-6 space-y-2 opacity-90">
@@ -65,7 +65,7 @@ const TermsAndConditionsPage = () => {
                                 <li>The Comments will not be used to solicit or promote business or custom or present commercial activities or unlawful activity.</li>
                             </ul>
                             <p className="opacity-90 mt-4">
-                                You hereby grant Ai Practice Management LLC a non-exclusive license to use, reproduce, edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats, or media.
+                                You hereby grant Ai Practice Management PVT LTD a non-exclusive license to use, reproduce, edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats, or media.
                             </p>
                         </section>
 
@@ -97,13 +97,13 @@ const TermsAndConditionsPage = () => {
                                 <li>Educational institutions and trade associations.</li>
                             </ul>
                             <p className="opacity-90 mt-4">
-                                We will approve link requests from these organizations if we decide that: (a) the link would not make us look unfavorably to ourselves or to our accredited businesses; (b) the organization does not have any negative records with us; (c) the benefit to us from the visibility of the hyperlink compensates the absence of Ai Practice Management LLC; and (d) the link is in the context of general resource information.
+                                We will approve link requests from these organizations if we decide that: (a) the link would not make us look unfavorably to ourselves or to our accredited businesses; (b) the organization does not have any negative records with us; (c) the benefit to us from the visibility of the hyperlink compensates the absence of Ai Practice Management PVT LTD; and (d) the link is in the context of general resource information.
                             </p>
                             <p className="opacity-90 mt-4">
                                 These organizations may link to our home page so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement, or approval of the linking party and its products or services; and (c) fits within the context of the linking party's site.
                             </p>
                             <p className="opacity-90 mt-4">
-                                If you are one of the organizations listed in paragraph 2 above and are interested in linking to our website, you must inform us by sending an e-mail to Ai Practice Management LLC. Please include your name, your organization name, contact information as well as the URL of your site, a list of any URLs from which you intend to link to our Website, and a list of the URLs on our site to which you would like to link. Wait 2-3 weeks for a response.
+                                If you are one of the organizations listed in paragraph 2 above and are interested in linking to our website, you must inform us by sending an e-mail to Ai Practice Management PVT LTD. Please include your name, your organization name, contact information as well as the URL of your site, a list of any URLs from which you intend to link to our Website, and a list of the URLs on our site to which you would like to link. Wait 2-3 weeks for a response.
                             </p>
                             <p className="opacity-90 mt-4">Approved organizations may hyperlink to our Website as follows:</p>
                             <ul className="list-disc pl-6 space-y-2 opacity-90">
@@ -112,7 +112,7 @@ const TermsAndConditionsPage = () => {
                                 <li>Using any other description of our Website being linked to that makes sense within the context and format of content on the linking party's site.</li>
                             </ul>
                             <p className="opacity-90 mt-4">
-                                No use of Ai Practice Management LLC's logo or other artwork will be allowed for linking absent a trademark license agreement.
+                                No use of Ai Practice Management PVT LTD's logo or other artwork will be allowed for linking absent a trademark license agreement.
                             </p>
                         </section>
 
