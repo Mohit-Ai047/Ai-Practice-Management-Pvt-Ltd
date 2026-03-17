@@ -380,13 +380,18 @@ export default function CareersPage() {
 
                                 {/* Apply CTA */}
                                 <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                                    <Link
-                                        to="/contact"
+                                    <button
+                                        onClick={() => {
+                                            setSelectedJob(null);
+                                            setTimeout(() => {
+                                                document.getElementById("apply-form")?.scrollIntoView({ behavior: "smooth" });
+                                            }, 300);
+                                        }}
                                         className="flex-1 flex items-center justify-center gap-2 py-3.5 bg-[#24c9c0] hover:bg-[#20b3aa] text-black font-semibold rounded-xl transition-colors text-[15px]"
                                     >
                                         Apply Now
                                         <ArrowRight className="w-4 h-4" />
-                                    </Link>
+                                    </button>
                                     <button
                                         onClick={() => setSelectedJob(null)}
                                         className="flex-1 py-3.5 bg-white/5 hover:bg-white/10 text-[#FEFAE0] rounded-xl transition-colors text-[15px]"
@@ -459,7 +464,7 @@ export default function CareersPage() {
             </section>
 
             {/* ── No Openings? No Issues! Still Apply ── */}
-            <section className="py-20 border-t border-[#FEFAE0]/10">
+            <section id="apply-form" className="py-20 border-t border-[#FEFAE0]/10">
                 <div className="container mx-auto px-4 max-w-6xl">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
@@ -606,10 +611,10 @@ export default function CareersPage() {
                                                 if (f) setResumeFile(f);
                                             }}
                                             className={`border-2 border-dashed rounded-xl px-4 py-7 text-center cursor-pointer transition-all ${resumeDragOver
-                                                    ? "border-[#24c9c0] bg-[#24c9c0]/10"
-                                                    : resumeFile
-                                                        ? "border-[#24c9c0]/50 bg-[#24c9c0]/5"
-                                                        : "border-[#FEFAE0]/12 hover:border-[#FEFAE0]/25 hover:bg-white/[0.03]"
+                                                ? "border-[#24c9c0] bg-[#24c9c0]/10"
+                                                : resumeFile
+                                                    ? "border-[#24c9c0]/50 bg-[#24c9c0]/5"
+                                                    : "border-[#FEFAE0]/12 hover:border-[#FEFAE0]/25 hover:bg-white/[0.03]"
                                                 }`}
                                         >
                                             <input
