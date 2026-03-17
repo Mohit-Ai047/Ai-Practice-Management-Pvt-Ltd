@@ -24,6 +24,7 @@ interface Application {
     phone: string;
     message: string | null;
     resume_name: string | null;
+    resume_url: string | null;
     status: string;
     created_at: string;
 }
@@ -770,9 +771,20 @@ export default function AdminJobsPage() {
                                                     <Phone className="w-3.5 h-3.5" />{app.phone}
                                                 </a>
                                                 {app.resume_name && (
-                                                    <span className="flex items-center gap-1.5 text-sm text-[#FEFAE0]/55">
-                                                        <FileText className="w-3.5 h-3.5" />{app.resume_name}
-                                                    </span>
+                                                    app.resume_url ? (
+                                                        <a
+                                                            href={app.resume_url}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="flex items-center gap-1.5 text-sm text-[#24c9c0] hover:text-[#20b3aa] transition-colors underline underline-offset-2"
+                                                        >
+                                                            <FileText className="w-3.5 h-3.5" />{app.resume_name}
+                                                        </a>
+                                                    ) : (
+                                                        <span className="flex items-center gap-1.5 text-sm text-[#FEFAE0]/55">
+                                                            <FileText className="w-3.5 h-3.5" />{app.resume_name}
+                                                        </span>
+                                                    )
                                                 )}
                                             </div>
                                             {app.message && (

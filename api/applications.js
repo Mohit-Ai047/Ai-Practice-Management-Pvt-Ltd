@@ -10,10 +10,14 @@ export async function GET(request) {
                 phone TEXT NOT NULL,
                 message TEXT,
                 resume_name TEXT,
+                resume_url TEXT,
                 status TEXT DEFAULT 'new',
                 created_at TIMESTAMPTZ DEFAULT NOW()
             );
         `;
+
+        // Add resume_url column if it doesn't exist (for existing tables)
+        await sql`ALTER TABLE job_applications ADD COLUMN IF NOT EXISTS resume_url TEXT;`;
 
         const result = await sql`SELECT * FROM job_applications ORDER BY id DESC;`;
         return new Response(JSON.stringify(result.rows), {
@@ -36,21 +40,24 @@ export async function POST(request) {
                 phone TEXT NOT NULL,
                 message TEXT,
                 resume_name TEXT,
+                resume_url TEXT,
                 status TEXT DEFAULT 'new',
                 created_at TIMESTAMPTZ DEFAULT NOW()
             );
         `;
 
+        await sql`ALTER TABLE job_applications ADD COLUMN IF NOT EXISTS resume_url TEXT;`;
+
         const body = await request.json();
-        const { name, email, phone, message, resume_name } = body;
+        const { name, email, phone, message, resume_name, resume_url } = body;
 
         if (!name || !email || !phone) {
             return new Response(JSON.stringify({ error: "Name, email, and phone are required" }), { status: 400, headers: { "Content-Type": "application/json" } });
         }
 
         const result = await sql`
-            INSERT INTO job_applications (name, email, phone, message, resume_name)
-            VALUES (${name}, ${email}, ${phone}, ${message || null}, ${resume_name || null})
+            INSERT INTO job_applications (name, email, phone, message, resume_name, resume_url)
+            VALUES (${name}, ${email}, ${phone}, ${message || null}, ${resume_name || null}, ${resume_url || null})
             RETURNING *;
         `;
 

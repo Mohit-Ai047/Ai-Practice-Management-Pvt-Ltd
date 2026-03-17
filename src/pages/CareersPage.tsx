@@ -530,6 +530,24 @@ export default function CareersPage() {
                                         e.preventDefault();
                                         setAppSubmitting(true);
                                         try {
+                                            let resume_url = null;
+                                            let resume_name = null;
+
+                                            // Upload resume file first if present
+                                            if (resumeFile) {
+                                                resume_name = resumeFile.name;
+                                                const uploadData = new FormData();
+                                                uploadData.append("file", resumeFile);
+                                                const uploadRes = await fetch("/api/upload", {
+                                                    method: "POST",
+                                                    body: uploadData,
+                                                });
+                                                if (uploadRes.ok) {
+                                                    const uploadJson = await uploadRes.json();
+                                                    resume_url = uploadJson.url;
+                                                }
+                                            }
+
                                             const res = await fetch("/api/applications", {
                                                 method: "POST",
                                                 headers: { "Content-Type": "application/json" },
@@ -538,7 +556,8 @@ export default function CareersPage() {
                                                     email: appForm.email,
                                                     phone: appForm.phone,
                                                     message: appForm.message || null,
-                                                    resume_name: resumeFile?.name || null,
+                                                    resume_name,
+                                                    resume_url,
                                                 }),
                                             });
                                             if (!res.ok) throw new Error("Failed");
