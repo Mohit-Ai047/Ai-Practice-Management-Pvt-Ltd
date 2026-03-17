@@ -23,6 +23,8 @@ import SpecialtyDetailPage from "./pages/SpecialtyDetailPage";
 import BenefitDetailPage from "./pages/BenefitDetailPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
+import CareersPage from "./pages/CareersPage";
+import AdminJobsPage from "./pages/AdminJobsPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -59,6 +61,8 @@ const App = () => {
               <Route path="contact" element={<ContactPage />} />
               <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
               <Route path="terms-and-conditions" element={<TermsAndConditionsPage />} />
+              <Route path="careers" element={<CareersPage />} />
+              <Route path="admin/jobs" element={<AdminJobsPage />} />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>

@@ -25,6 +25,7 @@ const footerLinks = {
     { label: "Home", href: "/" },
     { label: "Benefits", href: "/benefits" },
     { label: "Specialties", href: "/specialties" },
+    { label: "Careers", href: "/careers" },
     { label: "Contact", href: "/contact" },
   ],
 };

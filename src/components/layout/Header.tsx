@@ -42,6 +42,7 @@ const navItems = [
     ],
   },
   { label: "Contact", href: "/contact" },
+  { label: "Careers", href: "/careers" },
 ];
 
 export const Header = () => {
